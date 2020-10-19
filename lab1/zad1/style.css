@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+}
+main{
+    width: 70%;
+    margin: auto;
+    border: 2px solid black;
+    padding: 20px;
+}
+
+table, th, td{
+    border: 1px solid white;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table{
+    background: #aebdd6;
+    table-layout: fixed; 
+    width: 75%;
+    margin: auto;
+}
+
+header, section{
+    /* padding: 0px 100px; */
+}
+
+tr:nth-child(even){
+    background: #99b4e0;
+}
+
+th{
+    background: #4c76b5;
+    border-bottom: 3px solid white;
+}
