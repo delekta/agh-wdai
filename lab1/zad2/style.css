@@ -1,0 +1,100 @@
+*{
+    box-sizing: border-box;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    background-image: url("img/kosze.jpg");
+    background-size:cover;
+    height: 92%;
+}
+
+.main{
+    background-color: black;
+    width: 70%;
+    height: 100%;
+    margin: auto;
+    padding: 10px;
+}
+
+hr{
+margin: 20px 0;
+}
+
+.grid-container{
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        "top top top top"
+        "top top top top"
+        "glowna galeria lokalizacja kontakt"
+        "lewa zawartosc zawartosc zawartosc"
+        "lewa zawartosc zawartosc zawartosc"
+        "lewa zawartosc zawartosc zawartosc"
+        "lewa zawartosc zawartosc zawartosc"
+        "stopka stopka stopka stopka";
+    text-align: center;
+    
+}
+
+/* Defining Grid Areas For Grid Items */
+
+.grid-item{
+    display: flex;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+}
+
+.top{
+    grid-area: top;
+    position: relative;
+    justify-content: space-evenly;
+    background: #bbb;
+}
+
+.glowna{
+    grid-area: glowna;
+    font-weight: bold;
+}
+
+.galeria{
+    grid-area: galeria;
+}
+
+.lokalizacja{
+    grid-area:lokalizacja;
+    font-weight: bold;
+}
+
+.kontakt{
+    grid-area: kontakt;
+}
+
+.lewa{
+    grid-area: lewa;
+}
+
+.zawartosc{
+    grid-area: zawartosc;
+}
+
+.stopka{
+    grid-area: stopka;
+    background-color: #bbb;
+}
+
+/* Objects Of Top */
+
+.company-name{
+    font-size:  80px;
+}
+
+.logo{
+    height: 100px;
+    width: 100px;
+}
