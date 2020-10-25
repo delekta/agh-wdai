@@ -56,7 +56,7 @@ hr{
 }
 
 /* Text/Img Section */
-img{
+.spange-bob{
     height: 150px;
     width: 100px;
     margin: 10px;
@@ -66,11 +66,80 @@ img{
     float: left;
 }
 
-p .description{
-    clear: right;
-}
-
 #right-spongebob{
     float:right;
 }
+
+.wrapper{
+    width: 100%;
+    position: relative;
+    background-color: cadetblue;
+}
+
+.wrapper img{
+    height: 200px;
+    width: 20%;
+}
+
+/* Should we use position relative with position absolute? */
+#manCity{
+    position: absolute;
+    top: 0%;
+    right: 0%;
+}
+
+
+#chelsea{
+    position: absolute;
+    left:40%
+}
+
+ /* Style Of Euro List */
+ .lists-wrapper{
+     position: relative;
+     height: 300px;
+ }
+
+ h4{
+    margin-bottom: 0px;
+}
+
+.euro{
+    position: absolute;
+    bottom: 0%;
+    left: 20%;
+    color: white;
+    width: 500px;
+    margin: auto;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/png;base64,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");
+}
+
+ul{
+    margin-top: 10px;
+    display: inline-block;
+    text-align: left;
+}
+
+/* Style Of the Asia List */
+.asia{
+    position: absolute;
+    top: 0%;
+    left:20%;
+    width: 500px;
+    margin: auto;
+    text-align: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP8AAACqCAMAAABVlWm8AAAAclBMVEXeKRD/3gDrcgrfMA/fLRDgNA//2wD+1wHlTg38zwH3tATxkAfhOA/pZAv1qAXqbAr8ywLtfgn90wHwigfnWQzznAb+2ADpZQv3sAT8zQLsdgnmUwzkRw3xlAfugAj0oAX5vQP7xgLjQQ72qwX6wQPvhQgpdUtuAAADwElEQVR4nO3baXeqMBAGYEdklU1ERUURl///Fy9h0bZSDRTJDbzPl56egmcGs0xCOpkAAAAAQBfsWHQEQimWIToEIewybZfOYgMRJTp5s8lkTqSIjkSMWCP/diQKRAciSvbVM1fRcYiibvP8TdYNRmlXNAAybwMbAh2uq+wrVbSV/eGQ+qSYPEP6LCqT37qL/aC6gEM8DSAp0198PJ6+JbR6f9FSt5bO2SeuZyWVWUDB2/asGPklHtH+8xH1K8wadch7cTS88neV5c/RAQqxpn4yFgFmJpvSuS9ffjAUIcJ8VOfuAIOa+ZhDnv+hza2D2Akpq/o23+t82nk0vduXZU2baW2nbfKf52O3MfWpXNXSvMW9DrEHcD6Uj0FKfpm/3+LeOFsJTRONTh3H1CPjvqZrsa0506jZ5PH/Wd7zbzGxG3p+p9V9WL1J7/mnTW/dX8o7pZkFjOlPR3o4Pv31VZfYu/cbA2neCNw0amD+oiZQveWlGjrJlOYBhP6rhL8x349qKtsRZI/UlKYStN13eZcuPDt8bAI82+Fi5cqzKp7qHNmv+Xa5sgmw1cJBqPj6Nv0rb4dOdQk3gpX5m/RX3K/4LnJuBzjBi+wDj/+DlhJ+/czZ+jX9U5OhTN53wb+VAq8m/UGpLQU4Jv3BsLdP6W8l7c6t2M89QBtT/tOa9i/NUq4DUU3+keig+lPT/EfVAbza6a9B7SO5S23+l4afIu3bcPXR/P3doxRo+nozkvV1+KP5u/ZETe6/NesAylq+9W+h2gdZ7/JfvWpXwG30KQ4Fci4BlDLf+0o/PpXPo1E+ByI53/1simy/rPSrXYEm+ShpVjIYYbjxZFs35B0++J6rw05CUML3AUc/WH+pmySrG/Lmb/1c6Z9ZSahzdoCv68c2L0+FcrKZrmalP2O7ArxTunoos9flKwJW5NdP3PuU/yxUNYjI1vfZkT/3tw6rJu8PA1acIn/59kDD3Ys/etwlXdYBNLPd0YFBSMkM7UTGDtCJmCzWizYm/4gxKLtDMVLY/O9LBuVRPoxlzxyy1i46AMGaLZAHZ74VHYEYey8f5L3m58QGwlonITvxdxIdiCBxtmROfblPO/7JoljtnMZZ7GTKMxPBaqT1/uK+35MeR1gFGNUWuR4tpDnw2R273O+LwnFW+xHRNtGIJP5fl7+YW6zR34hebR0NWDHrza6jOiLyzNDGc0Kg1lK+zf5OKfKcdAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPiMf8Z5IAbLvKPeAAAAAElFTkSuQmCC");
+}
+
+ol{
+    margin-top: 10px;
+    display: inline-block;
+    text-align: left;
+}
+
 
