@@ -1,0 +1,172 @@
+/* Do poprawy 27.06.2020 */
+main{
+    width:70%;
+    margin: auto;
+}
+
+/* Horizontal Navigation */
+
+.row-list{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.row-list li{
+    padding: 7px 0;
+    border: 2px dashed #ddd;
+    border-collapse: collapse;
+    margin-left: -2px;
+    background-color: #eee;
+}
+
+.row-list li a{
+    padding: 7px 20px 7px 35px;
+    display: inline-block;
+    text-align: center;
+}
+
+.row-list li a:hover{
+    font-weight: bold;
+}
+
+.row-list #glowna{
+    background: url("images/home.png") no-repeat 5px 50%;
+}
+
+.row-list #glowna:hover{
+    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
+}
+
+.row-list #oferta{
+    background: url("images/bg_here.png") no-repeat 5px 50%;
+}
+
+.row-list #oferta:hover{
+    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
+}
+
+.row-list #experts{
+    background: url("images/link.png") no-repeat 5px 50%;
+}
+
+.row-list #experts:hover{
+    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
+}
+
+.row-list #quiz{
+    background: url("images/link.png") no-repeat 5px 50%;
+}
+
+.row-list #quiz:hover{
+    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
+}
+
+.row-list #projects{
+    background: url("images/link.png") no-repeat 5px 50%;
+}
+
+.row-list #projects:hover{
+    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
+}
+
+.row-list #horoscopes{
+    background: url("images/link.png") no-repeat 5px 50%;
+}
+
+.row-list #horoscopes:hover{
+    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
+}
+
+
+/* To Prevent Shift Of Width During Hover */
+li a {
+    font: normal 16px Arial;
+    text-transform: uppercase;
+}
+
+.row-list li a{
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+}
+
+
+/* Vertical Navigation */
+.column-list{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    width: 220px;
+}
+
+.column-list a{
+    padding: 7px 20px 7px 35px;
+    text-decoration: none;
+    color: black;
+}
+
+.column-list li{
+    display: block;
+    padding: 7px 0;
+    border: 2px dashed #ddd;
+    border-collapse: collapse;
+    margin-top: -2px;
+    background-color: #eee;
+}
+
+
+
+.column-list li a:hover{
+    font-weight: bold;
+}
+
+.column-list #glowna{
+    background: url("images/home.png") no-repeat 5px 50%;
+}
+
+.column-list #glowna:hover{
+    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
+}
+
+.column-list #oferta{
+    background: url("images/bg_here.png") no-repeat 5px 50%;
+}
+
+.column-list #oferta:hover{
+    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
+}
+
+.column-list #experts{
+    background: url("images/link.png") no-repeat 5px 50%;
+}
+
+.column-list #experts:hover{
+    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
+}
+
+.column-list #quiz{
+    background: url("images/link.png") no-repeat 5px 50%;
+}
+
+.column-list #quiz:hover{
+    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
+}
+
+.column-list #projects{
+    background: url("images/link.png") no-repeat 5px 50%;
+}
+
+.column-list #projects:hover{
+    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
+}
+
+.column-list #horoscopes{
+    background: url("images/link.png") no-repeat 5px 50%;
+}
+
+.column-list #horoscopes:hover{
+    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
+}
+
+
