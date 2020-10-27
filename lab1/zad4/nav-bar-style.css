@@ -1,8 +1,15 @@
-/* Do poprawy 27.06.2020 */
+*{
+    box-sizing: border-box;
+}
+
 main{
-    width:70%;
+    width:100%;
     margin: auto;
 }
+
+/* 
+To prevent layout shift during hover we declare specified width of elements
+*/
 
 /* Horizontal Navigation */
 
@@ -10,10 +17,11 @@ main{
     display: flex;
     flex-direction: row;
     list-style-type: none;
+    width: 100%;
 }
 
 .row-list li{
-    padding: 7px 0;
+    width: 25%;
     border: 2px dashed #ddd;
     border-collapse: collapse;
     margin-left: -2px;
@@ -21,7 +29,8 @@ main{
 }
 
 .row-list li a{
-    padding: 7px 20px 7px 35px;
+    width: 100%;
+    padding: 7px 0px 7px 30px;
     display: inline-block;
     text-align: center;
 }
@@ -42,46 +51,15 @@ main{
     background: url("images/bg_here.png") no-repeat 5px 50%;
 }
 
-.row-list #oferta:hover{
+.row-list li{
+    background:  url("images/link.png") no-repeat 5px 50%;
+}
+
+.row-list li:hover{
     background: #6ef391 url("images/go.png") no-repeat 5px 50%;
 }
-
-.row-list #experts{
-    background: url("images/link.png") no-repeat 5px 50%;
-}
-
-.row-list #experts:hover{
-    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
-}
-
-.row-list #quiz{
-    background: url("images/link.png") no-repeat 5px 50%;
-}
-
-.row-list #quiz:hover{
-    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
-}
-
-.row-list #projects{
-    background: url("images/link.png") no-repeat 5px 50%;
-}
-
-.row-list #projects:hover{
-    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
-}
-
-.row-list #horoscopes{
-    background: url("images/link.png") no-repeat 5px 50%;
-}
-
-.row-list #horoscopes:hover{
-    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
-}
-
-
-/* To Prevent Shift Of Width During Hover */
 li a {
-    font: normal 16px Arial;
+    font: normal 1.3vw Arial;
     text-transform: uppercase;
 }
 
@@ -97,25 +75,25 @@ li a {
     display: flex;
     flex-direction: column;
     list-style-type: none;
-    width: 220px;
+    width: 24%;
 }
 
 .column-list a{
+    width: 100%;
     padding: 7px 20px 7px 35px;
     text-decoration: none;
     color: black;
+    font-size: 5vm;
 }
 
 .column-list li{
-    display: block;
     padding: 7px 0;
+    display: inline-block;
     border: 2px dashed #ddd;
     border-collapse: collapse;
     margin-top: -2px;
     background-color: #eee;
 }
-
-
 
 .column-list li a:hover{
     font-weight: bold;
@@ -133,39 +111,11 @@ li a {
     background: url("images/bg_here.png") no-repeat 5px 50%;
 }
 
-.column-list #oferta:hover{
-    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
+.column-list li{
+    background:  url("images/link.png") no-repeat 5px 50%;
 }
 
-.column-list #experts{
-    background: url("images/link.png") no-repeat 5px 50%;
-}
-
-.column-list #experts:hover{
-    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
-}
-
-.column-list #quiz{
-    background: url("images/link.png") no-repeat 5px 50%;
-}
-
-.column-list #quiz:hover{
-    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
-}
-
-.column-list #projects{
-    background: url("images/link.png") no-repeat 5px 50%;
-}
-
-.column-list #projects:hover{
-    background: #6ef391 url("images/go.png") no-repeat 5px 50%;
-}
-
-.column-list #horoscopes{
-    background: url("images/link.png") no-repeat 5px 50%;
-}
-
-.column-list #horoscopes:hover{
+.column-list li:hover{
     background: #6ef391 url("images/go.png") no-repeat 5px 50%;
 }
 
