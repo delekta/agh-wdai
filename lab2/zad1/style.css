@@ -1,0 +1,111 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+.back{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    width: 90vw;
+    height: auto;
+    margin: auto;
+    background: #ddd;
+}
+
+.grid-container{
+    display: grid;
+    width: 95vw;
+    height: 95vh;
+    background: white;
+    grid-template-areas:
+    "top top top top top top top"
+    "top top top top top top top"
+    "menu menu menu menu menu menu menu"
+    "left left content content content content right"
+    "left left content content content content right"
+    "left left content content content content right"
+    "left left content content content content right"
+    "footer footer footer footer footer footer footer"
+    ;
+}
+
+.grid-item{
+    height: 100%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top{
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    grid-area: top;
+    background: gray;
+}
+
+.menu{
+    grid-area: menu;
+}
+
+.left-column{
+    grid-area: left;
+}
+
+.content{
+    grid-area: content;
+}
+
+.right-column{
+    border: 2px solid black;
+    grid-area: right;
+}
+
+.footer{
+    background: gray;
+    grid-area: footer;
+}
+
+/* Breakpoints For Ipads And Tablets */
+@media screen and (max-width: 768px){
+    .grid-container{
+        grid-template-areas:
+        "top top top top top top"
+        "top top top top top top"
+        "menu menu menu menu menu menu"
+        "left left content content content content"
+        "left left content content content content"
+        "left left content content content content"
+        "left left content content content content"
+        "right right right right right right"
+        "footer footer footer footer footer footer"
+        ;
+    }
+}
+
+/* Breakpoints For Iphones 480px */
+@media screen and (max-width: 530px){
+    .grid-container{
+        grid-template-areas:
+        "top"
+        "menu"
+        "left"
+        "left"
+        "content"
+        "content"
+        "right"
+        "footer"
+        ;
+    }
+
+    h1{
+        display: none;
+    }
+
+}
