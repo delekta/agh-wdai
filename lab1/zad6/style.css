@@ -1,0 +1,52 @@
+*{
+    box-sizing: border-box;
+}
+
+h1{
+    color:white;
+    padding-bottom: 15px;
+}
+
+main{
+    padding: 20px;
+    border-radius: 20px;
+    width: 70%;
+    height: 70%;
+    margin: auto;
+    margin-top: 50px;
+    background: #6f7070;
+    text-align: center;
+    -webkit-box-shadow: 1px 1px 23px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    1px 1px 23px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         1px 1px 23px 0px rgba(50, 50, 50, 0.75);
+}
+
+label{
+    padding: 7px 0;
+    color: white;
+    font-weight: bold;
+    width: 120px;
+    display: inline-block;
+    text-align: left;
+}
+
+
+input{
+    width: 250px;
+}
+
+.center{
+    width: 50%;
+    margin: auto;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="submit"]{
+    margin-top: 20px;
+    width: 150px;
+}
