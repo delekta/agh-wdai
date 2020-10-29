@@ -13,6 +13,11 @@ main{
     grid-template-columns: 30vw 30vw 30vw;
     grid-gap: 25px;
 }
+
+picture{
+ text-align: center;
+}
+
 h1{
     display: inline;
 }
