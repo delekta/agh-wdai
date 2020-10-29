@@ -1,0 +1,99 @@
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95vm;
+    margin: auto;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 20px;
+
+}
+h1{
+    display: inline;
+}
+/* Changing h1 From CSS */
+h1::before{
+    position: absolute; /* Needed! */
+    top:5%;
+    left:50%;
+    content: "London";
+}
+
+picture{
+    width: 30%;
+}
+
+@media screen and (max-width: 1280px){
+    .grid-container{
+        grid-template-columns: auto auto auto;
+    }
+
+    picture{
+        width: 30%;
+    }
+    /* Changing h1 From CSS */
+    h1:before {
+        position: absolute;
+        top:5%;
+        left:50%;
+        content:'Paris';
+    } 
+}
+
+@media screen and (max-width: 1024px){
+    .grid-container{
+        grid-template-columns: auto auto;
+    }
+
+    picture{
+        width: 30%;
+    }
+
+    /* Changing h1 From CSS */
+    h1:before {
+        position: absolute;
+        top:5%;
+        left:50%;
+        content:'Berlin';
+    } 
+}
+
+@media screen and (max-width: 768px){
+    .grid-container{
+        grid-template-columns: auto auto;
+    }
+
+    picture{
+        width: 30%;
+    }
+
+    /* Changing h1 From CSS */
+    h1:before {
+        position: absolute;
+        top:5%;
+        left:50%;
+        content:'New York';
+    } 
+}
+
+@media screen and (max-width: 550px){
+    .grid-container{
+        grid-template-columns: auto;
+    }
+
+    picture{
+        width: 30%;
+    }
+
+    /* Changing h1 From CSS */
+    h1:before {
+        position: absolute;
+        top:5%;
+        left:50%;
+        content:'Rio De Janeiro';
+    } 
+}
