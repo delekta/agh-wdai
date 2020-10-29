@@ -7,10 +7,11 @@ main{
 }
 
 .grid-container{
+    margin-top: 100px;
+    width: 95vw;
     display: grid;
-    grid-template-columns: auto auto auto;
-    grid-gap: 20px;
-
+    grid-template-columns: 30vw 30vw 30vw;
+    grid-gap: 25px;
 }
 h1{
     display: inline;
@@ -19,12 +20,13 @@ h1{
 h1::before{
     position: absolute; /* Needed! */
     top:5%;
-    left:50%;
+    left:45%;
     content: "London";
 }
 
-picture{
-    width: 30%;
+img{
+    width: 30vw;
+    height: 30vw;
 }
 
 @media screen and (max-width: 1280px){
@@ -32,14 +34,18 @@ picture{
         grid-template-columns: auto auto auto;
     }
 
-    picture{
-        width: 30%;
+    pidct
+
+    img{
+        width: 30vw;
+        height: 30vw;
     }
+
     /* Changing h1 From CSS */
     h1:before {
         position: absolute;
         top:5%;
-        left:50%;
+        left:45%;
         content:'Paris';
     } 
 }
@@ -49,15 +55,16 @@ picture{
         grid-template-columns: auto auto;
     }
 
-    picture{
-        width: 30%;
-    }
+   img{
+    width: 45vw;
+    height: 45vw;
+}
 
     /* Changing h1 From CSS */
     h1:before {
         position: absolute;
         top:5%;
-        left:50%;
+        left:45%;
         content:'Berlin';
     } 
 }
@@ -67,15 +74,16 @@ picture{
         grid-template-columns: auto auto;
     }
 
-    picture{
-        width: 30%;
+    img{
+        width: 45vw;
+        height: 45vw;
     }
 
     /* Changing h1 From CSS */
     h1:before {
         position: absolute;
         top:5%;
-        left:50%;
+        left:40%;
         content:'New York';
     } 
 }
@@ -85,15 +93,15 @@ picture{
         grid-template-columns: auto;
     }
 
-    picture{
-        width: 30%;
+    img{
+        width: 90vw;
     }
 
     /* Changing h1 From CSS */
     h1:before {
         position: absolute;
         top:5%;
-        left:50%;
+        left:35%;
         content:'Rio De Janeiro';
     } 
 }
