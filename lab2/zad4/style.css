@@ -1,0 +1,128 @@
+*{
+    box-sizing: border-box;
+}
+
+h1{
+    display: block;
+    font-weight: bold;
+    color: white;
+    -webkit-text-stroke: 1px black;
+}
+
+body{
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    background: url("img/liverpool.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+main{
+    width: 95vw;
+    margin: auto;
+}
+
+img{
+    width: 300px;
+    border-bottom: 2px solid black;
+}
+
+figure{
+    background: white;
+    position: relative;
+    float: left;
+    border-top: 2px solid black;
+    border: 2px solid black;
+}
+
+figure img {
+    display:block;
+
+    }
+
+figcaption{
+    margin-top: 0px;
+    background-color: white;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+/* Image Overlay Fade Img 1 */
+
+.middle{
+    transition: 0.7s ease;
+    text-align: center;
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.name{
+    background: black;
+    color: white;
+    text-transform: capitalize;
+    padding: 10px;
+}
+
+.mane:hover img{
+    opacity: 0.3;
+}
+
+.mane:hover .middle{
+    opacity: 1;
+}
+
+/* Img2 */
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+    background-color: red;
+  }
+  
+  .firmino:hover .overlay {
+    opacity: 0.8;
+  }
+
+  .icon {
+    color: white;
+    font-size: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index:1;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  /* Img3 */
+
+  .overlay-name{
+    position: absolute; 
+    bottom: 0; 
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 1);
+    color: #f1f1f1; 
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .salah:hover .overlay-name {
+    opacity: 1;
+  }
