@@ -17,12 +17,13 @@ main{
     border-radius: 50%;
     background-color: rgb(168, 118, 168);
     position: absolute;
-    top:50%;
-    left:50%;
+    top:25%;
+    left:35%;
     -webkit-box-shadow: 0px 0px 18px 0px #000000; 
     box-shadow: 0px 0px 18px 0px #000000;
     
 }
+
 
 .c2, .c4{
     opacity: 0.5;
@@ -31,37 +32,89 @@ main{
 }
 
 .c1{
-    animation: circle1 4s ease-in-out infinite;
+    animation: circle1 8s linear infinite;
 }
 
 .c2{
-    animation: circle2 4s ease-in-out infinite;
+    animation: circle2 8s linear infinite;
 }
 
 .c3{
-    animation: circle3 4s ease-in-out infinite;
+    animation: circle3 8s linear infinite;
 }
 
 .c4{
-    animation: circle4 4s ease-in-out infinite;
+    animation: circle4 8s linear infinite;
 }
 
 @keyframes circle1 {
-    from { transform: rotate(0deg) translateX(150px) rotate(0deg); }
-    to   { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+    0% { 
+        transform: rotate(0deg) translateX(150px); 
+    }
+    25% { 
+        transform: rotate(45deg) translateX(150px); 
+    }
+    50% { 
+        transform: rotate(270deg) translateX(150px);
+    }
+    75% { 
+        transform: rotate(180deg) translateX(150px);
+    }
+    100% { 
+        transform: rotate(360deg) translateX(150px);
+    }
 }
 
 @keyframes circle2 {
-    from { transform: rotate(0deg) translateY(-150px) rotate(0deg); }
-    to   { transform: rotate(360deg) translateY(-150px) rotate(-360deg); }
+    0% { 
+        transform: rotate(0deg) translateY(-150px); 
+    }
+    25% { 
+        transform: rotate(45deg) translateY(-150px); 
+    }
+    50% { 
+        transform: rotate(270deg) translateY(-150px);
+    }
+    75% { 
+        transform: rotate(180deg) translateY(-150px);
+    }
+    100% { 
+        transform: rotate(360deg) translateY(-150px);
+    }
 }
 
 @keyframes circle3 {
-    from { transform: rotate(0deg) translateX(-150px) rotate(0deg); }
-    to   { transform: rotate(360deg) translateX(-150px) rotate(-360deg); }
+    0% { 
+        transform: rotate(0deg) translateX(-150px); 
+    }
+    25% { 
+        transform: rotate(45deg) translateX(-150px); 
+    }
+    50% { 
+        transform: rotate(270deg) translateX(-150px);
+    }
+    75% { 
+        transform: rotate(180deg) translateX(-150px);
+    }
+    100% { 
+        transform: rotate(360deg) translateX(-150px);
+    }
 }
 
 @keyframes circle4 {
-    from { transform: rotate(0deg) translateY(150px) rotate(0deg); }
-    to   { transform: rotate(360deg) translateY(150px) rotate(-360deg); }
+    0% { 
+        transform: rotate(0deg) translateY(150px); 
+    }
+    25% { 
+        transform: rotate(45deg) translateY(150px); 
+    }
+    50% { 
+        transform: rotate(270deg) translateY(150px);
+    }
+    75% { 
+        transform: rotate(180deg) translateY(150px);
+    }
+    100% { 
+        transform: rotate(360deg) translateY(150px);
+    }
 }
