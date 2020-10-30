@@ -13,36 +13,27 @@
 
 .container{
     width: 45vw;
-    height: 45vh;
-    background: #ddd;
     position: relative;
 }
 
 img{
     max-width: 100%;
-    max-height: 100%;
     height: auto;
-    position: absolute;
-    right: 0;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto auto;
 }
 
-.c1{
-    clip-path: circle(50% at 50% 50%);
+.clip1{
+    clip-path: circle(38% at 50% 50%);
 }
 
-.c2{
+.clip2{
     clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
 }
 
-.c3{
+.clip3{
     clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
 }
 
-.c4{
+.clip4{
     clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
