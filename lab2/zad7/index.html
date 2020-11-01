@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamburger menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="topNav">
+        <h1 class="logo">delja</h1>
+        <div class="nav">
+            <a href="#uslugi">uslugi</a>
+            <a href="#wdrozenia">wdrozenia</a>
+            <a href="#ofirmie">o firmie</a>
+            <a href="#zespol">zespol</a>
+            <a href="#kontakt">kontakt</a>
+            <a href="#" class="icon"> ||| </a>
+        </div>
+    </div>
+
+    <script>
+        const nav = document.querySelector('.nav');
+        const hamburger = document.querySelector('.icon')
+
+        hamburger.addEventListener('click',() => {
+            nav.classList.toggle('open')
+            console.log(nav.classList);
+        })
+
+    </script>
+    
+</body>
+</html>

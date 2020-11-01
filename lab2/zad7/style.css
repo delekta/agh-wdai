@@ -1,0 +1,77 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    color: white;
+}
+
+.topNav{
+  position: relative;
+  background-color: black;
+  overflow: hidden;
+}
+
+.logo{
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translate(-5%, -50%);
+    font-size: 3.5vw;
+    margin-top: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    float:left;
+}
+
+.nav{
+    width: 70vw;
+    float: right;
+}
+
+.nav a{
+    text-align: center;
+    font-size: 1.7vw;
+    width: 12vw;
+    color: white;
+    padding: 25px 5px;
+    float: left;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+a.icon{
+    display: none;
+}
+
+/* Add functionality */
+.nav a.active{
+    background: green;
+    font-weight: bold;
+}
+
+/* ? */
+.nav a:hover{
+    background-color: gray !important; 
+    color: white !important;
+}
+
+@media screen and (max-width: 768px){
+    .nav a{
+        display: none;
+    }
+    a.icon{
+        display: block;
+        float: right;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .nav.open a{
+        float: none;
+        display: block;
+        text-align: center;
+    }
+}
+
