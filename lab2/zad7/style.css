@@ -62,7 +62,7 @@ body{
 
 .nav a:hover, .icon:hover{
     background-color: gray !important; 
-    color: white !important;
+    color: black !important;
 }
 
 @media screen and (max-width: 768px){
