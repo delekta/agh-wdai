@@ -12,37 +12,46 @@ body{
   overflow: hidden;
 }
 
-.logo{
-    position: absolute;
-    left: 5%;
-    top: 50%;
-    transform: translate(-5%, -50%);
-    font-size: 3.5vw;
-    margin-top: 0;
-    font-weight: bold;
-    text-transform: uppercase;
-    float:left;
-}
-
 .nav{
     width: 70vw;
     float: right;
 }
 
 .nav a{
+    height: 15vh;
     text-align: center;
-    font-size: 1.7vw;
-    width: 12vw;
+    font-size: 2vh;
+    width: 14vw;
     color: white;
-    padding: 25px 5px;
+    padding: 6vh 1.4vw;
     float: left;
     display: block;
     text-decoration: none;
     text-transform: uppercase;
 }
 
-a.icon{
+.logo{
+    height: 15vh;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    padding-left: 30px;
+    font-size: 2.8vh;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.icon{
+    height: 15vh;
     display: none;
+    text-align: center;
+    font-size: 3.3vh;
+    width: 12vw;
+    color: white;
+    padding: 6vh 2.5vw;
+    float: left;
+    text-decoration: none;
+    text-transform: uppercase;
 }
 
 /* Add functionality */
@@ -51,27 +60,51 @@ a.icon{
     font-weight: bold;
 }
 
-/* ? */
-.nav a:hover{
+.nav a:hover, .icon:hover{
     background-color: gray !important; 
     color: white !important;
 }
 
 @media screen and (max-width: 768px){
+
     .nav a{
         display: none;
+        height: auto;
     }
+
+    /* .logo{
+        visibility: hidden;
+    } */
+
+    .logo{
+        height: 10vh;
+        display: block;
+        text-align: left;
+    }
+
     a.icon{
+        height: 15vh;
         display: block;
         float: right;
+        position: absolute;
+        right: 0%;
+        top:0%;
+        transform: translate(-0%, -0%);
     }
+    
 }
 
 @media screen and (max-width: 768px){
     .nav.open a{
         float: none;
         display: block;
+        width: auto;
         text-align: center;
+        font-size: 2.5vh;
+    }
+    .nav.open{
+        float: none;
+        width: auto;
     }
 }
 
