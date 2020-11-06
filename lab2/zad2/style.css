@@ -11,7 +11,7 @@ main{
     width: 95vw;
     display: grid;
     grid-template-columns: 30vw 30vw 30vw;
-    grid-gap: 3vwpx;
+    grid-gap: 3vw;
 }
 
 picture{
@@ -22,10 +22,16 @@ h1{
     display: inline;
 }
 
-img{
+/* img{
     max-width: 30vw;
     height: auto;
+} */
+
+img{
+    width:30vw;
+    height: 30vh;
 }
+
 /* Changing h1 From CSS */
 h1::before{
     position: absolute; /* Needed! */
@@ -50,9 +56,14 @@ h1::before{
     } 
 
     img{
+        width:30vw;
+        height: 30vh;
+    }
+
+    /* img{
         max-width: 330px;
         height: auto;
-    }
+    } */
 }
 
 @media screen and (max-width: 1024px){
@@ -63,6 +74,11 @@ h1::before{
     img{
         max-width: 350px;
         height: auto;
+    }
+
+    img{
+        width:45vw;
+        height: 45vh;
     }
 
     /* Changing h1 From CSS */
@@ -79,9 +95,14 @@ h1::before{
         grid-template-columns: auto auto;
     }
 
-    img{
+    /* img{
         max-width: 250px;
         height: auto;
+    } */
+
+    img{
+        width:45vw;
+        height: 45vh;
     }
 
     /* Changing h1 From CSS */
@@ -98,8 +119,12 @@ h1::before{
         grid-template-columns: auto;
     }
 
-    img{
+    /* img{
         width: 90vw;
+    } */
+
+    img{
+        width:90vw;
     }
 
     /* Changing h1 From CSS */
