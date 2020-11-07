@@ -1,5 +1,5 @@
-*{
-    box-sizing: border-box;
+body{
+background-color: rgb(189, 183, 183);
 }
 
 main{
@@ -10,6 +10,11 @@ main{
 
 h1{
     padding: 20px;
+    color: green;
+}
+
+h3{
+    color: green;
 }
 
 .content{
@@ -18,18 +23,30 @@ h1{
 }
 
 .description{
+    width: 45vw;
     text-align: justify;
-    padding: 10px;
+    padding: 30px 10px 10px 10px;
 }
 
 .photos{
+    width: 45vw;
     padding: 30px;
 }
 
-.overlapping-photos{
+a{
+    color: green;
+    padding: 0 0 7px 0;
+    border-bottom: 1px solid green;
+    text-decoration: none;
+    line-height: 30px;
+}
+
+
+/* Ovelapping Made With Grid */
+/* .overlapping-photos{
     position: relative;
     display: grid;
-    /* grid-template-rows: 1fr;  */
+    grid-template-rows: 1fr;  
 }
 
 .item1{
@@ -64,4 +81,95 @@ img{
     height: 100%;
     border-radius: 5px;
     box-shadow: 5px 5px 16px -4px #000000;
+} */
+
+
+/* Overlapping Made With position absolute */
+.overlapping-photos{
+    width: 45vw;
+    height: 45vh; /* important */
+    position: relative;
+}
+
+.overlapped{
+    display: block;
+    width: 300px;
+    height: auto;
+}
+
+.item1{
+    position: absolute;
+    left: 5%;
+    top: 0%;
+    /* transform: translate(-30%, -30%); */
+}
+
+.item2{
+    position: absolute;
+    left: 35%;
+    top: 12%;
+    /* transform: translate(30%, -60%); */
+}
+
+.item3{
+    position: absolute;
+    left: 17%;
+    top: 40%;
+    /* transform: translateY(-70%); */
+}
+
+.overlapped:hover{
+    z-index: 2;
+}
+
+.overlapped:hover img{ 
+    transition: all 0.5s ease;
+    width: 105%;
+    height: 105%;
+    border: 10px solid green;
+    padding: 20px;
+}
+
+img{
+    transition: all 0.5s ease;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 5px 5px 16px -4px #000000;
+} 
+
+@media screen and (max-width: 1000px){
+    .content{
+        grid-template-columns: auto;
+    }
+
+    .description{
+        width: 90vw;
+    }
+
+    .photos{
+        width: 90vw;
+    }
+
+    .item1{
+        position: absolute;
+        left: 20%;
+        top: 0%;
+        /* transform: translate(-30%, -30%); */
+    }
+    
+    .item2{
+        position: absolute;
+        left: 80%;
+        top: 12%;
+        /* transform: translate(30%, -60%); */
+    }
+    
+    .item3{
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        /* transform: translateY(-70%); */
+    }
 }
