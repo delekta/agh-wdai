@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+body{
+    background: rgb(214, 214, 214);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
 main{
     width: 90vw;
     margin: auto;
@@ -48,9 +53,10 @@ img{
 }
 
 .card{
+    color: gray;
     cursor: pointer;
     width: 30vw;
-    height: 60vh;
+    height: 600px;
     overflow: hidden;
     -webkit-perspective: 1000;
     perspective: 1000;
@@ -60,6 +66,7 @@ img{
 }
 
 .front, .back{
+    line-height: 1.9vw;
     transition: all 0.8s linear;
     height: 100%;
     width: 100%;
@@ -71,14 +78,12 @@ img{
 }
 
 .front{
-    background: gray;
+    background: white;
     -webkit-transform: rotateY(0deg);
     transform: rotateY(0deg);
-
 }
 
 .back{
-    background: violet;
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
@@ -91,4 +96,131 @@ img{
 .card:hover > .back{
     -webkit-transform: rotateY(0deg);
     transform: rotateY(0deg);
+}
+
+.content1{
+    padding: 10px;
+    text-align: center;
+}
+
+.price1{
+    color: white;
+    height:100%;
+    width:100%;
+    position: absolute;
+    background: orange;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h5{
+    margin: 10px;
+    font-size: 25px;
+}
+
+h2{
+    margin: 20px;
+    font-size: 40px;
+}
+
+.btn{
+    color: gray;
+    display: block;
+    background: white;
+    border-radius: 25px;
+    padding: 20px 35px;
+    text-decoration: none;
+    transition: all .5s linear;
+}
+
+.price1 .btn:hover{
+    transition: all .5s linear;
+    color: orange;
+    -webkit-box-shadow: 0px 0px 13px 3px rgba(255,255,255,0.43); 
+    box-shadow: 0px 0px 13px 3px rgba(255,255,255,0.43);
+}
+
+.price2 .btn:hover{
+    transition: all .5s linear;
+    color: green;
+    -webkit-box-shadow: 0px 0px 13px 3px rgba(255,255,255,0.43); 
+    box-shadow: 0px 0px 13px 3px rgba(255,255,255,0.43);
+}
+
+.content2{
+    padding: 10px;
+    text-align: center;
+}
+
+.price2{
+    color: white;
+    height:100%;
+    width:100%;
+    position: absolute;
+    background: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.top{
+    position: relative;
+}
+
+.text-wrapper{
+    top: 60%;
+    right: 0;
+    position: absolute;
+    z-index: 10;
+    display: block;
+    text-transform: uppercase;
+}
+
+.word{
+    font-size: 3vw;
+    line-height: 3vw;
+    color: white;
+    opacity: 0.8;
+    background: rgb(255, 145, 0);
+    display: block;
+    float: right;
+    clear: both;
+}
+
+.word2{
+    font-size: 3vw;
+    line-height: 3vw;
+    color: white;
+    opacity: 0.8;
+    background: rgb(0, 141, 42);
+    display: block;
+    float: right;
+    clear: both;
+}
+
+@media screen and (max-width: 1175px){
+    .front{
+        line-height: 3vw;
+    }
+}
+
+@media screen and (max-width: 800px){
+    main{
+        grid-template-columns: auto;
+    }
+    .card{
+        width: 70vw;
+        height: 700px;
+    }
+    .word{
+        font-size: 7vw;
+        line-height: 7vw;
+    }
+
+    .word2{
+        line-height: 7vw;
+        font-size: 7vw;
+    }
 }
