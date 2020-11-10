@@ -56,6 +56,12 @@ p{
     padding: 10px;
 }
 
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .btn{
     margin-top: 10px;
     color: white;
@@ -130,25 +136,45 @@ input[type=submit]{
 @media screen and (max-width: 900px){
 
     .text{
-        width: 70vw;
+        position: absolute;
+        top:20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50vw;
+        display: block;
+        margin: auto;
     }
 
     .form{
-        width: 70vw;
-        position: absolute;
-        top:50%;
+        position: unset;
+        width: 50vw;
+        display: block;
+        margin: auto;
     }
 
-
-    @keyframes form{
+    @keyframes text{
         0%{
-            right: -20%;
-            top:50%;
+            left: -20%;
+            top:20%;
         }
         100%{
-            right: 8%;
-            top:50%;
+            left: 50%;
+            top:20%;
+
         }
     }
+
+
+    /* @keyframes form{
+        0%{
+            right: -20%;
+            top:70%;
+        }
+        100%{
+            right: 50%;
+            top:70%;
+
+        }
+    } */
 }
 
