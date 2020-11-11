@@ -6,6 +6,12 @@
     font-family: 'Fira Sans', sans-serif;
 }
 
+html{
+    /* doesnt work on mac */
+    scroll-behavior: smooth;
+    -webkit-scroll-behavior: smooth;
+}
+
 a{
     color: white;
 }
@@ -13,6 +19,42 @@ a{
 html, body{
     color: white;
     max-width: 100%;
+}
+
+/* Back To Top Button */
+.to-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 25px;
+    bottom: 30px;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    border: 2px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+    color: black;
+    z-index: 10;
+    opacity: 0;
+    transition: 0.2s all ease-in-out;
+}
+
+.to-top i{
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    0%{
+        transform: scale(1);
+    }
 }
 
 /* Needed for video */
@@ -25,9 +67,9 @@ section{
     height: 100vh;
 }
 
-section:nth-child(odd){
+/* section:nth-child(odd){
     background: white;
-}
+} */
 
 /* Navbar */
 nav{
@@ -66,7 +108,7 @@ nav ul li a{
 }
 
 
-a:hover{
+nav a:hover{
     background: rgb(255, 123, 0);
     color: white;
 }
@@ -622,6 +664,7 @@ img{
 .hobby{
     height: 120vh;
     padding: 40px;
+    background: white;
 }
 
 .hobby h1{
