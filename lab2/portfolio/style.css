@@ -6,6 +6,10 @@
     font-family: 'Fira Sans', sans-serif;
 }
 
+a{
+    color: white;
+}
+
 html, body{
     color: white;
     max-width: 100%;
@@ -374,6 +378,7 @@ video{
 
 /* Projects Section */
 .projects{
+    padding: 40px;
     height: 200vh;
     color: gray;
     background: white;
@@ -609,3 +614,80 @@ img{
         height: 35vw;
     }
 }
+
+/* End Of Opinion Section */
+
+/* Hobby Section */
+
+.hobby{
+    height: 120vh;
+    padding: 40px;
+}
+
+.hobby h1{
+    padding: 40px 0;
+    color: gray;
+    font-size: 5vw;
+    text-align: center;
+}
+
+.grid-hobby{
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: auto auto auto;
+    grid-row-gap: 30px
+}
+
+.grid-hobby img{
+    cursor: pointer;
+}
+
+.img-wrap{
+    position: relative;
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.img-wrap img{
+    width: 100%;
+    height: 100%;
+    transition: .5s all ease-in-out;
+}
+
+.overlay-img{
+    /* display: block; */
+    position: absolute; 
+    bottom: 0; 
+    background: rgba(0, 0, 0, 0.5); /* Black see-through */
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    color: white;
+    line-height: 20px;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.img-wrap:hover .overlay-img{
+    opacity: 1;
+}
+
+.img-wrap img:hover{
+    transform: scale(1.5);
+    transition: .5s all ease-in-out;
+}
+
+@media screen and (max-width: 1200px){
+    .grid-hobby{
+        grid-template-columns: auto auto;
+    }
+}
+@media screen and (max-width: 805px){
+    .grid-hobby{
+        grid-template-columns: auto;
+    }
+}
+
+/* End Hobby Section */
