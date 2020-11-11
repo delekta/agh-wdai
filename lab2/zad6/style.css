@@ -1,3 +1,9 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    background: rgb(214, 214, 214);
+}
+
 main{
     width: 70vw;
     height: 70vh;
