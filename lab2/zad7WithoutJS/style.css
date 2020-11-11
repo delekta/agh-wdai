@@ -5,7 +5,9 @@
     text-decoration: none;
 }
 
+
 nav{
+    width: 100%;
     height: 70px;
     background: rgba(145, 72, 4, 0.87)
 }
@@ -94,6 +96,19 @@ a:hover, a.active{
     transform: translateY(10px);
 }
 
+/* .hamburger-container:hover{
+    transform: scale(1.1);
+} */
+
+.hamburger-container:hover .hamburger-line::after{
+    transform: translateY(13px);
+}
+
+.hamburger-container:hover .hamburger-line::before{
+    transform: translateY(-13px);
+}
+
+
 /* End Of Transition */
 
 .checkbtn{
@@ -145,29 +160,35 @@ a:hover, a.active{
         font-weight: bold;
     }
 
+    #check:checked .logo{
+        color: red;
+    }
+
     #check:checked ~ ul{
         opacity: 1;
         left:0;
+
     }
 
     /* Animation - without JS but doesnt work*/
     
-    /* #check:checked .hamburger-line{
-        transform: translateX(-35px); 
+    /* #check:checked ~ .hamburger-line{
+        transition: all 0.5s ease-in-out !important; 
+        transform: translateX(-30px) !important;
         background: transparent;
-        box-shadow: none;
+        box-shadow: none !important;
     }
-    #check:checked  .hamburger-line::before{
-        transform: rotate(45deg) translate(35px, -35px);
-        background: transparent;
-        box-shadow: none;
+    #check:checked  ~ .hamburger-line::before{
+        transition: all 0.5s ease-in-out !important;
+        transform: rotate(45deg) translate(20px, -20px) !important;
     }
 
-    #check:checked  .hamburger-line::after{
-        transform: rotate(-45deg) translate(35px, 35px);
-        background: transparent;
-        box-shadow: none;
+    #check:checked  ~ .hamburger-line::after{
+        transition: all 0.5s ease-in-out !important;
+        transform: rotate(-45deg) translate(20px, 20px) !important;
     } */
+
+    
 
 
     /* Animation with JS */
@@ -187,7 +208,7 @@ a:hover, a.active{
         transform: rotate(-45deg) translate(20px, 20px);
     }
 
-    .hamburger-container  .hamburger-line{
+    .hamburger-container .hamburger-line{
         transition: all 0.5s ease-in-out;
     }
     .hamburger-container .hamburger-line::before{
@@ -197,10 +218,4 @@ a:hover, a.active{
     .hamburger-container .hamburger-line::after{
         transition: all 0.5s ease-in-out;
     }
-}
-
-.back{
-    background: url(img/kosze.jpg) no-repeat;
-    background-size: cover;
-    height: calc(100vh - 70px);
 }

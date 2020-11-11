@@ -1,0 +1,483 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+body{
+    color: white;
+}
+
+section{
+    width: 100vw;
+    height: 100vh;
+}
+
+section:nth-child(odd){
+    background: white;
+}
+
+/* Navbar */
+nav{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 70px;
+    background: rgba(145, 72, 4, 0.87);
+    z-index: 2;
+}
+
+.logo{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    line-height: 70px;
+    padding-left: 50px;
+}
+
+nav ul{
+    float: right;
+}
+
+nav ul li{
+    display: inline-block;
+    text-transform: uppercase;
+    line-height: 70px;
+}
+
+nav ul li a{
+    display: inline-block;
+    padding: 0 50px;
+    line-height: 70px;
+}
+
+
+a:hover{
+    background: rgb(255, 123, 0);
+    color: white;
+}
+
+/* Trasition Hamburger -> X */
+.hamburger-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    width:70px;
+    transition: all 0.5 ease-in-out;
+}
+
+.hamburger-line{
+    position: relative;
+    width: 35px;
+    height: 4px;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.5 ease-in-out;
+    -webkit-box-shadow: 1px 1px 4px 1px rgba(235, 130, 10, 1); 
+    box-shadow: 1px 1px 4px 1px rgba(235, 130, 10, 1);
+}
+
+.hamburger-line::before{
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 4px;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.5 ease-in-out;
+    -webkit-box-shadow: 1px 1px 4px 1px rgba(235, 130, 10, 1); 
+    box-shadow: 1px 1px 4px 1px rgba(235, 130, 10, 1);
+}
+
+.hamburger-line::after{
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 4px;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.5 ease-in-out;
+    -webkit-box-shadow: 1px 1px 4px 1px rgba(235, 130, 10, 1); 
+    box-shadow: 1px 1px 4px 1px rgba(235, 130, 10, 1);
+}
+
+.hamburger-line::before{
+    transform: translateY(-10px);
+}
+
+.hamburger-line::after{
+    transform: translateY(10px);
+}
+
+.hamburger-container:hover .hamburger-line::after{
+    transform: translateY(13px);
+}
+
+.hamburger-container:hover .hamburger-line::before{
+    transform: translateY(-13px);
+}
+
+
+/* End Of Transition */
+
+.checkbtn{
+    font-size: 35px;
+    line-height: 70px;
+    cursor: pointer;
+    float: right;
+    margin-right: 20px;
+    display: none;
+}
+
+
+
+#check{
+    display: none;
+}
+
+@media screen and (max-width: 900px){
+    body{
+        color: white;
+    }
+
+    .checkbtn{
+        display: block;
+    }
+
+    nav ul{
+        display: block;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top:70px;
+        left:-100%;
+        text-align: center;
+        background: rgba(235, 130, 10, 1);
+        transition: all .5s
+    }
+
+    nav ul li{
+        display: block;
+    }
+
+    nav ul li a{
+        display: block;
+        margin: 50px;
+        font-size: 30px;
+        line-height: 100px;
+    }
+
+    a:hover{
+        background: none;
+        font-weight: bold;
+    }
+
+    #check:checked ~ ul{
+        z-index: 12;
+        left:0;
+
+    }
+
+    /* Animation - without JS but doesnt work*/
+    
+    /* #check:checked ~ .hamburger-line{
+        transition: all 0.5s ease-in-out !important; 
+        transform: translateX(-30px) !important;
+        background: transparent;
+        box-shadow: none !important;
+    }
+    #check:checked  ~ .hamburger-line::before{
+        transition: all 0.5s ease-in-out !important;
+        transform: rotate(45deg) translate(20px, -20px) !important;
+    }
+
+    #check:checked  ~ .hamburger-line::after{
+        transition: all 0.5s ease-in-out !important;
+        transform: rotate(-45deg) translate(20px, 20px) !important;
+    } */
+
+    
+
+
+    /* Animation with JS */
+    .hamburger-container.open  .hamburger-line{
+        transition: all 0.5s ease-in-out;
+        transform: translateX(-30px);
+        background: transparent;
+        box-shadow: none;
+    }
+    .hamburger-container.open .hamburger-line::before{
+        transition: all 0.5s ease-in-out;
+        transform: rotate(45deg) translate(20px, -20px);
+    }
+
+    .hamburger-container.open .hamburger-line::after{
+        transition: all 0.5s ease-in-out;
+        transform: rotate(-45deg) translate(20px, 20px);
+    }
+
+    .hamburger-container .hamburger-line{
+        transition: all 0.5s ease-in-out;
+    }
+    .hamburger-container .hamburger-line::before{
+        transition: all 0.5s ease-in-out;
+    }
+
+    .hamburger-container .hamburger-line::after{
+        transition: all 0.5s ease-in-out;
+    }
+}
+
+/* End Navbar */
+
+/* Video And Background For Phones*/
+
+.video-container{
+    width: auto;
+    height: 100%;
+}
+
+.overlay{
+    position: absolute;
+    left:0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.7;
+    background: black;
+}
+  
+@media screen and (max-width: 900px){
+    video{
+        display: none;
+    }
+
+    .overlay{
+        opacity: 1;
+        height: 100%;
+        width: 100%;
+        color: white;
+        background: url(./back2.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+}
+
+/* Who I Am Section */
+
+.im{
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3.5vw;
+    line-height: 3.5vw;
+}
+
+.im h1{
+    /* Needed to type in the same place */
+    position: relative;
+    opacity: 1;
+}
+
+/* Typing Animation */
+.im #first {
+    overflow: hidden;/* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .5rem; /* Adjust as needed */
+    opacity: 0;
+    animation: 
+      typing 3s steps(20, end),
+      blink-caret .75s step-end infinite;
+}
+
+.im #second{
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .4em; /* Adjust as needed */
+    top: -3.5vw;
+    opacity: 0;
+    animation: 
+      typing 3s steps(20, end) 3s,
+      blink-caret .75s step-end infinite;
+}
+
+.im #third{
+    top:-7vw;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .3em;
+    opacity: 0;
+    animation: 
+      typing2 3s steps(20, end) 6s,
+      blink-caret .75s step-end infinite;
+
+    /* Needed to keep text after typing */
+    -webkit-animation-fill-mode:forwards; 
+    animation-fill-mode:forwards;
+}
+
+@keyframes typing {
+    0% { 
+        opacity: 1;
+        width: 0 ;
+    }
+    100%{ 
+        opacity: 1;
+        width: 100%
+    }
+}
+
+@keyframes typing2 {
+    0% { 
+        opacity: 1;
+        width: 0 ;
+    }
+    100%{ 
+        opacity: 1;
+        width: 100%
+    }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+}
+
+/* End Taping Animation */
+
+/* Projects Section */
+.projects{
+    height: 200vh;
+    color: gray;
+    background: white;
+}
+
+#main-projects{
+    padding: 40px 0;
+    color: gray;
+    font-size: 5vw;
+    text-align: center;
+}
+
+.grid-cards{
+    margin: 0 20px;
+    display: grid;
+    height: 80%;
+    grid-template-columns: auto auto auto;
+    grid-gap: 4vw;
+}
+
+/* Card Style */
+.card{
+    color: gray;
+    cursor: pointer;
+    width: 30vw;
+    height: 500px;
+    overflow: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+
+    transition: all 0.8s linear;
+    transform-style: preserve-3d;
+}
+
+.front, .back{
+    line-height: 1.9vw;
+    transition: all 0.8s linear;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    /* ! */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    position: absolute;
+}
+
+.front{
+    color: gray;
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+.back{
+    background: blue;
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.card:hover > .front{
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+.card:hover > .back{
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+img{
+    width: 100%;
+    height: 50%;
+}
+
+video{
+    width: 100%;
+    height: 50%;
+}
+
+.top{
+    height: 50%;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}
+
+@media screen and (max-width: 1020px){
+    .grid-cards{
+        grid-template-columns: auto auto;
+    }
+    .card{
+        width: 43vw;
+    }
+}
+
+@media screen and (max-width: 920px){
+    .grid-cards{
+        grid-template-columns: auto;
+    }
+    .card{
+        width: 80vw;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+.hobby{
+    background: gray;
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamil Delekta</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="center">
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <div class="hamburger-container">
+                    <div class="hamburger-line"></div>
+                </div>
+            </label>
+            <i class="fab fa-dyalog logo"></i>
+            <ul>
+                <li><a class="active">Home</a></li>
+                <li><a>Projects</a></li>
+                <li><a>Hobby</a></li>
+                <li><a>Opinions</a></li>
+            </ul>
+        </nav>
+
+        <section>
+            <video class="video-container" muted autoplay loop>
+                <source src="./video.mp4" type="video/mp4">
+            </video>
+
+            <div class="overlay">
+                <div class="im">
+                    <h1 id="first">I'm Web Developer</h1>
+                    <h1 id="second">I'm Footballer</h1>
+                    <h1 id="third">I'm Kamil <span><i class="fab fa-dyalog"></i></span>elekta</h1>
+                </div>
+            </div>
+        </section>
+    
+        <section class="projects">
+            <h1 id="main-projects">Main Projects</h1>
+            <div class="grid-cards">
+
+                <div class="card">
+                    <div class="front">
+                        <div class="top">
+                            <div class="photo">
+                                <video src="./projects/project5.mov" autoplay muted loop></video>
+                            </div>
+                        </div>
+                        <div class="title">
+                            <h3>Reversing Card</h3>
+                        </div>
+                        
+                    </div>
+                    <div class="back">
+                        <div class="price1">
+                            <h3>Back</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="front">
+                        <div class="top">
+                            <div class="photo">
+                                <img src="projects/project2.png" alt="Zdjecie1">
+                            </div>
+                        </div>
+                        <div class="title">
+                            <h3>Cards</h3>
+                        </div>
+                        
+                    </div>
+                    <div class="back">
+                        <div class="price1">
+                            <h3>Cards</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="front">
+                        <div class="top">
+                            <div class="photo">
+                                <video src="./projects/project3.mov" autoplay muted loop></video>
+                            </div>
+                        </div>
+                        <div class="title">
+                            <h3>Animations</h3>
+                        </div>
+                        
+                    </div>
+                    <div class="back">
+                        <div class="price1">
+                            <h3>Back</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="front">
+                        <div class="top">
+                            <div class="photo">
+                                <video src="./projects/project4.mov" autoplay muted loop></video>
+                            </div>
+                        </div>
+                        <div class="title">
+                            <h3>Hover Effect</h3>
+                        </div>
+                        
+                    </div>
+                    <div class="back">
+                        <div class="title">
+                            <h3>Back</h3>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="front">
+                        <div class="top">
+                            <div class="photo">
+                                <video src="./projects/project6.mov" autoplay muted loop></video>
+                            </div>
+                        </div>
+                        <div class="title">
+                            <h3>Animated Entry</h3>
+                        </div>
+                        
+                    </div>
+                    <div class="back">
+                        <div class="price1">
+                            <h3>Back</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="front">
+                        <div class="top">
+                            <div class="photo">
+                                <img src="projects/project1.png" alt="Zdjecie1">
+                            </div>
+                        </div>
+                        <div class="title">
+                            <h2>Responsive Images</h2>
+                        </div>
+                        
+                    </div>
+                    <div class="back">
+                        <div class="price1">
+                            <h3>Back</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="hobby">
+
+        </section>
+        <section>
+
+        </section>
+
+
+        <!-- JS Used Only For Transition Hamburger -> X, because with checked didnt work :(-->
+        <script>
+            let btn = document.querySelector(".checkbtn")
+            let hamburger = document.querySelector(".hamburger-container")
+            btn.addEventListener('click', () => {
+                hamburger.classList.toggle('open')
+            })
+        </script>
+    </div>
+</body>
+
+</html>
