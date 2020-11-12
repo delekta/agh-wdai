@@ -246,19 +246,19 @@
             <div class="grid-hobby">
                 <div class="img-wrap">
                     <img src="./hobby/h1.JPG" id="img1" alt="">
-                    <div class="overlay-img"> Najlepszy zawodnik turnieju szkolnego</div>
+                    <div class="overlay-img"> Najlepszy zawodnik turnieju</div>
                 </div>
                 <div class="img-wrap">
                     <img src="./hobby/h2.JPG" alt="">
-                    <div class="overlay-img"> Statuetka i dyplom za najlepszego zawodnika</div>
+                    <div class="overlay-img"> Statuetka i dyplom za najlepszego zawodnika turnieju</div>
                 </div>
                 <div class="img-wrap">
                     <img src="./hobby/h3.JPG" alt="">
-                    <div class="overlay-img">Drużyna z którą wygrałem szkolną ligę mistrzów 3 lata z rzędu</div>
+                    <div class="overlay-img">Drużyna z szkolnej ligi mistrzów</div>
                 </div>
                 <div class="img-wrap">
                     <img src="./hobby/h4.JPG" alt="">
-                    <div class="overlay-img">Puchar za szkolną ligę mistrzów</div>
+                    <div class="overlay-img">Puchar za szkolną ligę mistrzów(zdobyty 3 lata z rzędu)</div>
                 </div>
                 <div class="img-wrap">
                     <img src="./hobby/h5.JPG" alt="">
@@ -271,9 +271,8 @@
             </div>
         </section>
 
-
-        <!-- JS Used Only For Transition Hamburger -> X, because with checked didnt work :(-->
         <script>
+            // JS Used Only For Transition Hamburger -> X, because with checked didnt work :(
             let btn = document.querySelector(".checkbtn")
             let hamburger = document.querySelector(".hamburger-container")
             btn.addEventListener('click', () => {
@@ -283,7 +282,7 @@
             mybutton = document.querySelector(".to-top");
             window.onscroll = function() {scrollFunction()};
             
-            // Used To Scroll Top Button
+            // Used To Hide Scroll Top Button
             function scrollFunction() {
             if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
                 mybutton.style.opacity = 1;
@@ -291,6 +290,28 @@
                 mybutton.style.opacity = 0;
             }
             }
+
+            // Change active during scroll, i think it cant be done without JS
+            window.addEventListener('scroll', event => {
+            let navigationLinks = document.querySelectorAll('nav ul li a');
+            let fromTop = window.scrollY;
+            
+            navigationLinks.forEach(link => {
+                // .getAttribute('href') works the same as .hash
+                // .hash returns anchor parts of url
+                let section = document.querySelector(link.getAttribute('href')); 
+            
+                if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+                ) {
+                link.classList.add('active');
+                } else {
+                link.classList.remove('active');
+                }
+            });
+            });
+
 
         </script>
     </div>

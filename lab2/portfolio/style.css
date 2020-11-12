@@ -36,7 +36,7 @@ html, body{
     border-radius: 50%;
     cursor: pointer;
     color: black;
-    z-index: 10;
+    z-index: 2;
     opacity: 0;
     transition: 0.2s all ease-in-out;
 }
@@ -108,7 +108,7 @@ nav ul li a{
 }
 
 
-nav a:hover{
+nav a:hover, a.active{
     background: rgb(255, 123, 0);
     color: white;
 }
