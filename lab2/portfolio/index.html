@@ -75,6 +75,8 @@
                         <div class="top">
                             <div class="photo">
                                 <video src="./videos/video1.mov" autoplay muted loop></video>
+                                <!-- We dont want to play video on phones so we change them with photos on max-width:900px -->
+                                <img class="backup" src="./images/img1.png" alt="">
                             </div>
                         </div>
                         <div class="description">
@@ -107,6 +109,8 @@
                         <div class="top">
                             <div class="photo">
                                 <video src="./videos/video2.mov" autoplay muted loop></video>
+                                <!-- We dont want to play video on phones so we change them with photos on max-width:900px -->
+                                <img class="backup" src="./images/img2.png" alt="">
                             </div>
                         </div>
                         <div class="description">
@@ -138,6 +142,8 @@
                         <div class="top">
                             <div class="photo">
                                 <video src="./videos/video3.mov" autoplay muted loop></video>
+                                <!-- We dont want to play video on phones so we change them with photos on max-width:900px -->
+                                <img class="backup" src="./images/img3.png" alt="">
                             </div>
                         </div>
                         <div class="description">
@@ -170,6 +176,8 @@
                         <div class="top">
                             <div class="photo">
                                 <video src="./videos/video4.mov" autoplay muted loop></video>
+                                <!-- We dont want to play video on phones so we change them with photos on max-width:900px -->
+                                <img class="backup" src="./images/img4.png" alt="">
                             </div>
                         </div>
                         <div class="description">
@@ -270,6 +278,9 @@
                 </div>
             </div>
         </section>
+        <footer>
+            2020&copy; Kamil Delekta - Portfolio. Programista webowy zaprasza do współpracy! <i class="icon-mail-alt"></i>fajnyemail@adres.pl
+        </footer>
 
         <script>
             // JS Used Only For Transition Hamburger -> X, because with checked didnt work :(
@@ -311,6 +322,16 @@
                 }
             });
             });
+
+            // Close Navbar When You Choose Section
+            let checkbox = document.getElementById('check')
+            let navigationLinks = document.querySelectorAll('nav ul li a');
+            navigationLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('open')
+                    checkbox.checked = false;
+                })
+            })
 
 
         </script>

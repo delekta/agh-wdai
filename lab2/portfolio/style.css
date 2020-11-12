@@ -28,14 +28,14 @@ html, body{
     align-items: center;
     position: fixed;
     right: 25px;
-    bottom: 30px;
+    bottom: 45px;
     width: 50px;
     height: 50px;
     font-size: 30px;
-    border: 2px solid black;
+    border: 2px solid rgba(145, 72, 4, 0.87);
     border-radius: 50%;
     cursor: pointer;
-    color: black;
+    color: rgba(145, 72, 4, 0.87);
     z-index: 2;
     opacity: 0;
     transition: 0.2s all ease-in-out;
@@ -109,8 +109,8 @@ nav ul li a{
 
 
 nav a:hover, a.active{
-    background: rgb(255, 123, 0);
-    color: white;
+    background: white;
+    color: rgb(255, 123, 0);
 }
 
 /* Trasition Hamburger -> X */
@@ -301,6 +301,10 @@ video{
     width: auto;
 }
 
+.backup{
+    display: none;
+}
+
 .overlay{
     position: absolute;
     left:0;
@@ -312,6 +316,8 @@ video{
 }
   
 @media screen and (max-width: 900px){
+
+    /* We dont want to play video on phones, we changed them with photos*/
     video{
         display: none;
     }
@@ -421,7 +427,7 @@ video{
 /* Projects Section */
 .projects{
     padding: 40px;
-    height: 200vh;
+    height: auto;
     color: gray;
     background: white;
 }
@@ -543,8 +549,18 @@ img{
     }
     
     .projects{
-        height: 370vh;
+        height: auto;
     }
+
+    /* We dont want to play video on phones, we changed them with photos on max-width: 920px*/
+    video{
+        display: none;
+    }
+
+    .backup{
+        display: block;
+    }
+    /*  */
 }
 
 .hobby{
@@ -662,7 +678,7 @@ img{
 /* Hobby Section */
 
 .hobby{
-    height: 120vh;
+    height: auto;
     padding: 40px;
     background: white;
 }
@@ -734,3 +750,13 @@ img{
 }
 
 /* End Hobby Section */
+
+/* Footer */
+
+footer{
+    text-align: center;
+    display: block;
+    background-color: rgba(145, 72, 4, 0.87);
+    font-size: 20px;
+    padding: 10px;
+}
