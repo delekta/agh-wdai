@@ -1,0 +1,18 @@
+main{
+    width: 90vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
+img{
+    width: 640px;
+    height: 425px;
+}
+
+button{
+    margin: 20px;
+    padding: 20px;
+}

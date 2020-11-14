@@ -1,0 +1,29 @@
+*{
+    padding: 20px;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#counter{
+    font-size: 60px;
+}
+
+button{
+   width: auto;
+}
+
+#btnIncrement{
+    color: white;
+    background-color: red;
+}
+
+#btnSwitch{
+    background-color: black;
+    color: white;
+}
+
