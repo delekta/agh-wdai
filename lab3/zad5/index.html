@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Buttons</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="blue" onclick="blueFunc(event)">
+        <span>1</span>
+        <div id="red" onclick="redFunc(event)">
+            <span>2</span>
+            <div id="yellow" onclick="yellowFunc(event)">
+                <span>3</span>
+
+            </div>
+        </div>
+    </div>
+
+    <button id="propagation" onclick="startStopPropagation()">Start Propagation</button>
+    <!-- Podpięcie Funkcji Obsługi Zdarzeń Typu Click??? -->
+    <button id="reset" onclick="reset()">Reset</button>
+    
+    <script src="script.js" defer></script>
+</body>
+</html>
