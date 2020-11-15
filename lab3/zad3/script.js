@@ -16,6 +16,7 @@ function _switch(){
         btnSwitch.style.backgroundColor = "black"
     }
     else{
+        // Odpinam obsługe przycisku, mozna tez zrobic na addEventListener i wtedy odpinamy uzywajac removeEventListener
         btn.disabled = true;
         count = 0;
         counter.innerHTML = count;
