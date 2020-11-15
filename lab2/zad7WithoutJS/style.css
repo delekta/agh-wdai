@@ -164,6 +164,7 @@ a:hover, a.active{
         color: red;
     }
 
+    /* Animation Of Moving Navbar With Checkbox */
     #check:checked ~ ul{
         opacity: 1;
         left:0;
@@ -191,7 +192,7 @@ a:hover, a.active{
     
 
 
-    /* Animation with JS */
+    /* Animation with JS, Used Only For Transition Hamburger -> X -> Hamburger*/
     .hamburger-container.open  .hamburger-line{
         transition: all 0.5s ease-in-out;
         transform: translateX(-30px);

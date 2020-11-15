@@ -301,10 +301,6 @@ video{
     width: auto;
 }
 
-.backup{
-    display: none;
-}
-
 .overlay{
     position: absolute;
     left:0;
@@ -502,10 +498,19 @@ video{
     width: 100%;
     height: auto;
 }
-
+/* 
+DELETED VIDEOS
 .photo video{
     width: 100%;
     height: auto;
+} */
+
+.backup{
+    display: block;
+}
+
+.photo video{
+    display: none;
 }
 
 img{
@@ -553,13 +558,14 @@ img{
     }
 
     /* We dont want to play video on phones, we changed them with photos on max-width: 920px*/
-    video{
+    /* DELETED VIDEOS */
+    /* video{
         display: none;
     }
 
     .backup{
         display: block;
-    }
+    } */
     /*  */
 }
 
