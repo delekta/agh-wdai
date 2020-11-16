@@ -1,10 +1,13 @@
-let counter = 1;
+let counter = 0;
+// Initially we dont propagate
 let propagation = false;
+let result = document.getElementById("result");
 
 blueBtn = document.getElementById("blue");
 redBtn = document.getElementById("red");
 yellowBtn = document.getElementById("yellow");
 
+// Adding Listeners
 blueBtn.addEventListener('click', blueFunc);
 redBtn.addEventListener('click', redFunc);
 yellowBtn.addEventListener('click', yellowFunc);
@@ -12,37 +15,45 @@ yellowBtn.addEventListener('click', yellowFunc);
 
 
 function blueFunc(event){
-    alert("nacisnąłeś niebieski o wartosci" + counter);
+    alert("Nacisnąłeś niebieski o wartości: 1");
     counter++;
-    if(!propagation){
-        event.stopPropagation();
-    }
+    result.innerHTML = counter;
+    updateListeners();
 }
 
 function redFunc(event){
-    if(counter <= 3){
-        alert("nacisnąłeś czerwony o wartosci" + counter);
-        counter++;
+    if(counter <= 30){
+        alert("Nacisnąłeś czerwony o wartości: 2");
+        counter += 2;
+        result.innerHTML = counter;
         if(!propagation){
             event.stopPropagation();
         }
     }
-    else{
-        // redBtn.style.pointerEvents = "none"; second version
-        redBtn.removeEventListener('click', redFunc);
-    }
+    updateListeners();
 }
 
 function yellowFunc(event){
-    if(counter <= 5){
-        alert("nacisnąłeś zółty o wartosci" + counter);
-        counter++;
+    if(counter <= 50){
+        alert("Nacisnąłeś zółty o wartości: 5");
+        counter += 5;
+        result.innerHTML = counter;
         if(!propagation){
             event.stopPropagation();
         }
     }
-    else{
+    updateListeners();
+}
+
+function updateListeners(){
+    // Removing Listeners
+    if(counter > 30){
+        redBtn.removeEventListener('click', redFunc);
+        redBtn.style.backgroundColor = 'gray';
+    }
+    if(counter > 50){
         yellowBtn.removeEventListener('click', yellowFunc);
+        yellowBtn.style.backgroundColor = "gray"
     }
 }
 
@@ -58,14 +69,14 @@ function startStopPropagation(){
 }
 
 function reset(){
-    counter = 1;
-
-    // Chodzi o pointerEvents ???
-    //  zrobić na add event listenerach i wtedy removeEventLister?
-    // document.getElementById("yellow").style.pointerEvents = "auto";
-    // document.getElementById("blue").style.pointerEvents = "auto";
-    // document.getElementById("red").style.pointerEvents = "auto";
+    counter = 0;
+    result.innerHTML = counter;
+    // Adding Listeners
     redBtn.addEventListener('click', redFunc);
     yellowBtn.addEventListener('click', yellowFunc);
+
+    // Getting style back
+    yellowBtn.style.backgroundColor = "yellow";
+    redBtn.style.backgroundColor = 'red';
 }
 

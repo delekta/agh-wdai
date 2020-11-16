@@ -1,5 +1,6 @@
 div, body, span{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     vertical-align: text-top;
@@ -7,29 +8,48 @@ div, body, span{
 }
 
 #blue{
-    width: 600px;
-    height: 600px;
+    cursor: pointer;
+    width: 400px;
+    height: 400px;
     background: rgb(83, 202, 241);
 }
 
 #red{
-    width:300px;
-    height: 300px;
+    cursor: pointer;
+    width:200px;
+    height: 200px;
     background: red;
 }
 
 #yellow{
-    width: 150px;
-    height: 150px;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
     background: yellow;
 }
 
 span{
-    padding: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    padding: 10px;
+}
+
+#result{
+    font-size: 40px;
 }
 
 button{
+    cursor: pointer;
+    transition: 0.5s all ease;
     padding: 20px;
     background: black;
     color: white;
+    border: 2px solid black;
+}
+
+button:hover{
+    transition: 0.5s all ease;
+    background: white;
+    color: black;
 }
