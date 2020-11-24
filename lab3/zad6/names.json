@@ -1,0 +1,44 @@
+{
+    "people": [
+        {
+            "name": "Kamil",
+            "age" : "20"
+        },
+        {
+            "name": "Szymon",
+            "age" : "10"
+        },
+        {
+            "name": "Jakub",
+            "age" : "21"
+        },
+        {
+            "name": "Jolanta",
+            "age" : "18"
+        },
+        {
+            "name": "Jan",
+            "age" : "44"
+        },
+        {
+            "name": "Hubert",
+            "age" : "19"
+        },
+        {
+            "name": "Sylwester",
+            "age" : "22"
+        },
+        {
+            "name": "Damian",
+            "age" : "40"
+        },
+        {
+            "name": "Karol",
+            "age" : "30"
+        },
+        {
+            "name": "Zdzisław",
+            "age" : "55"
+        }
+    ]
+}
