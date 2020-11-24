@@ -3,6 +3,9 @@ let btn = document.getElementById("btnIncrement")
 let btnSwitch = document.getElementById("btnSwitch")
 
 let count = 0;
+let disabled = false;
+
+btn.addEventListener('click', increment);
 
 function increment(){
     count++;
@@ -10,14 +13,15 @@ function increment(){
 }
 
 function _switch(){
-    if(btn.disabled){
-        btn.disabled = false;
+    if(disabled){
+        disabled = false;
+        btn.addEventListener('click', increment);
         btnSwitch.innerHTML = "Off"
         btnSwitch.style.backgroundColor = "black"
     }
     else{
-        // Odpinam obsługe przycisku, mozna tez zrobic na addEventListener i wtedy odpinamy uzywajac removeEventListener
-        btn.disabled = true;
+        disabled = true;
+        btn.removeEventListener('click', increment)
         count = 0;
         counter.innerHTML = count;
         btnSwitch.innerHTML = "On"
