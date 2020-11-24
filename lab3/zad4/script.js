@@ -1,6 +1,5 @@
-// Why is works?
 let ol = document.getElementById("list")
-let counter = 1;
+var counter = 0;
 
 function add(){
     let li = document.createElement("li");
@@ -11,6 +10,8 @@ function add(){
 
 
 function remove(){
-    ol.removeChild(ol.childNodes[0]);
-    counter--;
+    if(counter > 0){
+        ol.removeChild(ol.childNodes[1]);
+        counter--;
+    }
 }
