@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms validation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main>
+        <h1>Wniosek o emeryture</h1>
+        <form id="retirement">
+
+            <label for="name">Imię: </label>
+            <input type="text" class="input" id="name" required> <br>
+
+            <label for="lastname">Nazwisko: </label>
+            <input type="text" class="input" id="lastname" required> <br>
+
+            <label for="phone">Numer telefonu:</label>
+            <input type="number" class="input" id="phone" required> <br>
+
+            <label for="sex">Płeć: </label>
+
+            <label for="men" class="radio">Męzczyzna</label>
+            <input type="radio" name="sex" id="men"> 
+
+            <label for="women" class="radio">Kobieta</label>
+            <input type="radio" name="sex" id="women"> <br>
+
+            <label for="birth">Data urodzenia: </label>
+            <input type="date" class="input" id="birth" required> <br>
+
+            <label for="retirement-date">Data przejścia na emeryture:</label>
+            <input type="date" class="input" id="retirement-date" required> <br>
+        </form>
+        <button type="button" onclick="validateForm()">Prześlij</button>
+
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
