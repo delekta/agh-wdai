@@ -1,5 +1,8 @@
 var gameArea = document.getElementById('gameArea');
 
+// Time of one round
+var roundTime = 2000;
+
 //Stats
 var points = 0;
 var round = 0;
@@ -21,14 +24,12 @@ var accuracyBox = document.getElementById("accuracyBox");
 
 roundBox.textContent = round;
 addBallon()
-// setInterval(() => {
-//     removeBallon
-// }, 2000);
 
 // eventLister to gameArea, when we miss
 gameArea.addEventListener('click', missedShot)
 
 function addBallon(){
+    roundTime -= 30;
     if(round < 30){
         round += 1;
         updateStats();
@@ -39,25 +40,36 @@ function addBallon(){
         balloon.style.left = Math.random() * 100 + "%";
         balloon.style.top = Math.random() * 100 + "%";
 
+        var start = Date.now();
+        gameArea.appendChild(balloon)
+
         // First case
         balloon.addEventListener('click', (event) => {
-            removeBallon(event, true)
+            // Removing balloon when it is hitted
+
+            // Points depends on how fast you hit
+            var stop = Date.now();
+            var diff = stop - start;
+            pointsForHit = ((2000 - diff) / 100).toFixed(1)
+            console.log(pointsForHit)
+            
+            removeBallon(event, true, pointsForHit)
         })
 
-        gameArea.appendChild(balloon)
 
         // Second case
         setTimeout(
         function (){
             removeAndAddNewAfterTimeout(balloon);
         }
-        , 2000)
+        , roundTime)
     }else{
         updateStats();
         alert("Koniec gry! Twoj wynik to: " + points)
     }
 }
 
+// Removing balloon after setTimeout 
 function removeAndAddNewAfterTimeout(balloon){
     if(gameArea.contains(balloon)){
         gameArea.removeChild(balloon);
@@ -67,12 +79,14 @@ function removeAndAddNewAfterTimeout(balloon){
 }
 
 
-function removeBallon(event, hitted){
+function removeBallon(event, hitted, pointsForHit){
+    var audio = new Audio('sounds/balloon-pop.mp3');
+    audio.play();
 
     shoots += 1;
     if(hitted){
         hit += 1;
-        points += 1;
+        points += parseInt(pointsForHit);
     }
     
     
@@ -90,8 +104,11 @@ function removeBallon(event, hitted){
 }
 
 function missedShot(){
+    var audio = new Audio('sounds/shoot-bow.mp3');
+    audio.play();
+
     shoots += 1
-    points -= 1
+    points -= 5
 
     updateStats();
 }
