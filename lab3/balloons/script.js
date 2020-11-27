@@ -2,7 +2,7 @@ var gameArea = document.getElementById('gameArea');
 
 //Stats
 var points = 0;
-var round = 1;
+var round = 0;
 var hit = 0;
 var shoots = 0;
 var accuracy = 0;
@@ -19,6 +19,7 @@ var accuracyBox = document.getElementById("accuracyBox");
 
 // resztę zaimplementuj sam :-) - Pronto byczku!
 
+roundBox.textContent = round;
 addBallon()
 // setInterval(() => {
 //     removeBallon
@@ -28,26 +29,52 @@ addBallon()
 gameArea.addEventListener('click', missedShot)
 
 function addBallon(){
-    var balloon = document.createElement("div");
-    balloon.classList.add("balloon")
+    if(round < 30){
+        round += 1;
+        updateStats();
 
-    balloon.style.left = Math.random() * 100 + "%";
-    balloon.style.top = Math.random() * 100 + "%";
+        var balloon = document.createElement("div");
+        balloon.classList.add("balloon")
 
+        balloon.style.left = Math.random() * 100 + "%";
+        balloon.style.top = Math.random() * 100 + "%";
+
+        // First case
+        balloon.addEventListener('click', (event) => {
+            removeBallon(event, true)
+        })
+
+        gameArea.appendChild(balloon)
+
+        // Second case
+        setTimeout(
+        function (){
+            removeAndAddNewAfterTimeout(balloon);
+        }
+        , 2000)
+    }else{
+        updateStats();
+        alert("Koniec gry! Twoj wynik to: " + points)
+    }
+}
+
+function removeAndAddNewAfterTimeout(balloon){
+    if(gameArea.contains(balloon)){
+        gameArea.removeChild(balloon);
+        addBallon();
+    }
     
-    balloon.addEventListener('click', removeBallon)
-
-    gameArea.appendChild(balloon)
-    // console.log(balloon.style.left)
 }
 
 
-function removeBallon(event){
+function removeBallon(event, hitted){
 
     shoots += 1;
-    round += 1;
-    hit += 1;
-    points += 1;
+    if(hitted){
+        hit += 1;
+        points += 1;
+    }
+    
     
     updateStats();
 
@@ -58,7 +85,7 @@ function removeBallon(event){
 
     addBallon();
 
-    // ?
+    // Musi być, zeby nie klikac jednocześnie gameArea
     event.stopPropagation();
 }
 
