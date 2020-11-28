@@ -15,6 +15,11 @@
      supported by Chrome, Opera and Firefox */
 }
 
+h6,h5{
+    padding: 10px;
+    margin: 0;
+}
+
 .balloon {
     width: 50px;
     height: 50px;
@@ -57,6 +62,15 @@
 
 #gameArea:hover{
     cursor: crosshair; 
+}
+
+#wrapper{
+    height: 100%;
+    width: 100%;
+}
+
+#wrapper:hover{
+    cursor: default; 
 }
 
 table {
