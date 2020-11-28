@@ -128,6 +128,9 @@ function updateStats(){
     if(shoots > 0){
         accuracyBox.textContent = ((hit / shoots) * 100).toFixed(2);
     }
+    else{
+        accuracyBox.textContent = 0
+    }
     
 }
 

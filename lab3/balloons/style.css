@@ -55,11 +55,6 @@ h6,h5{
     position: relative;
 }
 
-/* didnt work */
-#gameArea:active {
-    cursor: cell;
-}
-
 #gameArea:hover{
     cursor: crosshair; 
 }
