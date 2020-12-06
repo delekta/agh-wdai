@@ -3,3 +3,6 @@
 zajecia
 *.zip
 *.vscode
+*angular-screens
+*e2e
+*node-modules
