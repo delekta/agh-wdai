@@ -7,9 +7,10 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 })
 export class ChildComponent implements OnInit {
   public counter: number = 0;
-  @Input('parentBlockClick') public blockClick: boolean;
+  @Input('parentBlockClick') public disableBtn: boolean;
 
   @Output() public childEmitter = new EventEmitter;
+  @Output() public childBlockEmitter = new EventEmitter;
 
   incrementAndSend(){
     this.counter++;
@@ -17,6 +18,9 @@ export class ChildComponent implements OnInit {
   }
 
   resetAndSend(){
+    this.disableBtn = false;
+    this.childBlockEmitter.emit(this.disableBtn)
+
     this.counter = 0;
     this.childEmitter.emit(this.counter)
   }
