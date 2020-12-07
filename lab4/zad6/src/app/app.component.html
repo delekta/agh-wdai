@@ -1,0 +1,5 @@
+<main>
+  <p>Ilość kliknięć:</p>
+  <h1>{{parentCounter}}</h1>
+  <app-child (childEmitter)="parentCounter=$event" [parentBlockClick]="blockClick"></app-child>
+</main>
