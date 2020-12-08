@@ -1,1 +1,18 @@
-<p>holidays-offer-element works!</p>
+<div class="holiday-element">
+    <i class="fas fa-times-circle removeBtn"></i>
+    <div class="img">
+        <img [src]="holiday.imgSrc" alt="">
+    </div>
+    <div class="content">
+        <p> Nazwa: {{holiday.name | uppercase}}</p>
+        <p> Kraj: {{holiday.country | titlecase}} </p>
+        <p> Cena: {{holiday.price | currency: 'EUR'}} </p>
+        <p> Termin: {{ holiday.startDate | date}} - {{holiday.endDate | date}} </p>
+        <p> Ilosc miejsc: {{holiday.maxPlaces}} </p>
+        <p> Opis: {{holiday.description}} </p>
+        <div class="btns">
+            <i class="fas fa-plus-square plusBtn"></i>
+            <i class="fas fa-minus-square minusBtn"></i>
+        </div>
+    </div>
+</div>

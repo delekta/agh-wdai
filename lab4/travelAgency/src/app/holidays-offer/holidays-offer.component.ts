@@ -1,11 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ExecFileSyncOptionsWithBufferEncoding } from 'child_process';
-
-@Component({
-  selector: 'app-holidays-offer',
-  templateUrl: './holidays-offer.component.html',
-  styleUrls: ['./holidays-offer.component.css']
-})
 
 interface IHoliday{
   name: string,
@@ -18,6 +11,11 @@ interface IHoliday{
   imgSrc: string,
 }
 
+@Component({
+  selector: 'app-holidays-offer',
+  templateUrl: './holidays-offer.component.html',
+  styleUrls: ['./holidays-offer.component.css']
+})
 export class HolidaysOfferComponent implements OnInit {
   // Holiday Array Begining
   public holidays = new Array<IHoliday>(

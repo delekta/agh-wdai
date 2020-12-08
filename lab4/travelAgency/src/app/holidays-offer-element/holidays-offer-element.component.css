@@ -1,0 +1,44 @@
+img{
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+}
+
+.img{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.removeBtn{
+    font-size: 25px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.plusBtn{
+    font-size: 25px;
+    padding: 5px;
+}
+
+.minusBtn{
+    font-size: 25px;
+    padding: 5px;
+}
+
+.btns{
+    float: right;
+}
+
+.holiday-element{
+    position: relative;
+    margin: 30px;
+    width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    -webkit-box-shadow: 5px 5px 23px -2px #000000; 
+    box-shadow: 5px 5px 23px -2px #000000;
+    padding-bottom: 40px;
+}
