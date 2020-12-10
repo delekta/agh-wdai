@@ -101,9 +101,22 @@ export class HolidaysOfferComponent implements OnInit {
     },
   )
     // Holidays Array End
+
+  public sumOfAllReserved :number = 0;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  removeCard(cardToRemove : IHoliday){
+    console.log("jestem w removeCard");
+    
+    this.holidays = this.holidays.filter(x => x != cardToRemove)
+  }
+
+  updateSumOfAll(change){
+    this.sumOfAllReserved += change;
   }
 
 }

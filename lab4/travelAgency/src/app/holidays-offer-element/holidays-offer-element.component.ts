@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 interface IHoliday{
   name: string,
@@ -19,9 +19,30 @@ interface IHoliday{
 
 export class HolidaysOfferElementComponent implements OnInit {
   @Input()  holiday: IHoliday;
+  @Output() public removeCardEmitter = new EventEmitter;
+  @Output() public reserveEmitter = new EventEmitter;
+
+  public placeReserved: number = 0;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  removeHolidayCard(){
+    console.log("jestem w HolidayCard");
+    this.removeCardEmitter.emit(this.holiday)
+  }
+
+  reservePlace(){
+    this.placeReserved++;
+    this.reserveEmitter.emit(1);
+    console.log(this.holiday.name + " " + this.placeReserved);
+  }
+
+  cancelPlace(){
+    this.placeReserved--;
+    this.reserveEmitter.emit(-1)
+    console.log(this.holiday.name + " " +this.placeReserved);
   }
 
 }

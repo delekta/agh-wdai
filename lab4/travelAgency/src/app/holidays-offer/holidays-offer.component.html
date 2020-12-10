@@ -1,5 +1,8 @@
 <div class="holiday-offer">
-    <app-holidays-offer-element *ngFor="let holiday of holidays" [holiday]="holiday"> 
-        
-    </app-holidays-offer-element>
+    <div class="top">
+        <div class="sum-of-all-holidays" [ngStyle] = "{'border-color': (sumOfAllReserved < 10) ? 'red' : 'green'}">Ilość zarezerwowanych miejsc: {{sumOfAllReserved}}</div>
+    </div>
+    <div class="all-holidays">
+        <app-holidays-offer-element *ngFor="let holiday of holidays" [holiday]="holiday" (removeCardEmitter)="removeCard($event)" (reserveEmitter)="updateSumOfAll($event)"></app-holidays-offer-element>
+    </div>
 </div>
