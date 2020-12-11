@@ -5,6 +5,11 @@
     </div>
     <div class="content">
         <p> Nazwa: {{holiday.name | uppercase}}</p>
+        <p>
+            <ng-conatiner *ngFor="let star of stars">
+                <app-stars (starEnter)="onStarEnter($event)" (starLeave)="onStarLeave()" (starClicked)="onStarClick($event)" [starId]="star" [rating]="hoverState || rating"></app-stars>
+            </ng-conatiner>
+        </p>
         <p> Kraj: {{holiday.country | titlecase}} </p>
         <p> Cena: {{holiday.price | currency: 'EUR'}} </p>
         <p> Termin: {{ holiday.startDate | date}} - {{holiday.endDate | date}} </p>

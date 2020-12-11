@@ -17,7 +17,7 @@ interface IHoliday{
   styleUrls: ['./holidays-offer-element.component.css']
 })
 
-export class HolidaysOfferElementComponent implements OnInit {
+export class HolidaysOfferElementComponent{
   @Input()  holiday: IHoliday;
   @Input()  public maxPrice: number;
   @Input()  public minPrice: number;
@@ -26,9 +26,22 @@ export class HolidaysOfferElementComponent implements OnInit {
 
 
   public placeReserved: number = 0;
-  constructor() { }
 
-  ngOnInit(): void {
+  // Used in to rating
+  stars = [1, 2, 3, 4, 5, 6]
+  rating = 0;
+  hoverState = 0
+  
+  onStarEnter(starId: number){
+    this.hoverState = starId;
+  }
+
+  onStarLeave(){
+    this.hoverState = 0;
+  }
+
+  onStarClick(starId: number){
+    this.rating = starId;
   }
 
   removeHolidayCard(){

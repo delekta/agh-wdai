@@ -9,6 +9,8 @@ import { HolidaysOfferElementComponent } from './holidays-offer-element/holidays
 import { FormComponent } from './form/form.component';
 import { FiltersComponent } from './filters/filters.component';
 import { TrolleyComponent } from './trolley/trolley.component';
+import { StarsComponent } from './stars/stars.component';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { TrolleyComponent } from './trolley/trolley.component';
     HolidaysOfferElementComponent,
     FormComponent,
     FiltersComponent,
-    TrolleyComponent
+    TrolleyComponent,
+    StarsComponent,
   ],
   imports: [
     BrowserModule,

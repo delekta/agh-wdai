@@ -18,5 +18,5 @@ interface IHoliday{
 })
 
 export class AppComponent {
-  title = 'travelAgency';
+  
 }
