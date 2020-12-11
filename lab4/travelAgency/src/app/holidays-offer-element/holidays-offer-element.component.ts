@@ -36,19 +36,28 @@ export class HolidaysOfferElementComponent implements OnInit {
 
     
     // remove place reserved from that holiday card when you remove it
-    this.reserveEmitter.emit(-this.placeReserved);
+    this.reserveEmitter.emit({
+      value: -this.placeReserved, 
+      holiday: this.holiday}
+      );
     this.removeCardEmitter.emit(this.holiday);
   }
 
   reservePlace(){
     this.placeReserved++;
-    this.reserveEmitter.emit(1);
+    this.reserveEmitter.emit({
+      value: 1, 
+      holiday: this.holiday}
+      );
     console.log(this.holiday.name + " " + this.placeReserved);
   }
 
   cancelPlace(){
     this.placeReserved--;
-    this.reserveEmitter.emit(-1)
+    this.reserveEmitter.emit({
+      value: -1, 
+      holiday: this.holiday}
+      );
     console.log(this.holiday.name + " " +this.placeReserved);
   }
 

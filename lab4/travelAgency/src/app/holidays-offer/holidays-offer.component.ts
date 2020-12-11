@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { element } from 'protractor';
+import { InteractionService } from '../interaction.service';
 
 interface IHoliday{
   name: string,
@@ -9,6 +11,12 @@ interface IHoliday{
   maxPlaces:  number,
   description: string,
   imgSrc: string,
+}
+
+interface IReserved{
+  name: string;
+  amount: number;
+  price: number;
 }
 
 @Component({
@@ -106,28 +114,25 @@ export class HolidaysOfferComponent implements OnInit {
   public minPrice: number;
   public maxPrice: number;
 
+  public reservedHolidays = new Array<IReserved>();
+
   @Input() elementToAdd: IHoliday;
   @Input() shouldAdd: boolean;
   @Output() shouldAddEmitter = new EventEmitter;
 
-  constructor() { 
+  constructor(private _interactionService: InteractionService) { 
     this.updateMaxMinPrices();
   }
 
   ngOnInit(): void {
-  }
-
-  ngOnChanges() {
-    if(this.shouldAdd){
-      this.addCard(this.elementToAdd);
-      this.updateMaxMinPrices();
-      // this.shouldAdd = false; nie mozesz tego zrobic!
-    }
-
+    this._interactionService.elementToAdd$.subscribe(
+      element => {this.addCard(element)}
+    )
   }
 
   addCard(elementToAdd: IHoliday){
     this.holidays.push(elementToAdd)
+    this.updateMaxMinPrices();
   }
 
   removeCard(cardToRemove : IHoliday){
@@ -137,8 +142,38 @@ export class HolidaysOfferComponent implements OnInit {
     this.updateMaxMinPrices();
   }
 
-  updateSumOfAll(change){
-    this.sumOfAllReserved += change;
+  updateSumOfAll(data2){
+    this.sumOfAllReserved += data2.value; 
+    this.updateReservedHolidays(data2)
+    this._interactionService.sendReservedHolidays(this.reservedHolidays)
+  }
+
+  updateReservedHolidays(data2){
+    if(this.reservedHolidays.find(e => (e.name == data2.holiday.name))){
+      const obj: IReserved = this.reservedHolidays.find(e => (e.name == data2.holiday.name))
+      if(data2.value == 1){
+        obj.amount = obj.amount + 1
+      }
+      else if(data2.value == -1){
+        obj.amount = obj.amount - 1 
+        if(obj.amount == 0){
+          this.reservedHolidays = this.reservedHolidays.filter(e => e.name != obj.name)
+        }
+      } // we remove whole element
+      else{
+        this.reservedHolidays = this.reservedHolidays.filter(e => e.name != obj.name)
+      }
+    }
+    else{
+      if(data2.value == 1){
+        this.reservedHolidays.push({
+          name: data2.holiday.name,
+          amount: 1,
+          price: data2.holiday.price
+        })
+      }
+    }
+    // console.log(this.reservedHolidays);
   }
 
   updateMaxMinPrices(){

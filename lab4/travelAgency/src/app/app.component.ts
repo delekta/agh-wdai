@@ -19,11 +19,4 @@ interface IHoliday{
 
 export class AppComponent {
   title = 'travelAgency';
-  public holidayElementToAdd: IHoliday;
-  public shouldAdd:boolean = false;
-
-  setElementToAdd(holidayElementToAdd: IHoliday){
-    this.holidayElementToAdd = holidayElementToAdd;
-    this.shouldAdd = true;
-  }
 }

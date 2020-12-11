@@ -1,0 +1,35 @@
+.shooping-basket{
+    font-size: 100px;
+}
+.container{
+    width: 410px;
+    text-align: center;
+    padding: 20px;
+    background-color: gray;
+}
+
+ul{
+    text-align: left;
+}
+
+.firstColumn{
+    width: 200px;
+    display: inline-block;
+    text-align: left;
+}
+
+.secondColumn{
+    width: 30px;
+    display: inline-block;
+    text-align: center;
+}
+.thirdColumn{
+    display: inline-block;
+    text-align: right;
+}
+
+.sum{
+    width: 350px;
+    text-align: right;
+}
+
