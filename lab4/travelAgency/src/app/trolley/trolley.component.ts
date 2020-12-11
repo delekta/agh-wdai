@@ -13,7 +13,7 @@ interface IReserved{
   styleUrls: ['./trolley.component.css']
 })
 export class TrolleyComponent implements OnInit {
-  public reservedHolidays = null;
+  public reservedHolidays = [];
   public sum: number = 0;
 
   constructor(private _interactionService: InteractionService) { }

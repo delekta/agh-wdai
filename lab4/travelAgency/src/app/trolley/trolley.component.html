@@ -2,7 +2,7 @@
     <div class="shooping-basket">
         <i class="fas fa-shopping-basket"></i>
     </div>
-    <div *ngIf="reservedHolidays != null; else nothingReserved" class="reservedList">
+    <div *ngIf="reservedHolidays.length > 0; else nothingReserved" class="reservedList">
         <ul>
             <li *ngFor="let holiday of reservedHolidays">
                 <span class="firstColumn">{{holiday.name | uppercase}}</span> <span class="secondColumn">{{holiday.amount}}x</span> <span class="thirdColumn">{{holiday.price | currency: 'EUR'}}</span>

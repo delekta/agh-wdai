@@ -1,4 +1,29 @@
 .top-row{
     display:grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
 }
+
+app-form{
+    margin: 20px;
+    background-color: rgb(123, 125, 134);
+    border-radius: 20px;
+}
+
+app-filters{
+    margin: 20px;
+    background-color: rgb(123, 125, 134);
+    border-radius: 20px;
+}
+
+app-trolley{
+    margin: 20px;
+    background-color: rgb(123, 125, 134);
+    border-radius: 20px;
+}
+
+.bottom-row{
+    margin: 20px;
+    background-color: rgb(123, 125, 134);
+    border-radius: 20px;
+}
+
