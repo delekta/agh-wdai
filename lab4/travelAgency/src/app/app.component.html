@@ -1,1 +1,10 @@
-<app-holidays-offer></app-holidays-offer>
+<div class="top-row">
+    <app-form (addHolidayElement)="setElementToAdd($event)"></app-form>
+    <app-filters></app-filters>
+    <app-trolley></app-trolley>
+</div>
+<div class="bottom-row">
+    <app-holidays-offer [elementToAdd]="holidayElementToAdd" [shouldAdd]="shouldAdd" (shouldAddEmitter)="shouldAdd=$event"></app-holidays-offer>
+</div>
+
+

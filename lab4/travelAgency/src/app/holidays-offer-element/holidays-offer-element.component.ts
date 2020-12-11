@@ -19,8 +19,11 @@ interface IHoliday{
 
 export class HolidaysOfferElementComponent implements OnInit {
   @Input()  holiday: IHoliday;
+  @Input()  public maxPrice: number;
+  @Input()  public minPrice: number;
   @Output() public removeCardEmitter = new EventEmitter;
   @Output() public reserveEmitter = new EventEmitter;
+
 
   public placeReserved: number = 0;
   constructor() { }
@@ -30,7 +33,11 @@ export class HolidaysOfferElementComponent implements OnInit {
 
   removeHolidayCard(){
     console.log("jestem w HolidayCard");
-    this.removeCardEmitter.emit(this.holiday)
+
+    
+    // remove place reserved from that holiday card when you remove it
+    this.reserveEmitter.emit(-this.placeReserved);
+    this.removeCardEmitter.emit(this.holiday);
   }
 
   reservePlace(){

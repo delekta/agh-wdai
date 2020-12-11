@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 interface IHoliday{
   name: string,
@@ -38,6 +38,16 @@ export class HolidaysOfferComponent implements OnInit {
       maxPlaces:  12,
       description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
       imgSrc: "https://www.wantedinrome.com/i/preview/storage/uploads/2020/04/holiday_housing.jpg",
+    },
+    {
+      name: "wisienki?",
+      country: "japonia",
+      startDate: new Date(2021, 2, 22),
+      endDate: new Date(2021, 2, 29),
+      price: 1800,
+      maxPlaces:  20,
+      description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
+      imgSrc: "https://s3.viva.pl/styl-zycia/japonia-453204-GALLERY_BIG.jpg",
     },
     {
       name: "niezapomniana austria",
@@ -89,34 +99,53 @@ export class HolidaysOfferComponent implements OnInit {
       description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
       imgSrc: "https://aws-tiqets-cdn.imgix.net/images/content/2e6eebee20804cacab6d5cb9ecac49c6.jpg?auto=format&fit=crop&ixlib=python-3.2.1&q=70&s=e20f24af8ce54bbbcbf8f2df0d221427",
     },
-    {
-      name: "wisienki?",
-      country: "japonia",
-      startDate: new Date(2021, 2, 22),
-      endDate: new Date(2021, 2, 29),
-      price: 1800,
-      maxPlaces:  20,
-      description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
-      imgSrc: "https://s3.viva.pl/styl-zycia/japonia-453204-GALLERY_BIG.jpg",
-    },
   )
     // Holidays Array End
 
   public sumOfAllReserved :number = 0;
+  public minPrice: number;
+  public maxPrice: number;
 
-  constructor() { }
+  @Input() elementToAdd: IHoliday;
+  @Input() shouldAdd: boolean;
+  @Output() shouldAddEmitter = new EventEmitter;
+
+  constructor() { 
+    this.updateMaxMinPrices();
+  }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges() {
+    if(this.shouldAdd){
+      this.addCard(this.elementToAdd);
+      this.updateMaxMinPrices();
+      // this.shouldAdd = false; nie mozesz tego zrobic!
+    }
+
+  }
+
+  addCard(elementToAdd: IHoliday){
+    this.holidays.push(elementToAdd)
   }
 
   removeCard(cardToRemove : IHoliday){
     console.log("jestem w removeCard");
     
     this.holidays = this.holidays.filter(x => x != cardToRemove)
+    this.updateMaxMinPrices();
   }
 
   updateSumOfAll(change){
     this.sumOfAllReserved += change;
+  }
+
+  updateMaxMinPrices(){
+    this.maxPrice = Math.max(...this.holidays.map(holiday => holiday.price))
+    this.minPrice = Math.min(...this.holidays.map(holiday => holiday.price))
+    console.log(this.maxPrice + " " + this.minPrice);
+    
   }
 
 }

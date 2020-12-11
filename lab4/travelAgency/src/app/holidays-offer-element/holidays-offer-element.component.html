@@ -1,4 +1,4 @@
-<div class="holiday-element">
+<div class="holiday-element" [ngClass]="{'shadow-green': holiday.price == maxPrice, 'shadow-red': holiday.price == minPrice }">
     <i class="fas fa-times-circle removeBtn" (click)="removeHolidayCard()"></i>
     <div class="img">
         <img [src]="holiday.imgSrc" alt="">

@@ -1,0 +1,53 @@
+<div class="container">
+    <h2>Create New Offer</h2>
+    <form [formGroup]="newHoliday" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Nazwa</label>
+            <input type="text" #refName class="form-control" formControlName="name">
+            <div *ngIf="newHoliday.controls['name'].hasError('pattern')" class="alert alert-danger">
+                Nazwa moze zawierać tylko litery
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Kraj</label>
+            <input type="text" class="form-control" formControlName="country">
+            <div *ngIf="newHoliday.controls['country'].hasError('pattern')" class="alert alert-danger">
+                Kraj moze zawierać tylko litery
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Data rozpoczęcia</label>
+            <input type="date" #startDate class="form-control" formControlName="startDate">
+        </div>
+        <div class="form-group">
+            <label>Data zakończenia</label>
+            <input type="date" #endDate class="form-control" formControlName="endDate">
+            <div *ngIf="startDate.value != '' && endDate.value != '' && !areDatesValid()" class="alert alert-danger">
+                Data rozpoczęcia musi poprzedzać date zakończenia
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Cena</label>
+            <input type="text" class="form-control" formControlName="price">
+            <div *ngIf="newHoliday.controls['price'].hasError('pattern')" class="alert alert-danger">
+                Cena moze zawierać tylko cyfry
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Maksymalna ilość miejsc</label>
+            <input type="text" class="form-control" formControlName="maxPlaces">
+            <div *ngIf="newHoliday.controls['maxPlaces'].hasError('pattern')" class="alert alert-danger">
+                Maksymalna ilość miejsc moze zawierać tylko cyfry
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Opis</label>
+            <input type="area" class="form-control" formControlName="description">
+        </div>
+        <div class="form-group">
+            <label>Link do zdjęcia (defaultowo brak zdjęcia)</label>
+            <input type="text" class="form-control" formControlName="imgSrc">
+        </div>
+        <button type="submit" [disabled]="!newHoliday.valid" class="btn btn-primary">Dodaj</button>
+    </form>
+</div>
