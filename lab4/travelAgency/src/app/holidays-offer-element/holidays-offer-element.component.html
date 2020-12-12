@@ -12,7 +12,7 @@
         </p>
         <p> Kraj: {{holiday.country | titlecase}} </p>
         <p> Cena: {{holiday.price | currency: 'EUR'}} </p>
-        <p> Termin: {{ holiday.startDate | date}} - {{holiday.endDate | date}} </p>
+        <p> Termin: {{holiday.startDate | date}} - {{holiday.endDate | date}} </p>
         <p> Ilosc miejsc: {{holiday.maxPlaces}} </p>
         <p> Opis: {{holiday.description}} </p>
     </div>
@@ -25,7 +25,7 @@
 
             <p *ngIf="placeReserved > 0 && placeReserved < holiday.maxPlaces">
                 Pozostało {{holiday.maxPlaces - placeReserved}} miejsc 
-            </p>
+            </p> 
 
             <p *ngIf="placeReserved == holiday.maxPlaces">
                 Brak wolnych miejsc

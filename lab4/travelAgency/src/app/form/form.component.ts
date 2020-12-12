@@ -11,6 +11,7 @@ interface IHoliday{
   maxPlaces:  number,
   description: string,
   imgSrc: string,
+  rating: number,
 }
 
 @Component({
@@ -51,12 +52,13 @@ export class FormComponent implements OnInit {
     var res = <IHoliday>{
       name: form?.name,
       country: form?.country,
-      startDate: form?.startDate,
-      endDate: form?.endDate,
-      price: form?.price,
-      maxPlaces: form?.maxPlaces,
+      startDate: new Date(form?.startDate),
+      endDate: new Date(form?.endDate),
+      price: parseInt(form?.price),
+      maxPlaces: parseInt(form?.maxPlaces),
       description: form?.description,
-      imgSrc: form?.imgSrc
+      imgSrc: form?.imgSrc,
+      rating: 0
     };
     return res
   }

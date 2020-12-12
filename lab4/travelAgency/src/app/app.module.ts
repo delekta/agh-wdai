@@ -10,6 +10,13 @@ import { FormComponent } from './form/form.component';
 import { FiltersComponent } from './filters/filters.component';
 import { TrolleyComponent } from './trolley/trolley.component';
 import { StarsComponent } from './stars/stars.component';
+import { CommonModule } from '@angular/common';
+import { FilterLocationPipe } from './filter-location.pipe';
+import { FilterRatingPipe } from './filter-rating.pipe';
+import { FilterPricePipe } from './filter-price.pipe';
+import { FilterDatePipe } from './filter-date.pipe';
+
+
 
 
 @NgModule({
@@ -21,6 +28,11 @@ import { StarsComponent } from './stars/stars.component';
     FiltersComponent,
     TrolleyComponent,
     StarsComponent,
+    FilterLocationPipe,
+    FilterRatingPipe,
+    FilterPricePipe,
+    FilterDatePipe,
+
   ],
   imports: [
     BrowserModule,

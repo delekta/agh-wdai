@@ -9,6 +9,7 @@ interface IHoliday{
   maxPlaces:  number,
   description: string,
   imgSrc: string,
+  rating: number,
 }
 
 @Component({
@@ -23,6 +24,7 @@ export class HolidaysOfferElementComponent{
   @Input()  public minPrice: number;
   @Output() public removeCardEmitter = new EventEmitter;
   @Output() public reserveEmitter = new EventEmitter;
+  @Output() public ratingEmitter = new EventEmitter;
 
 
   public placeReserved: number = 0;
@@ -42,6 +44,8 @@ export class HolidaysOfferElementComponent{
 
   onStarClick(starId: number){
     this.rating = starId;
+    this.holiday.rating = this.rating;
+    this.ratingEmitter.emit(this.holiday)
   }
 
   removeHolidayCard(){

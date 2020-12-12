@@ -3,6 +3,8 @@
         <div class="sum-of-all-holidays" [ngStyle] = "{'border-color': (sumOfAllReserved < 10) ? 'red' : 'green'}">Ilość zarezerwowanych miejsc: {{sumOfAllReserved}}</div>
     </div>
     <div class="all-holidays">
-        <app-holidays-offer-element *ngFor="let holiday of holidays" [holiday]="holiday" [maxPrice]="maxPrice" [minPrice]="minPrice" (removeCardEmitter)="removeCard($event)" (reserveEmitter)="updateSumOfAll($event)"></app-holidays-offer-element>
+        <app-holidays-offer-element *ngFor="let holiday of (this.holidays | filterLocation: locations | filterRating: stars | filterPrice: priceRangeMin: priceRangeMax | filterDate: dateRangeMin: dateRangeMax)" [holiday]="holiday" [maxPrice]="maxPrice" [minPrice]="minPrice" (removeCardEmitter)="removeCard($event)" (reserveEmitter)="updateSumOfAll($event)" (ratingEmitter)="updateRating($event)" ></app-holidays-offer-element>
     </div>
 </div>
+
+<!-- my pipes:  -->

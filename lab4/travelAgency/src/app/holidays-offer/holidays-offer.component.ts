@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NumberValueAccessor } from '@angular/forms';
 import { element } from 'protractor';
+import { FilterInteractionService } from '../filter-interaction.service';
 import { InteractionService } from '../interaction.service';
 
 interface IHoliday{
@@ -11,6 +13,7 @@ interface IHoliday{
   maxPlaces:  number,
   description: string,
   imgSrc: string,
+  rating: number;
 }
 
 interface IReserved{
@@ -36,6 +39,7 @@ export class HolidaysOfferComponent implements OnInit {
       maxPlaces:  10,
       description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
       imgSrc: "https://a.loveholidays.com/images/holidays/fede33b090c05cf5d6c61cc54ce04b2ec97408bf/holidays/turkey/antalya/belek/granada-luxury-belek-all-inclusive-0.jpg",
+      rating: 0
     },
     {
       name: "gorące włochy",
@@ -46,6 +50,7 @@ export class HolidaysOfferComponent implements OnInit {
       maxPlaces:  12,
       description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
       imgSrc: "https://www.wantedinrome.com/i/preview/storage/uploads/2020/04/holiday_housing.jpg",
+      rating: 0
     },
     {
       name: "wisienki?",
@@ -56,6 +61,7 @@ export class HolidaysOfferComponent implements OnInit {
       maxPlaces:  20,
       description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
       imgSrc: "https://s3.viva.pl/styl-zycia/japonia-453204-GALLERY_BIG.jpg",
+      rating: 0
     },
     {
       name: "niezapomniana austria",
@@ -66,6 +72,7 @@ export class HolidaysOfferComponent implements OnInit {
       maxPlaces:  8,
       description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
       imgSrc: "https://assets.website-files.com/5c6a862c3ca6bd4ca53749b8/5c890448590eda0da24a8c71_DSC02678.jpg",
+      rating: 0
     },
     {
       name: "boskie wakacje",
@@ -76,6 +83,7 @@ export class HolidaysOfferComponent implements OnInit {
       maxPlaces:  16,
       description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
       imgSrc: "https://4.bp.blogspot.com/-ox8U-HE2oLE/XEwcphSOueI/AAAAAAAAOeM/gYPenPO3Z0cLhDmc1-M54kNy8wT1SD9AACLcBGAs/s1600/Road%2BTrip%2Bof%2Bthe%2BGods%252C%2BParthenon.jpg",
+      rating: 0
     },
     {
       name: "swego nie znacie",
@@ -86,6 +94,7 @@ export class HolidaysOfferComponent implements OnInit {
       maxPlaces:  10,
       description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
       imgSrc: "https://cdn.pkt.pl/f-4403-wczasy-w-polsce-czyli-co-oferuja-osrodki-wypoczynkowe-na-mazurach.jpg",
+      rating: 3
     },
     {
       name: "poranna herbata",
@@ -96,6 +105,7 @@ export class HolidaysOfferComponent implements OnInit {
       maxPlaces:  6,
       description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
       imgSrc: "https://di5fgdew4nptq.cloudfront.net/api2/media/images/f8147872-890b-e611-80cb-c81f66f7476e",
+      rating: 1
     },
     {
       name: "bez pośpiechu",
@@ -106,6 +116,7 @@ export class HolidaysOfferComponent implements OnInit {
       maxPlaces:  14,
       description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
       imgSrc: "https://aws-tiqets-cdn.imgix.net/images/content/2e6eebee20804cacab6d5cb9ecac49c6.jpg?auto=format&fit=crop&ixlib=python-3.2.1&q=70&s=e20f24af8ce54bbbcbf8f2df0d221427",
+      rating: 0
     },
   )
     // Holidays Array End
@@ -114,13 +125,21 @@ export class HolidaysOfferComponent implements OnInit {
   public minPrice: number;
   public maxPrice: number;
 
+  //tests
+  public locations = []
+  public stars = []
+  public priceRangeMin = Number.MIN_VALUE;
+  public priceRangeMax = Number.MAX_VALUE;
+  public dateRangeMin = new Date(1970, 0, 1);
+  public dateRangeMax = new Date(2030, 11, 30);
+
   public reservedHolidays = new Array<IReserved>();
 
   @Input() elementToAdd: IHoliday;
   @Input() shouldAdd: boolean;
   @Output() shouldAddEmitter = new EventEmitter;
 
-  constructor(private _interactionService: InteractionService) { 
+  constructor(private _interactionService: InteractionService, private _interactionFilterService: FilterInteractionService) { 
     this.updateMaxMinPrices();
   }
 
@@ -128,11 +147,36 @@ export class HolidaysOfferComponent implements OnInit {
     this._interactionService.elementToAdd$.subscribe(
       element => {this.addCard(element)}
     )
+    this.sendDataToFilters();
+
+    this._interactionFilterService.locations$.subscribe(
+      location => {
+        this.locations = location
+        this.holidays = this.holidays
+        console.log(location);
+        
+      }
+    )
+
+    this._interactionFilterService.stars$.subscribe(
+      stars => {
+        this.stars = stars
+        console.log(stars);
+      }
+    )
+  }
+
+  sendDataToFilters(){
+    this._interactionFilterService.sendCurrentDataToFilters(this.holidays)
   }
 
   addCard(elementToAdd: IHoliday){
-    this.holidays.push(elementToAdd)
+    this.holidays = [...this.holidays, elementToAdd]
+
+
     this.updateMaxMinPrices();
+
+    this.sendDataToFilters();
   }
 
   removeCard(cardToRemove : IHoliday){
@@ -140,6 +184,8 @@ export class HolidaysOfferComponent implements OnInit {
     
     this.holidays = this.holidays.filter(x => x != cardToRemove)
     this.updateMaxMinPrices();
+    
+    this.sendDataToFilters();
   }
 
   updateSumOfAll(data2){
@@ -181,6 +227,11 @@ export class HolidaysOfferComponent implements OnInit {
     this.minPrice = Math.min(...this.holidays.map(holiday => holiday.price))
     console.log(this.maxPrice + " " + this.minPrice);
     
+  }
+
+  updateRating(holiday: IHoliday){
+    this.holidays.find(h => h.name === holiday.name).rating = holiday.rating;
+    this.sendDataToFilters();
   }
 
 }

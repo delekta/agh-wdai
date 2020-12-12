@@ -10,6 +10,7 @@ interface IHoliday{
   maxPlaces:  number,
   description: string,
   imgSrc: string,
+  rating: number,
 }
 
 interface IReserved{

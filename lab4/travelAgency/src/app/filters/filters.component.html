@@ -2,5 +2,36 @@
     <h1>
         Filtry
     </h1>
+    <div class="conatiner">
+        <h3>Lokalizacja:</h3>
+        <div *ngFor="let location of locations">
+            <input type="checkbox" name={{location}} (change)="updateLocations($event)">
+            <label> &nbsp; {{location | titlecase}}</label><br>
+        </div>
+        
+
+        <hr>
+        <h3>Ilość gwiazdek</h3>
+        <div *ngFor="let star of stars">
+            <input type="checkbox" name={{star}} (change)= "updateStars($event)">
+            <label> &nbsp; {{star}}</label><br>
+        </div>
+
+        <hr>
+        <h3>Cena</h3>
+        <label>Od &nbsp;</label>
+        <input type="text" placeholder={{priceRangeMin}}><br>
+
+        <label>Do &nbsp;</label>
+        <input type="text" placeholder={{priceRangeMax}}>
+
+        <hr>
+        <h3>Data</h3>
+        <label>Od &nbsp;</label>
+        <input type="text" placeholder='{{dateRangeMin | date: "longDate" }}' onfocus="(this.type='date')"> 
+        <br>
+        <label>Do &nbsp;</label>
+        <input type="text" placeholder='{{dateRangeMax | date: "longDate" }}' onfocus="(this.type='date')"> 
+    </div>
 </div>
 
