@@ -9,7 +9,12 @@
     justify-content: space-evenly;
 }
 
+/* div{
+    padding: 5px;
+} */
+
 .top{
+    height: 100px;
     padding: 30px;
     position: relative;
 }

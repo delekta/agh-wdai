@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms'
+import { FormsModule } from "@angular/forms";
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 
 import { AppComponent } from './app.component';
@@ -15,6 +17,9 @@ import { FilterLocationPipe } from './filter-location.pipe';
 import { FilterRatingPipe } from './filter-rating.pipe';
 import { FilterPricePipe } from './filter-price.pipe';
 import { FilterDatePipe } from './filter-date.pipe';
+import { SliderComponent } from './slider/slider.component';
+
+
 
 
 
@@ -32,11 +37,17 @@ import { FilterDatePipe } from './filter-date.pipe';
     FilterRatingPipe,
     FilterPricePipe,
     FilterDatePipe,
+    SliderComponent,
 
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSliderModule,
+    FormsModule,
+  ],
+  exports: [
+    SliderComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

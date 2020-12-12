@@ -26,6 +26,12 @@ export class FilterInteractionService {
   private _filteredStars = new Subject<number[]>()
   stars$ = this._filteredStars.asObservable(); 
 
+  private _filteredMinPrice = new Subject<number>()
+  minPrice$ = this._filteredMinPrice.asObservable(); 
+
+  private _filteredMaxPrice = new Subject<number>()
+  maxPrice$ = this._filteredMaxPrice.asObservable(); 
+
 
   sendCurrentDataToFilters(holidays: IHoliday[]){
     this._currentHolidays.next(holidays)
@@ -37,5 +43,13 @@ export class FilterInteractionService {
 
   sendFilteredStars(stars: number[]){
     this._filteredStars.next(stars)
+  }
+
+  sendMaxPrice(maxPrice: number){
+    this._filteredMaxPrice.next(maxPrice)
+  }
+
+  sendMinPrice(minPrice: number){
+    this._filteredMinPrice.next(minPrice)
   }
 }

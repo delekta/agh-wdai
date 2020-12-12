@@ -19,19 +19,22 @@
 
         <hr>
         <h3>Cena</h3>
-        <label>Od &nbsp;</label>
-        <input type="text" placeholder={{priceRangeMin}}><br>
+        <ngx-slider [(value)]="priceRangeMin"
+            [(highValue)]="priceRangeMax"
+            [options]="options"
+            (userChange)="onUserChange($event)">
+        </ngx-slider>
+        
 
-        <label>Do &nbsp;</label>
-        <input type="text" placeholder={{priceRangeMax}}>
-
+        <br>
+        <br>
         <hr>
-        <h3>Data</h3>
+        <!-- <h3>Data</h3>
         <label>Od &nbsp;</label>
         <input type="text" placeholder='{{dateRangeMin | date: "longDate" }}' onfocus="(this.type='date')"> 
         <br>
         <label>Do &nbsp;</label>
-        <input type="text" placeholder='{{dateRangeMax | date: "longDate" }}' onfocus="(this.type='date')"> 
+        <input type="text" placeholder='{{dateRangeMax | date: "longDate" }}' onfocus="(this.type='date')">  -->
     </div>
 </div>
 

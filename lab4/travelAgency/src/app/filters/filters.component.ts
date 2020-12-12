@@ -1,3 +1,4 @@
+import { ChangeContext, Options, PointerType } from '@angular-slider/ngx-slider';
 import { Component, OnInit } from '@angular/core';
 import { FilterInteractionService } from '../filter-interaction.service';
 
@@ -33,6 +34,11 @@ export class FiltersComponent implements OnInit {
   private priceRangeMinChecked: number = Number.MAX_VALUE;;
   private dateRangeMaxChecked: Date = new Date(1970, 0, 1);
   private dateRangeMinChecked: Date = new Date(2030, 0, 1);
+
+  options: Options = {
+    floor: 0,
+    ceil: 2000,
+  };
 
   constructor(private _interactionFilterService: FilterInteractionService) {
 
@@ -72,6 +78,10 @@ export class FiltersComponent implements OnInit {
         this.dateRangeMax = holiday.endDate;
       }
       this.stars.sort()
+
+      //Wazne
+      this.options.floor = this.priceRangeMin;
+      this.options.ceil = this.priceRangeMax;
     }
     // tests
     // console.log(this.stars);
@@ -93,6 +103,7 @@ export class FiltersComponent implements OnInit {
   }
 
   updateLocations(event){
+    
     if(!event.srcElement.checked){
       this.locationsChecked = this.locationsChecked.filter(name => name !== event.srcElement.attributes.name.value);
     }else{
@@ -102,6 +113,8 @@ export class FiltersComponent implements OnInit {
   }
 
   updateStars(event){
+    console.log(this.priceRangeMax);
+    
     if(!event.srcElement.checked){
       this.starsChecked = this.starsChecked.filter(star => star !== parseInt(event.srcElement.attributes.name.value));;
     }else{
@@ -109,5 +122,14 @@ export class FiltersComponent implements OnInit {
     }
     this._interactionFilterService.sendFilteredStars(this.starsChecked)
   }
- 
+
+  updatePriceRange(event){
+    console.log(event);
+    
+  }
+
+  onUserChange(changeContext: ChangeContext): void {
+    this._interactionFilterService.sendMinPrice(this.priceRangeMin)
+    this._interactionFilterService.sendMaxPrice(this.priceRangeMax)
+  }
 }

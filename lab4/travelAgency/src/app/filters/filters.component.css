@@ -1,3 +1,12 @@
 .container{
-    padding: 20px;
+    padding: 20px; 
 }
+
+.slider-conatiner{
+    position: relative;
+}
+
+hr{
+    border-color: white;
+}
+

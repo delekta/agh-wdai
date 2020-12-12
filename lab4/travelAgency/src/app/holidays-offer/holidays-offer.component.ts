@@ -160,6 +160,14 @@ export class HolidaysOfferComponent implements OnInit {
         this.stars = stars
       }
     )
+
+    this._interactionFilterService.minPrice$.subscribe(
+      minPrice => {this.priceRangeMin = minPrice}
+    )
+
+    this._interactionFilterService.maxPrice$.subscribe(
+      maxPrice => {this.priceRangeMax = maxPrice}
+    )
   }
 
   sendDataToFilters(){
