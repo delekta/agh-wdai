@@ -62,7 +62,7 @@ export class FiltersComponent implements OnInit {
       if(this.stars.indexOf(holiday.rating) === -1){
         this.stars = [...this.stars, holiday.rating]
       }
-      if(this.locations.indexOf(holiday.name) === -1){
+      if(this.locations.indexOf(holiday.country) === -1){
         this.locations = [...this.locations, holiday.country]
       }
       if(holiday.price > this.priceRangeMax){
