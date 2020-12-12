@@ -50,8 +50,8 @@ export class FormComponent implements OnInit {
 
   createHolidayElement(form: any){
     var res = <IHoliday>{
-      name: form?.name,
-      country: form?.country,
+      name: form?.name.toLowerCase(),
+      country: form?.country.toLowerCase(),
       startDate: new Date(form?.startDate),
       endDate: new Date(form?.endDate),
       price: parseInt(form?.price),

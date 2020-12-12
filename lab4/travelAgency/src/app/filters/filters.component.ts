@@ -94,18 +94,18 @@ export class FiltersComponent implements OnInit {
 
   updateLocations(event){
     if(!event.srcElement.checked){
-      this.locationsChecked = this.locationsChecked.filter(name => name !== event.srcElement.attributes.name);
+      this.locationsChecked = this.locationsChecked.filter(name => name !== event.srcElement.attributes.name.value);
     }else{
-      this.locationsChecked.push(event.srcElement.attributes.name);
+      this.locationsChecked = [...this.locationsChecked, event.srcElement.attributes.name.value];
     }
     this._interactionFilterService.sendFilteredLocations(this.locationsChecked)
   }
 
   updateStars(event){
     if(!event.srcElement.checked){
-      this.starsChecked = this.starsChecked.filter(star => star !== event.srcElement.attributes.name);;
+      this.starsChecked = this.starsChecked.filter(star => star !== parseInt(event.srcElement.attributes.name.value));;
     }else{
-      this.starsChecked.push(event.srcElement.attributes.name);
+      this.starsChecked = [...this.starsChecked, parseInt(event.srcElement.attributes.name.value)];
     }
     this._interactionFilterService.sendFilteredStars(this.starsChecked)
   }

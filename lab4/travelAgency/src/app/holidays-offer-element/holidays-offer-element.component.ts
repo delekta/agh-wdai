@@ -19,19 +19,21 @@ interface IHoliday{
 })
 
 export class HolidaysOfferElementComponent{
-  @Input()  holiday: IHoliday;
+  @Input()  public holiday: IHoliday;
+  @Input()  public rating: number;
   @Input()  public maxPrice: number;
   @Input()  public minPrice: number;
   @Output() public removeCardEmitter = new EventEmitter;
   @Output() public reserveEmitter = new EventEmitter;
   @Output() public ratingEmitter = new EventEmitter;
 
+    
+
 
   public placeReserved: number = 0;
 
   // Used in to rating
-  stars = [1, 2, 3, 4, 5, 6]
-  rating = 0;
+  public stars = [1, 2, 3, 4, 5, 6]
   hoverState = 0
   
   onStarEnter(starId: number){
@@ -44,7 +46,7 @@ export class HolidaysOfferElementComponent{
 
   onStarClick(starId: number){
     this.rating = starId;
-    this.holiday.rating = this.rating;
+    this.holiday.rating = this.rating; 
     this.ratingEmitter.emit(this.holiday)
   }
 

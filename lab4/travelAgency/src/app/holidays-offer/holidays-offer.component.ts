@@ -65,7 +65,7 @@ export class HolidaysOfferComponent implements OnInit {
     },
     {
       name: "niezapomniana austria",
-      country: "austra",
+      country: "austria",
       startDate: new Date(2021, 0, 21),
       endDate: new Date(2021, 0, 26),
       price: 750,
@@ -152,16 +152,12 @@ export class HolidaysOfferComponent implements OnInit {
     this._interactionFilterService.locations$.subscribe(
       location => {
         this.locations = location
-        this.holidays = this.holidays
-        console.log(location);
-        
       }
     )
 
     this._interactionFilterService.stars$.subscribe(
       stars => {
         this.stars = stars
-        console.log(stars);
       }
     )
   }
