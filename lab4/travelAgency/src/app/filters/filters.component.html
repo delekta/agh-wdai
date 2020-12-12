@@ -2,33 +2,35 @@
     <h1>
         Filtry
     </h1>
-    <div class="conatiner">
-        <h3>Lokalizacja:</h3>
-        <div *ngFor="let location of locations">
-            <input type="checkbox" name={{location}} (change)="updateLocations($event)">
-            <label> &nbsp; {{location | titlecase}}</label><br>
+    <div class="container2">
+        <div class="locations">
+            <h3>Lokalizacja:</h3>
+            <div *ngFor="let location of locations">
+                <input type="checkbox" name={{location}} (change)="updateLocations($event)">
+                <label> &nbsp; {{location | titlecase}}</label>
+            </div>
+            <hr>
         </div>
         
-
-        <hr>
-        <h3>Ilość gwiazdek</h3>
-        <div *ngFor="let star of stars">
-            <input type="checkbox" name={{star}} (change)= "updateStars($event)">
-            <label> &nbsp; {{star}}</label><br>
+        <div class="stars">
+            <h3>Ilość gwiazdek</h3>
+            <div *ngFor="let star of stars">
+                <input type="checkbox" name={{star}} (change)= "updateStars($event)">
+                <label> &nbsp; {{star}}</label>
+            </div>
+            <hr>
         </div>
 
-        <hr>
-        <h3>Cena</h3>
-        <ngx-slider [(value)]="priceRangeMin"
-            [(highValue)]="priceRangeMax"
-            [options]="options"
-            (userChange)="onUserChange($event)">
-        </ngx-slider>
+        <div class="prices">
+            <h3>Cena</h3>
+            <ngx-slider [(value)]="priceRangeMin"
+                [(highValue)]="priceRangeMax"
+                [options]="options"
+                (userChange)="onUserChange($event)">
+            </ngx-slider>
+            <hr>
+        </div>
         
-
-        <br>
-        <br>
-        <hr>
         <!-- <h3>Data</h3>
         <label>Od &nbsp;</label>
         <input type="text" placeholder='{{dateRangeMin | date: "longDate" }}' onfocus="(this.type='date')"> 

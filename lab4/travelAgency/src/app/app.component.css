@@ -1,22 +1,46 @@
 .top-row{
     color: white;
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "form filters trolley"
+    
+}
+
+@media screen and (max-width: 1020px){
+    .top-row{
+        grid-template-areas: 
+            "form  trolley"
+            "filters filters"
+        
+    }
+}
+
+@media screen and (max-width: 700px){
+    .top-row{
+        grid-template-areas: 
+            "form"
+            "trolley"
+            "filters"
+        
+    }
 }
 
 app-form{
+    grid-area: form;
     margin: 20px;
     background-color: rgb(123, 125, 134);
     border-radius: 20px;
 }
 
 app-filters{
+    grid-area: filters;
     margin: 20px;
     background-color: rgb(123, 125, 134);
     border-radius: 20px;
 }
 
 app-trolley{
+    grid-area: trolley;
     margin: 20px;
     background-color: rgb(123, 125, 134);
     border-radius: 20px;

@@ -30,10 +30,6 @@ export class FiltersComponent implements OnInit {
 
   private starsChecked: number[] = [];
   private locationsChecked: string[] = [];
-  private priceRangeMaxChecked: number = Number.MIN_VALUE;
-  private priceRangeMinChecked: number = Number.MAX_VALUE;;
-  private dateRangeMaxChecked: Date = new Date(1970, 0, 1);
-  private dateRangeMinChecked: Date = new Date(2030, 0, 1);
 
   options: Options = {
     floor: 0,
@@ -121,11 +117,6 @@ export class FiltersComponent implements OnInit {
       this.starsChecked = [...this.starsChecked, parseInt(event.srcElement.attributes.name.value)];
     }
     this._interactionFilterService.sendFilteredStars(this.starsChecked)
-  }
-
-  updatePriceRange(event){
-    console.log(event);
-    
   }
 
   onUserChange(changeContext: ChangeContext): void {
