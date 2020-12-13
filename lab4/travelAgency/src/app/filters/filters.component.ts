@@ -74,10 +74,6 @@ export class FiltersComponent implements OnInit {
         this.dateRangeMax = holiday.endDate;
       }
       this.stars.sort()
-
-      //Wazne
-      this.options.floor = this.priceRangeMin;
-      this.options.ceil = this.priceRangeMax;
     }
     // tests
     // console.log(this.stars);
@@ -86,6 +82,13 @@ export class FiltersComponent implements OnInit {
     // console.log(this.priceRangeMin);
     // console.log(this.dateRangeMax);
     // console.log(this.dateRangeMin);
+    //Wazne
+    
+    // we must reassign options object to teload slider
+    this.options = {
+      floor: this.priceRangeMin,
+      ceil: this.priceRangeMax,
+    }
     
   }
 
