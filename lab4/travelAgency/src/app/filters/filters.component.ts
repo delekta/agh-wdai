@@ -89,7 +89,9 @@ export class FiltersComponent implements OnInit {
       floor: this.priceRangeMin,
       ceil: this.priceRangeMax,
     }
-    
+    //error 404?
+    this._interactionFilterService.sendMinPrice(this.priceRangeMin)
+    this._interactionFilterService.sendMaxPrice(this.priceRangeMax)
   }
 
   resetToDefault(){
