@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms'
-import { InteractionService } from '../interaction.service';
+import { InteractionService } from '../services/interaction.service';
 
 interface IHoliday{
   name: string,

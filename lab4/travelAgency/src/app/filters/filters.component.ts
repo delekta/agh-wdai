@@ -1,6 +1,6 @@
 import { ChangeContext, Options, PointerType } from '@angular-slider/ngx-slider';
 import { Component, OnInit } from '@angular/core';
-import { FilterInteractionService } from '../filter-interaction.service';
+import { FilterInteractionService } from '../services/filter-interaction.service';
 
 interface IHoliday{
   name: string,

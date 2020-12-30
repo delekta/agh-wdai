@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InteractionService } from '../interaction.service';
+import { InteractionService } from '../services/interaction.service';
 
 interface IReserved{
   name: string;

@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NumberValueAccessor } from '@angular/forms';
 import { element } from 'protractor';
-import { FilterInteractionService } from '../filter-interaction.service';
-import { InteractionService } from '../interaction.service';
+import { FilterInteractionService } from '../services/filter-interaction.service';
+import { InteractionService } from '../services/interaction.service';
 
 interface IHoliday{
   name: string,

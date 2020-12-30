@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms'
 import { FormsModule } from "@angular/forms";
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-
-
 import { AppComponent } from './app.component';
 import { HolidaysOfferComponent } from './holidays-offer/holidays-offer.component';
 import { HolidaysOfferElementComponent } from './holidays-offer-element/holidays-offer-element.component';
@@ -13,11 +11,14 @@ import { FiltersComponent } from './filters/filters.component';
 import { TrolleyComponent } from './trolley/trolley.component';
 import { StarsComponent } from './stars/stars.component';
 import { CommonModule } from '@angular/common';
-import { FilterLocationPipe } from './filter-location.pipe';
-import { FilterRatingPipe } from './filter-rating.pipe';
-import { FilterPricePipe } from './filter-price.pipe';
-import { FilterDatePipe } from './filter-date.pipe';
+import { FilterLocationPipe } from './pipes/filter-location.pipe';
+import { FilterRatingPipe } from './pipes/filter-rating.pipe';
+import { FilterPricePipe } from './pipes/filter-price.pipe';
+import { FilterDatePipe } from './pipes/filter-date.pipe';
 import { SliderComponent } from './slider/slider.component';
+
+// import { AngularFireModule } from "@angular/fire";
+// import { environment } from '../environments/environment';
 
 
 
@@ -45,6 +46,7 @@ import { SliderComponent } from './slider/slider.component';
     ReactiveFormsModule,
     NgxSliderModule,
     FormsModule,
+    // AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   exports: [
     SliderComponent
