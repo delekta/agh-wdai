@@ -21,14 +21,17 @@ export class CustomersListComponent implements OnInit {
     this.customerService.getCustomersList().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
-          ({key: c.payload.doc.id, ...c.payload.doc.data()})
+          ({
+            key: c.payload.doc.id, ...c.payload.doc.data()
+          })
         )
       )
     ).subscribe(customers => {
       this.customers = customers;
+      this.customers.forEach(customer => {
+        this.customerService.addId(customer.key)
+      })
     })
-    console.log(this.customers);
-    
   }
 
   deleteCustomers() {

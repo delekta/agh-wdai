@@ -18,8 +18,17 @@ export class CustomersListComponent implements OnInit {
   }
 
   getCustomersList() {
-    this.customerService.getCustomersList();
- 
+    this.customerService.getCustomersList().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ( 
+            {key: c.payload.key, ...c.payload.val()}
+          )
+        )
+      )
+    ).subscribe(
+      students => this.customers = students
+    );
   }
 
   deleteCustomers() {

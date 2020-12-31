@@ -23,6 +23,8 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   deleteCustomer() {
+    // console.log( this.customer.key);
+    
     this.customerService
       .deleteCustomer(this.customer.key)
   }
