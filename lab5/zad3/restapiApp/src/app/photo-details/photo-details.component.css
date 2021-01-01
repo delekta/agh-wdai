@@ -1,0 +1,21 @@
+.card{
+    width:200px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+img{
+    height: 200px;
+    width: auto;
+}
+
+.title2{
+    display: inline-block;
+    font-weight: bold;
+}
+
+span{
+    font-weight: normal;
+    display: block;
+    float: right;
+}

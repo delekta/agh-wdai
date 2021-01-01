@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>Dodaj Nowy Post</h2>
+    <form [formGroup]="newPost" (ngSubmit)="onSubmit(newPost.value)">
+        <div class="form-group">
+            <label>ID uzytkownika</label>
+            <input type="text" class="form-control" formControlName="userId">
+        </div>
+        <div class="form-group">
+            <label>Tytuł</label>
+            <input type="text" class="form-control" formControlName="title">
+        </div>
+        <div class="form-group">
+            <label>Treść</label>
+            <input type="text" #startDate class="form-control" formControlName="body">
+        </div>
+        <button type="submit" [disabled]="!newPost.valid" class="btn btn-primary">Dodaj</button>
+    </form>
+</div>

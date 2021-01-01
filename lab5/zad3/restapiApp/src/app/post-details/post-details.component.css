@@ -1,0 +1,16 @@
+.card{
+    width:200px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.title2{
+    display: inline-block;
+    font-weight: bold;
+}
+
+span{
+    font-weight: normal;
+    display: block;
+    float: right;
+}
