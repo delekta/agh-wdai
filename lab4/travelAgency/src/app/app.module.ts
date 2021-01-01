@@ -16,6 +16,7 @@ import { FilterRatingPipe } from './pipes/filter-rating.pipe';
 import { FilterPricePipe } from './pipes/filter-price.pipe';
 import { FilterDatePipe } from './pipes/filter-date.pipe';
 import { SliderComponent } from './slider/slider.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 // import { AngularFireModule } from "@angular/fire";
 // import { environment } from '../environments/environment';
@@ -46,6 +47,7 @@ import { SliderComponent } from './slider/slider.component';
     ReactiveFormsModule,
     NgxSliderModule,
     FormsModule,
+    AppRoutingModule,
     // AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   exports: [

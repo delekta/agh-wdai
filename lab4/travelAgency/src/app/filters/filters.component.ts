@@ -1,5 +1,5 @@
 import { ChangeContext, Options, PointerType } from '@angular-slider/ngx-slider';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FilterInteractionService } from '../services/filter-interaction.service';
 
 interface IHoliday{
@@ -20,7 +20,7 @@ interface IHoliday{
   styleUrls: ['./filters.component.css']
 })
 export class FiltersComponent implements OnInit {
-  public holidays: IHoliday[];
+  @Input('holidays') public holidays: IHoliday[];
   public stars: number[] = [];
   public locations: string[] = [];
   public priceRangeMax: number = Number.MIN_VALUE;
@@ -44,6 +44,7 @@ export class FiltersComponent implements OnInit {
     this._interactionFilterService.holidays$.subscribe(
       holidays => {this.setHolidays(holidays)}
     )
+    this.setHolidays(this.holidays) //[!]
   }
 
   setHolidays(holidays: IHoliday[]){

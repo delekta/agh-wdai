@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InteractionService } from '../services/interaction.service';
+import { TrolleyInteractionService } from '../services/trolley-interaction.service';
 
 interface IReserved{
   name: string;
@@ -13,19 +14,14 @@ interface IReserved{
   styleUrls: ['./trolley.component.css']
 })
 export class TrolleyComponent implements OnInit {
+  constructor(private _interactionTrolleyService: TrolleyInteractionService) { }
   public reservedHolidays = [];
   public sum: number = 0;
-
-  constructor(private _interactionService: InteractionService) { }
-
+  
   ngOnInit(): void {
-    this._interactionService.dataToShow$.subscribe(
-      d => {
-        this.reservedHolidays = d;
-        console.log(this.reservedHolidays);
-        this.updateSum();
-      }
-    )
+    this.reservedHolidays = this._interactionTrolleyService.getReservedHolidays();
+    console.log(this.reservedHolidays);
+    this.updateSum();
   }
 
   updateSum(){

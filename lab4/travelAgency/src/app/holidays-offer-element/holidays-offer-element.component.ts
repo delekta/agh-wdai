@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { TrolleyInteractionService } from '../services/trolley-interaction.service';
 
 interface IHoliday{
   name: string,
@@ -12,13 +13,19 @@ interface IHoliday{
   rating: number,
 }
 
+interface IReserved{
+  name: string;
+  amount: number;
+  price: number;
+}
+
 @Component({
   selector: 'app-holidays-offer-element',
   templateUrl: './holidays-offer-element.component.html',
   styleUrls: ['./holidays-offer-element.component.css']
 })
 
-export class HolidaysOfferElementComponent{
+export class HolidaysOfferElementComponent implements OnInit{
   @Input()  public holiday: IHoliday;
   @Input()  public rating: number;
   @Input()  public maxPrice: number;
@@ -26,11 +33,22 @@ export class HolidaysOfferElementComponent{
   @Output() public removeCardEmitter = new EventEmitter;
   @Output() public reserveEmitter = new EventEmitter;
   @Output() public ratingEmitter = new EventEmitter;
+  public placeReserved: number;
 
+  constructor(private _interactionTrolleyService: TrolleyInteractionService){}
+
+  ngOnInit(): void {
+    this.placeReserved = 0;
+    var reservedHolidays: Array<IReserved> = this._interactionTrolleyService.getReservedHolidays();
+    for(let holiday of reservedHolidays){
+      if(holiday.name === this.holiday.name){
+        this.placeReserved = holiday.amount;
+      }
+    }
     
+  }
 
-
-  public placeReserved: number = 0;
+  
 
   // Used in to rating
   public stars = [1, 2, 3, 4, 5, 6]

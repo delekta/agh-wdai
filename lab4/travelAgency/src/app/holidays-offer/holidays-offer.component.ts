@@ -3,6 +3,7 @@ import { NumberValueAccessor } from '@angular/forms';
 import { element } from 'protractor';
 import { FilterInteractionService } from '../services/filter-interaction.service';
 import { InteractionService } from '../services/interaction.service';
+import { TrolleyInteractionService } from '../services/trolley-interaction.service';
 
 interface IHoliday{
   name: string,
@@ -121,7 +122,9 @@ export class HolidaysOfferComponent implements OnInit {
   )
     // Holidays Array End
 
-  public sumOfAllReserved :number = 0;
+  public sumOfAllReserved :number;
+  public reservedHolidays: Array<IReserved>;
+
   public minPrice: number;
   public maxPrice: number;
 
@@ -133,17 +136,17 @@ export class HolidaysOfferComponent implements OnInit {
   public dateRangeMin = new Date(1970, 0, 1);
   public dateRangeMax = new Date(2030, 11, 30);
 
-  public reservedHolidays = new Array<IReserved>();
-
   @Input() elementToAdd: IHoliday;
   @Input() shouldAdd: boolean;
   @Output() shouldAddEmitter = new EventEmitter;
 
-  constructor(private _interactionService: InteractionService, private _interactionFilterService: FilterInteractionService) { 
+  constructor(private _interactionService: InteractionService, private _interactionFilterService: FilterInteractionService, private _interactionTrolleyService: TrolleyInteractionService) { 
     this.updateMaxMinPrices();
   }
 
   ngOnInit(): void {
+    this.sumOfAllReserved = this._interactionTrolleyService.getSumOfAllReserved();
+    this.reservedHolidays = this._interactionTrolleyService.getReservedHolidays();
     this._interactionService.elementToAdd$.subscribe(
       element => {this.addCard(element)}
     )
@@ -170,7 +173,7 @@ export class HolidaysOfferComponent implements OnInit {
     )
   }
 
-  sendDataToFilters(){
+  sendDataToFilters(){    
     this._interactionFilterService.sendCurrentDataToFilters(this.holidays)
   }
 
@@ -195,7 +198,7 @@ export class HolidaysOfferComponent implements OnInit {
   updateSumOfAll(data2){
     this.sumOfAllReserved += data2.value; 
     this.updateReservedHolidays(data2)
-    this._interactionService.sendReservedHolidays(this.reservedHolidays)
+    this._interactionTrolleyService.setSumOfAllReserved(this.sumOfAllReserved)
   }
 
   updateReservedHolidays(data2){
@@ -223,6 +226,7 @@ export class HolidaysOfferComponent implements OnInit {
         })
       }
     }
+    this._interactionTrolleyService.setReservedHolidays(this.reservedHolidays)
     // console.log(this.reservedHolidays);
   }
 

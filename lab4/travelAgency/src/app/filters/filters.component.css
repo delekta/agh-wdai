@@ -10,26 +10,22 @@ hr{
     border-color: white;
 }
 
-@media screen and (max-width: 1020px){
-    .locations{
-        grid-area: locations
-    }
-    .stars{
-        grid-area: stars
-    }
-    .prices{
-        grid-area: prices
-    }
-    .container2{
-        display: grid;
-        grid-template-areas:
-        "locations stars prices";
-    }
+.locations{
+    grid-area: locations
+}
+.stars{
+    grid-area: stars
+}
+.prices{
+    grid-area: prices
+}
+.container2{
+    display: grid;
+    grid-template-areas:
+    "locations stars prices";
+}
 
-    
-
-    hr{
-        border-color: transparent;
-    }
+hr{
+    border-color: transparent;
 }
 
