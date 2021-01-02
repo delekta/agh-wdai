@@ -5,18 +5,13 @@
     </div>
     <div class="content">
         <p> Nazwa: {{holiday.name | uppercase}}</p>
-        <p>
-            <ng-conatiner *ngFor="let star of stars">
-                <app-stars (starEnter)="onStarEnter($event)" (starLeave)="onStarLeave()" (starClicked)="onStarClick($event)" [starId]="star" [rating]="hoverState || rating"></app-stars>
-            </ng-conatiner>
-        </p>
         <p> Kraj: {{holiday.country | titlecase}} </p>
         <p> Cena: {{holiday.price | currency: 'EUR'}} </p>
         <p> Termin: {{holiday.startDate | date}} - {{holiday.endDate | date}} </p>
         <p> Ilosc miejsc: {{holiday.maxPlaces}} </p>
-        <p> Opis: {{holiday.description}} </p>
+        <!-- <p> Opis: {{holiday.description}} </p> -->
     </div>
-    <div class="bottom">
+    <div class="bottom"> 
         <div class="info">
             <!-- Pomysl nad zmiana tych ifow -->
             <p *ngIf="placeReserved == 0">
@@ -36,5 +31,8 @@
             <i class="fas fa-minus-square minusBtn " (click) = "cancelPlace()" [ngStyle]="{'visibility': (placeReserved == 0) ? 'hidden' : 'visible'}"></i>
             <i class="fas fa-plus-square plusBtn" (click) = "reservePlace()" [ngStyle]="{'visibility': (placeReserved >= holiday.maxPlaces) ? 'hidden' : 'visible'}"></i>
         </div>
+        <nav class="text-center">
+            <a routerLink="details" class="btn btn-primary active m-1 w-50" role="button" routerLinkActive="active" (click)="sendDataToDetailsComponent(holiday)">Szczegóły</a>
+        </nav>
     </div>
 </div>

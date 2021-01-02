@@ -1,0 +1,40 @@
+<div class="holiday-element">
+    <div class="img">
+        <div class="text-center font-weight-bold display-4"> {{holiday.name | uppercase}}</div>
+        <img [src]="holiday.imgSrc" alt="">
+        <div>
+            <ng-conatiner *ngFor="let star of stars">
+                <app-stars (starEnter)="onStarEnter($event)" (starLeave)="onStarLeave()" (starClicked)="onStarClick($event)" [starId]="star" [rating]="hoverState || rating"></app-stars>
+            </ng-conatiner>
+        </div>
+    </div>
+    <div class="content">
+        <p> Kraj: {{holiday.country | titlecase}} </p>
+        <p> Cena: {{holiday.price | currency: 'EUR'}} </p>
+        <p> Termin: {{holiday.startDate | date}} - {{holiday.endDate | date}} </p>
+        <p> Ilosc miejsc: {{holiday.maxPlaces}} </p>
+        <p> Opis: {{holiday.description}} </p>
+    
+        <div class="bottom">
+            <div class="info">
+                <!-- Pomysl nad zmiana tych ifow -->
+                <p *ngIf="placeReserved == 0">
+                    Zarezerwuj
+                </p>
+
+                <p *ngIf="placeReserved > 0 && placeReserved < holiday.maxPlaces">
+                    Pozostało {{holiday.maxPlaces - placeReserved}} miejsc 
+                </p> 
+
+                <p *ngIf="placeReserved == holiday.maxPlaces">
+                    Brak wolnych miejsc
+                </p>
+
+            </div>
+            <div class="btns">
+                <i class="fas fa-minus-square minusBtn " (click) = "cancelPlace()" [ngStyle]="{'visibility': (placeReserved == 0) ? 'hidden' : 'visible'}"></i>
+                <i class="fas fa-plus-square plusBtn" (click) = "reservePlace()" [ngStyle]="{'visibility': (placeReserved >= holiday.maxPlaces) ? 'hidden' : 'visible'}"></i>
+            </div>
+        </div>
+    </div>
+</div>

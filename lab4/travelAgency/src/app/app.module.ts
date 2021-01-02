@@ -21,6 +21,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AngularFireModule } from "@angular/fire";
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule} from '@angular/fire/database';
+import { HolidayDetailsComponent } from './holiday-details/holiday-details.component';
 
 
 
@@ -41,6 +42,7 @@ import { AngularFireDatabaseModule} from '@angular/fire/database';
     FilterPricePipe,
     FilterDatePipe,
     SliderComponent,
+    HolidayDetailsComponent,
 
   ],
   imports: [

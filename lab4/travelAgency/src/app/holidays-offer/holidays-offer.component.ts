@@ -66,6 +66,11 @@ export class HolidaysOfferComponent implements OnInit {
     this._interactionFilterService.maxPrice$.subscribe(
       maxPrice => {this.priceRangeMax = maxPrice}
     )
+    
+    this._interactionTrolleyService.numberOfReserved$.subscribe(
+      sum => {this.sumOfAllReserved = sum}
+    )
+
     this.holidays = this.holidays;
   }
 
@@ -97,15 +102,12 @@ export class HolidaysOfferComponent implements OnInit {
 
   addCard(elementToAdd: Holiday){
     this.holidays = [...this.holidays, elementToAdd]
-
-
     this.updateMaxMinPrices();
-
     this.sendDataToFilters();
   }
 
   removeCard(cardToRemove : Holiday){
-    console.log("jestem w removeCard");
+    // console.log("jestem w removeCard");
     
     this.holidays = this.holidays.filter(x => x != cardToRemove)
     this.updateMaxMinPrices();
@@ -114,50 +116,9 @@ export class HolidaysOfferComponent implements OnInit {
     this.deleteFromDataBase(cardToRemove)
   }
 
-  updateSumOfAll(data2){
-    this.sumOfAllReserved += data2.value; 
-    this.updateReservedHolidays(data2)
-    this._interactionTrolleyService.setSumOfAllReserved(this.sumOfAllReserved)
-  }
-
-  updateReservedHolidays(data2){
-    if(this.reservedHolidays.find(e => (e.name == data2.holiday.name))){
-      const obj: ReservedHoliday = this.reservedHolidays.find(e => (e.name == data2.holiday.name))
-      if(data2.value == 1){
-        obj.amount = obj.amount + 1
-      }
-      else if(data2.value == -1){
-        obj.amount = obj.amount - 1 
-        if(obj.amount == 0){
-          this.reservedHolidays = this.reservedHolidays.filter(e => e.name != obj.name)
-        }
-      } // we remove whole element
-      else{
-        this.reservedHolidays = this.reservedHolidays.filter(e => e.name != obj.name)
-      }
-    }
-    else{
-      if(data2.value == 1){
-        this.reservedHolidays.push({
-          name: data2.holiday.name,
-          amount: 1,
-          price: data2.holiday.price
-        })
-      }
-    }
-    this._interactionTrolleyService.setReservedHolidays(this.reservedHolidays)
-    // console.log(this.reservedHolidays);
-  }
-
   updateMaxMinPrices(){
     this.maxPrice = Math.max(...this.holidays.map(holiday => holiday.price))
     this.minPrice = Math.min(...this.holidays.map(holiday => holiday.price)) 
-  }
-
-  updateRating(holiday: Holiday){
-    this.holidays.find(h => h.name === holiday.name).rating = holiday.rating;
-    this._interactionHolidaysService.updateHoliday(holiday.key, {rating: holiday.rating})
-    this.sendDataToFilters();
   }
 
 }
