@@ -1,18 +1,8 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms'
 import { InteractionService } from '../services/interaction.service';
-
-interface IHoliday{
-  name: string,
-  country: string,
-  startDate: Date,
-  endDate: Date,
-  price: number,
-  maxPlaces:  number,
-  description: string,
-  imgSrc: string,
-  rating: number,
-}
+import {Holiday} from '../holidays-offer-element/holiday'
+import { HolidaysService } from '../services/holidays.service';
 
 @Component({
   selector: 'app-form',
@@ -36,7 +26,7 @@ export class FormComponent implements OnInit {
 
   @Output() public addHolidayElement = new EventEmitter;
 
-  constructor(private _interaction: InteractionService) { }
+  constructor(private _interaction: InteractionService, private _interactionHolidaysService: HolidaysService) { }
 
   ngOnInit(): void {
   }
@@ -45,21 +35,23 @@ export class FormComponent implements OnInit {
     // this.addHolidayElement.emit(this.createHolidayElement(this.newHoliday.value))
     // Problem - znika defaultowy sort przy submicie
     this._interaction.sendElement(this.createHolidayElement(this.newHoliday.value))
+    this.sendHolidayToDatabase(this.createHolidayElement(this.newHoliday.value))
     this.newHoliday.reset();
   }
 
   createHolidayElement(form: any){
-    var res = <IHoliday>{
+    var res = <Holiday>{
       name: form?.name.toLowerCase(),
       country: form?.country.toLowerCase(),
-      startDate: new Date(form?.startDate),
-      endDate: new Date(form?.endDate),
+      startDate: form.startDate,
+      endDate: form.endDate,
       price: parseInt(form?.price),
       maxPlaces: parseInt(form?.maxPlaces),
       description: form?.description,
       imgSrc: form?.imgSrc,
       rating: 0
     };
+
     return res
   }
 
@@ -68,6 +60,10 @@ export class FormComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  sendHolidayToDatabase(holiday: Holiday){
+    this._interactionHolidaysService.createHoliday(holiday)
   }
 
 }

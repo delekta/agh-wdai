@@ -1,23 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-
-interface IHoliday{
-  name: string,
-  country: string,
-  startDate: Date,
-  endDate: Date,
-  price: number,
-  maxPlaces:  number,
-  description: string,
-  imgSrc: string,
-  rating: number,
-}
+import {Holiday} from '../holidays-offer-element/holiday'
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterInteractionService {
-  private _currentHolidays = new Subject<IHoliday[]>()
+  private _currentHolidays = new Subject<Holiday[]>()
   holidays$ = this._currentHolidays.asObservable(); 
 
   private _filteredLocations = new Subject<string[]>()
@@ -33,7 +22,7 @@ export class FilterInteractionService {
   maxPrice$ = this._filteredMaxPrice.asObservable(); 
 
 
-  sendCurrentDataToFilters(holidays: IHoliday[]){
+  sendCurrentDataToFilters(holidays: Holiday[]){
     this._currentHolidays.next(holidays)
   }
 

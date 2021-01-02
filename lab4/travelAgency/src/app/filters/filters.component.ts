@@ -1,18 +1,7 @@
 import { ChangeContext, Options, PointerType } from '@angular-slider/ngx-slider';
 import { Component, Input, OnInit } from '@angular/core';
 import { FilterInteractionService } from '../services/filter-interaction.service';
-
-interface IHoliday{
-  name: string,
-  country: string,
-  startDate: Date,
-  endDate: Date,
-  price: number,
-  maxPlaces:  number,
-  description: string,
-  imgSrc: string,
-  rating: number;
-}
+import {Holiday} from '../holidays-offer-element/holiday'
 
 @Component({
   selector: 'app-filters',
@@ -20,13 +9,13 @@ interface IHoliday{
   styleUrls: ['./filters.component.css']
 })
 export class FiltersComponent implements OnInit {
-  @Input('holidays') public holidays: IHoliday[];
+  @Input() public holidays: Array<Holiday>;
   public stars: number[] = [];
   public locations: string[] = [];
-  public priceRangeMax: number = Number.MIN_VALUE;
-  public priceRangeMin: number = Number.MAX_VALUE;
-  public dateRangeMax: Date = new Date(1970, 0, 1);
-  public dateRangeMin: Date = new Date(2030, 0, 1);
+  public priceRangeMax: number = Number.MAX_VALUE;
+  public priceRangeMin: number = Number.MIN_VALUE;
+  public dateRangeMax: Date = new Date(2030, 0, 1);
+  public dateRangeMin: Date = new Date(1970, 0, 1);
 
   private starsChecked: number[] = [];
   private locationsChecked: string[] = [];
@@ -47,14 +36,14 @@ export class FiltersComponent implements OnInit {
     this.setHolidays(this.holidays) //[!]
   }
 
-  setHolidays(holidays: IHoliday[]){
+  setHolidays(holidays: Array<Holiday>){
     this.holidays = holidays;
     this.setAllAttributes();
   }
 
   setAllAttributes(){
     this.resetToDefault();
-
+``
     for(let holiday of this.holidays){
       if(this.stars.indexOf(holiday.rating) === -1){
         this.stars = [...this.stars, holiday.rating]

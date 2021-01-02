@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
+import {ReservedHoliday} from '../holidays-offer/reservedHoliday'
 
-interface IReserved{
-  name: string;
-  amount: number;
-  price: number;
-}
 @Injectable({
   providedIn: 'root'
 })
 export class TrolleyInteractionService {
   public sumOfAllReserved :number = 0;
-  public reservedHolidays = new Array<IReserved>();
+  public reservedHolidays = new Array<ReservedHoliday>();
   constructor() { }
 
   getSumOfAllReserved(){
@@ -25,7 +21,7 @@ export class TrolleyInteractionService {
     this.sumOfAllReserved = sum
   }
 
-  setReservedHolidays(holidays: Array<IReserved>){
+  setReservedHolidays(holidays: Array<ReservedHoliday>){
     this.reservedHolidays = holidays
   }
 }

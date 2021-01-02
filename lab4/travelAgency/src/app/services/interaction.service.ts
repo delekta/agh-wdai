@@ -1,17 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-
-interface IHoliday{
-  name: string,
-  country: string,
-  startDate: Date,
-  endDate: Date,
-  price: number,
-  maxPlaces:  number,
-  description: string,
-  imgSrc: string,
-  rating: number,
-}
+import {Holiday} from '../holidays-offer-element/holiday'
 
 interface IReserved{
   name: string;
@@ -23,14 +12,14 @@ interface IReserved{
   providedIn: 'root'
 })
 export class InteractionService {
-  private _elementToAddSource = new Subject<IHoliday>()
+  private _elementToAddSource = new Subject<Holiday>()
   elementToAdd$ = this._elementToAddSource.asObservable(); 
 
   private _updatedDataToTrolley = new Subject <Array<IReserved>>()
   dataToShow$ = this._updatedDataToTrolley.asObservable()
   constructor() { }
 
-  sendElement(element: IHoliday){
+  sendElement(element: Holiday){
     this._elementToAddSource.next(element)
   }
 

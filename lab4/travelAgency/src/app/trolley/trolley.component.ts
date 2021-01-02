@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InteractionService } from '../services/interaction.service';
 import { TrolleyInteractionService } from '../services/trolley-interaction.service';
-
-interface IReserved{
-  name: string;
-  amount: number;
-  price: number;
-}
+import {ReservedHoliday} from '../holidays-offer/reservedHoliday'
 
 @Component({
   selector: 'app-trolley',
@@ -20,7 +15,6 @@ export class TrolleyComponent implements OnInit {
   
   ngOnInit(): void {
     this.reservedHolidays = this._interactionTrolleyService.getReservedHolidays();
-    console.log(this.reservedHolidays);
     this.updateSum();
   }
 

@@ -1,16 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
-interface IHoliday{
-  name: string,
-  country: string,
-  startDate: Date,
-  endDate: Date,
-  price: number,
-  maxPlaces:  number,
-  description: string,
-  imgSrc: string,
-  rating: number,
-}
+import {Holiday} from '../holidays-offer-element/holiday'
 
 @Pipe({
   name: 'filterDate'
@@ -18,8 +7,8 @@ interface IHoliday{
 
 export class FilterDatePipe implements PipeTransform {
 
-  transform(holidays: IHoliday[], dateRangeMin:Date, dateRangeMax:Date): IHoliday[] {
-    return holidays.filter(h => h.startDate >= dateRangeMin && h.endDate <= dateRangeMax)
+  transform(holidays: Holiday[], dateRangeMin:Date, dateRangeMax:Date): Holiday[] {
+    return holidays.filter(h => new Date(h.startDate) >= dateRangeMin && new Date(h.endDate) <= dateRangeMax)
     }
 
 }

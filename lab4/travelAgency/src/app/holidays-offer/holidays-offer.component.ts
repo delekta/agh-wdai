@@ -4,24 +4,10 @@ import { element } from 'protractor';
 import { FilterInteractionService } from '../services/filter-interaction.service';
 import { InteractionService } from '../services/interaction.service';
 import { TrolleyInteractionService } from '../services/trolley-interaction.service';
-
-interface IHoliday{
-  name: string,
-  country: string,
-  startDate: Date,
-  endDate: Date,
-  price: number,
-  maxPlaces:  number,
-  description: string,
-  imgSrc: string,
-  rating: number;
-}
-
-interface IReserved{
-  name: string;
-  amount: number;
-  price: number;
-}
+import {Holiday} from '../holidays-offer-element/holiday'
+import { HolidaysService } from '../services/holidays.service';
+import { map } from 'rxjs/operators';
+import {ReservedHoliday} from './reservedHoliday'
 
 @Component({
   selector: 'app-holidays-offer',
@@ -29,101 +15,11 @@ interface IReserved{
   styleUrls: ['./holidays-offer.component.css']
 })
 export class HolidaysOfferComponent implements OnInit {
-  // Holiday Array Begining
-  public holidays = new Array<IHoliday>(
-    {
-      name: "słoneczne wybrzeze",
-      country: "turcja",
-      startDate: new Date(2021, 6, 20),
-      endDate: new Date(2021, 6, 27),
-      price: 700,
-      maxPlaces:  10,
-      description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
-      imgSrc: "https://a.loveholidays.com/images/holidays/fede33b090c05cf5d6c61cc54ce04b2ec97408bf/holidays/turkey/antalya/belek/granada-luxury-belek-all-inclusive-0.jpg",
-      rating: 0
-    },
-    {
-      name: "gorące włochy",
-      country: "włochy",
-      startDate: new Date(2021, 7, 21),
-      endDate: new Date(2021, 7, 27),
-      price: 900,
-      maxPlaces:  12,
-      description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
-      imgSrc: "https://www.wantedinrome.com/i/preview/storage/uploads/2020/04/holiday_housing.jpg",
-      rating: 0
-    },
-    {
-      name: "wisienki?",
-      country: "japonia",
-      startDate: new Date(2021, 2, 22),
-      endDate: new Date(2021, 2, 29),
-      price: 1800,
-      maxPlaces:  20,
-      description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
-      imgSrc: "https://s3.viva.pl/styl-zycia/japonia-453204-GALLERY_BIG.jpg",
-      rating: 0
-    },
-    {
-      name: "niezapomniana austria",
-      country: "austria",
-      startDate: new Date(2021, 0, 21),
-      endDate: new Date(2021, 0, 26),
-      price: 750,
-      maxPlaces:  8,
-      description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
-      imgSrc: "https://assets.website-files.com/5c6a862c3ca6bd4ca53749b8/5c890448590eda0da24a8c71_DSC02678.jpg",
-      rating: 0
-    },
-    {
-      name: "boskie wakacje",
-      country: "grecja",
-      startDate: new Date(2021, 5, 18),
-      endDate: new Date(2021, 5, 25),
-      price: 800,
-      maxPlaces:  16,
-      description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
-      imgSrc: "https://4.bp.blogspot.com/-ox8U-HE2oLE/XEwcphSOueI/AAAAAAAAOeM/gYPenPO3Z0cLhDmc1-M54kNy8wT1SD9AACLcBGAs/s1600/Road%2BTrip%2Bof%2Bthe%2BGods%252C%2BParthenon.jpg",
-      rating: 0
-    },
-    {
-      name: "swego nie znacie",
-      country: "polska",
-      startDate: new Date(2021, 4, 1),
-      endDate: new Date(2021, 4, 6),
-      price: 500,
-      maxPlaces:  10,
-      description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
-      imgSrc: "https://cdn.pkt.pl/f-4403-wczasy-w-polsce-czyli-co-oferuja-osrodki-wypoczynkowe-na-mazurach.jpg",
-      rating: 3
-    },
-    {
-      name: "poranna herbata",
-      country: "anglia",
-      startDate: new Date(2021, 8, 2),
-      endDate: new Date(2021, 8, 9),
-      price: 1000,
-      maxPlaces:  6,
-      description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
-      imgSrc: "https://di5fgdew4nptq.cloudfront.net/api2/media/images/f8147872-890b-e611-80cb-c81f66f7476e",
-      rating: 1
-    },
-    {
-      name: "bez pośpiechu",
-      country: "francja",
-      startDate: new Date(2021, 7, 14),
-      endDate: new Date(2021, 7, 23),
-      price: 1200,
-      maxPlaces:  14,
-      description: "Malowniczo położony, tuż przy pięknej plaży omywanej turkusowymi wodami Morza Egejskiego hotel oferuje niezapomniane chwile",
-      imgSrc: "https://aws-tiqets-cdn.imgix.net/images/content/2e6eebee20804cacab6d5cb9ecac49c6.jpg?auto=format&fit=crop&ixlib=python-3.2.1&q=70&s=e20f24af8ce54bbbcbf8f2df0d221427",
-      rating: 0
-    },
-  )
+  public holidays: any = [];
     // Holidays Array End
 
   public sumOfAllReserved :number;
-  public reservedHolidays: Array<IReserved>;
+  public reservedHolidays: Array<ReservedHoliday>;
 
   public minPrice: number;
   public maxPrice: number;
@@ -136,22 +32,21 @@ export class HolidaysOfferComponent implements OnInit {
   public dateRangeMin = new Date(1970, 0, 1);
   public dateRangeMax = new Date(2030, 11, 30);
 
-  @Input() elementToAdd: IHoliday;
+  @Input() elementToAdd: Holiday;
   @Input() shouldAdd: boolean;
   @Output() shouldAddEmitter = new EventEmitter;
 
-  constructor(private _interactionService: InteractionService, private _interactionFilterService: FilterInteractionService, private _interactionTrolleyService: TrolleyInteractionService) { 
-    this.updateMaxMinPrices();
+  constructor(private _interactionService: InteractionService, private _interactionFilterService: FilterInteractionService, private _interactionTrolleyService: TrolleyInteractionService
+    ,private _interactionHolidaysService: HolidaysService) { 
   }
 
   ngOnInit(): void {
+    this.getHolidaysList()
     this.sumOfAllReserved = this._interactionTrolleyService.getSumOfAllReserved();
     this.reservedHolidays = this._interactionTrolleyService.getReservedHolidays();
     this._interactionService.elementToAdd$.subscribe(
       element => {this.addCard(element)}
     )
-    this.sendDataToFilters();
-
     this._interactionFilterService.locations$.subscribe(
       location => {
         this.locations = location
@@ -171,13 +66,36 @@ export class HolidaysOfferComponent implements OnInit {
     this._interactionFilterService.maxPrice$.subscribe(
       maxPrice => {this.priceRangeMax = maxPrice}
     )
+    this.holidays = this.holidays;
+  }
+
+  getHolidaysList() {
+    this._interactionHolidaysService.getHolidaysList().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => // [???]
+          ( 
+            {key: c.payload.key, ...c.payload.val()}
+          )
+        )
+      )
+    ).subscribe(
+      holidays => {
+        this.holidays = <Array<Holiday>>holidays;
+        this.updateMaxMinPrices();
+        this.sendDataToFilters(); 
+      }
+    );
+  }
+
+  deleteFromDataBase(cardToRemove : Holiday){
+    this._interactionHolidaysService.deleteHoliday(cardToRemove.key)
   }
 
   sendDataToFilters(){    
     this._interactionFilterService.sendCurrentDataToFilters(this.holidays)
   }
 
-  addCard(elementToAdd: IHoliday){
+  addCard(elementToAdd: Holiday){
     this.holidays = [...this.holidays, elementToAdd]
 
 
@@ -186,13 +104,14 @@ export class HolidaysOfferComponent implements OnInit {
     this.sendDataToFilters();
   }
 
-  removeCard(cardToRemove : IHoliday){
+  removeCard(cardToRemove : Holiday){
     console.log("jestem w removeCard");
     
     this.holidays = this.holidays.filter(x => x != cardToRemove)
     this.updateMaxMinPrices();
     
     this.sendDataToFilters();
+    this.deleteFromDataBase(cardToRemove)
   }
 
   updateSumOfAll(data2){
@@ -203,7 +122,7 @@ export class HolidaysOfferComponent implements OnInit {
 
   updateReservedHolidays(data2){
     if(this.reservedHolidays.find(e => (e.name == data2.holiday.name))){
-      const obj: IReserved = this.reservedHolidays.find(e => (e.name == data2.holiday.name))
+      const obj: ReservedHoliday = this.reservedHolidays.find(e => (e.name == data2.holiday.name))
       if(data2.value == 1){
         obj.amount = obj.amount + 1
       }
@@ -232,13 +151,12 @@ export class HolidaysOfferComponent implements OnInit {
 
   updateMaxMinPrices(){
     this.maxPrice = Math.max(...this.holidays.map(holiday => holiday.price))
-    this.minPrice = Math.min(...this.holidays.map(holiday => holiday.price))
-    console.log(this.maxPrice + " " + this.minPrice);
-    
+    this.minPrice = Math.min(...this.holidays.map(holiday => holiday.price)) 
   }
 
-  updateRating(holiday: IHoliday){
+  updateRating(holiday: Holiday){
     this.holidays.find(h => h.name === holiday.name).rating = holiday.rating;
+    this._interactionHolidaysService.updateHoliday(holiday.key, {rating: holiday.rating})
     this.sendDataToFilters();
   }
 

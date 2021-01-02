@@ -1,23 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
-interface IHoliday{
-  name: string,
-  country: string,
-  startDate: Date,
-  endDate: Date,
-  price: number,
-  maxPlaces:  number,
-  description: string,
-  imgSrc: string,
-  rating: number,
-}
+import {Holiday} from '../holidays-offer-element/holiday'
 
 @Pipe({
   name: 'filterRating'
 })
 export class FilterRatingPipe implements PipeTransform {
 
-  transform(holidays: IHoliday[], ratings: number[]): IHoliday[] {
+  transform(holidays: Holiday[], ratings: number[]): Holiday[] {
     if(ratings.length < 1){
       return holidays
     }

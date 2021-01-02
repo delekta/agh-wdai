@@ -18,8 +18,9 @@ import { FilterDatePipe } from './pipes/filter-date.pipe';
 import { SliderComponent } from './slider/slider.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
-// import { AngularFireModule } from "@angular/fire";
-// import { environment } from '../environments/environment';
+import { AngularFireModule } from "@angular/fire";
+import { environment } from '../environments/environment';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
 
 
 
@@ -48,7 +49,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     NgxSliderModule,
     FormsModule,
     AppRoutingModule,
-    // AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
   exports: [
     SliderComponent
