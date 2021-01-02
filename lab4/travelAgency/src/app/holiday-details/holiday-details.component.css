@@ -21,6 +21,9 @@ img{
 }
 
 .content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     grid-area: content2;
     padding-left: 30px;
     font-size: 25px;
