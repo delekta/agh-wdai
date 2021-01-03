@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'trolley', component:  TrolleyComponent},
   { path: 'form', component:  FormComponent},
   { path: 'holidaysOffer/details/:key', component:  HolidayDetailsComponent},
+  { path: '**', redirectTo: 'holidaysOffer' },
 
 ];
 
