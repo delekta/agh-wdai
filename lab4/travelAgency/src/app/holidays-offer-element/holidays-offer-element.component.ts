@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TrolleyInteractionService } from '../services/trolley-interaction.service';
 import {Holiday} from './holiday'
 import {ReservedHoliday} from '../holidays-offer/reservedHoliday'
-import { DetailsObjectService } from '../services/details-object.service';
 
 @Component({
   selector: 'app-holidays-offer-element',
@@ -18,7 +17,7 @@ export class HolidaysOfferElementComponent implements OnInit{
   @Output() public reserveEmitter = new EventEmitter;
   public placeReserved: number;
 
-  constructor(private _interactionTrolleyService: TrolleyInteractionService, private _interactionDetailsHolidayService: DetailsObjectService){}
+  constructor(private _interactionTrolleyService: TrolleyInteractionService){}
 
   ngOnInit(): void {
     this.placeReserved = 0;
@@ -55,9 +54,4 @@ export class HolidaysOfferElementComponent implements OnInit{
       holiday: this.holiday}
       );
   }
-
-  sendDataToDetailsComponent(h : Holiday){
-    this._interactionDetailsHolidayService.setHoliday(h);
-  }
-
 }

@@ -32,7 +32,7 @@
             <i class="fas fa-plus-square plusBtn" (click) = "reservePlace()" [ngStyle]="{'visibility': (placeReserved >= holiday.maxPlaces) ? 'hidden' : 'visible'}"></i>
         </div>
         <nav class="text-center">
-            <a routerLink="details" class="btn btn-primary active m-1 w-50" role="button" routerLinkActive="active" (click)="sendDataToDetailsComponent(holiday)">Szczegóły</a>
+            <a routerLink='details/{{holiday.key}}' class="btn btn-primary active m-1 w-50" role="button" routerLinkActive="active">Szczegóły</a>
         </nav>
     </div>
 </div>

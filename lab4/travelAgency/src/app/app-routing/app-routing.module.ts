@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'holidaysOffer', component: HolidaysOfferComponent },
   { path: 'trolley', component:  TrolleyComponent},
   { path: 'form', component:  FormComponent},
-  { path: 'holidaysOffer/details', component:  HolidayDetailsComponent},
+  { path: 'holidaysOffer/details/:key', component:  HolidayDetailsComponent},
 
 ];
 

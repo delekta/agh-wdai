@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Holiday } from '../holidays-offer-element/holiday';
 import { ReservedHoliday } from '../holidays-offer/reservedHoliday';
-import { DetailsObjectService } from '../services/details-object.service';
 import { HolidaysService } from '../services/holidays.service';
 import { TrolleyInteractionService } from '../services/trolley-interaction.service';
 
@@ -13,16 +13,15 @@ import { TrolleyInteractionService } from '../services/trolley-interaction.servi
   styleUrls: ['./holiday-details.component.css']
 })
 export class HolidayDetailsComponent implements OnInit {
-  public holiday: Holiday;
+  public holiday: any = {};
   public rating: number;
   public placeReserved: number;
-  ratingEmitter: any; // do zrobienia serwisem
-  reserveEmitter: any; // do zrobienia serwisem
-  constructor(private _interactionDetailsHolidayService: DetailsObjectService, private _interactionHolidaysService: HolidaysService, private _interactionTrolleyService: TrolleyInteractionService) { 
-    this.holiday = this._interactionDetailsHolidayService.getHoliday();
-    this.rating = this.holiday.rating;
-    console.log(this.holiday);
-    
+  public key: string;
+  constructor(private _interactionHolidaysService: HolidaysService, private _interactionTrolleyService: TrolleyInteractionService
+    ,private route: ActivatedRoute) { 
+    this.route.params.subscribe(params => {this.key = params['key']});
+      console.log(this.key);
+    this.getSpecifiedHoliday(this.key);
   }
 
   ngOnInit(): void {
@@ -34,7 +33,6 @@ export class HolidayDetailsComponent implements OnInit {
         break;
       }
     }
-    
   }
 
   // Used in to rating
@@ -69,5 +67,25 @@ export class HolidayDetailsComponent implements OnInit {
       value: -1, 
       holiday: this.holiday}
       );
+  }
+
+  getSpecifiedHoliday(key: string){
+    var res: Holiday[];
+    this._interactionHolidaysService.getHolidaysList().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ( 
+            {key: c.payload.key, ...c.payload.val()}
+          )
+        )
+      )
+    ).subscribe(
+      holidays => {
+         var _holidays = <Array<Holiday>>holidays;      
+         res = _holidays.filter(h => h.key == key)
+         this.holiday = res.pop()
+         this.rating = this.holiday.rating;
+      }
+    );
   }
 }
