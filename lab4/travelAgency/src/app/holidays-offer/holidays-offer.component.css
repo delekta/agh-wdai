@@ -1,17 +1,9 @@
-/* .holiday-offer{
-    background-color: gray;
-} */
-
 .all-holidays{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-
-/* div{
-    padding: 5px;
-} */
 
 .top{
     height: 100px;

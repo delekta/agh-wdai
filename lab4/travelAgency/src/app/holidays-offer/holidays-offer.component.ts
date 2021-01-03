@@ -107,11 +107,8 @@ export class HolidaysOfferComponent implements OnInit {
   }
 
   removeCard(cardToRemove : Holiday){
-    // console.log("jestem w removeCard");
-    
     this.holidays = this.holidays.filter(x => x != cardToRemove)
     this.updateMaxMinPrices();
-    
     this.sendDataToFilters();
     this.deleteFromDataBase(cardToRemove)
   }
