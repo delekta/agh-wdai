@@ -25,16 +25,7 @@ export class HolidayDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // nie aktualizuje się pomimo ze w holidays-element jest tak samo i się aktualizuje [placeReserved?]
     // do zrobienia przycisk [Wroc]
-    this.placeReserved = 0;
-    var reservedHolidays: Array<ReservedHoliday> = this._interactionTrolleyService.getReservedHolidays();
-    for(let holiday of reservedHolidays){
-      if(holiday.name === this.holiday.name){
-        this.placeReserved = holiday.amount;
-        break;
-      }
-    }
   }
 
   // Used in to rating
@@ -87,7 +78,20 @@ export class HolidayDetailsComponent implements OnInit {
          res = _holidays.filter(h => h.key == key)
          this.holiday = res.pop()
          this.rating = this.holiday.rating;
+         this.getAmountOfReserved()
       }
     );
+  }
+
+  getAmountOfReserved(){
+    this.placeReserved = 0;
+    var reservedHolidays: Array<ReservedHoliday> = this._interactionTrolleyService.getReservedHolidays();
+    for(let holiday of reservedHolidays){
+      console.log(holiday.name, this.holiday.name);
+      if(holiday.name === this.holiday.name){
+        this.placeReserved = holiday.amount;
+        break;
+      }
+    }
   }
 }

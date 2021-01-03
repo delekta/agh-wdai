@@ -22,6 +22,7 @@ export class HolidaysOfferElementComponent implements OnInit{
   ngOnInit(): void {
     this.placeReserved = 0;
     var reservedHolidays: Array<ReservedHoliday> = this._interactionTrolleyService.getReservedHolidays();
+    
     for(let holiday of reservedHolidays){
       if(holiday.name === this.holiday.name){
         this.placeReserved = holiday.amount;
