@@ -22,8 +22,10 @@ import { AngularFireModule } from "@angular/fire";
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { HolidayDetailsComponent } from './holiday-details/holiday-details.component';
-
-
+import { LoggingComponent } from './logging/logging.component';
+import { SigningUpComponent } from './signing-up/signing-up.component';
+import {AngularFireAuthModule} from '@angular/fire/auth'
+import {AuthService} from './services/auth.service'
 
 
 
@@ -43,6 +45,8 @@ import { HolidayDetailsComponent } from './holiday-details/holiday-details.compo
     FilterDatePipe,
     SliderComponent,
     HolidayDetailsComponent,
+    LoggingComponent,
+    SigningUpComponent,
 
   ],
   imports: [
@@ -52,12 +56,13 @@ import { HolidayDetailsComponent } from './holiday-details/holiday-details.compo
     FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   exports: [
     SliderComponent
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,17 @@
+<div class="container">
+    <h1>Witaj</h1>
+    <form [formGroup]="userData" (ngSubmit)="signIn()">
+        <div class="form-group">
+            <label>E-mail</label>
+            <input type="text" class="form-control" formControlName="eMail">
+        </div>
+        <div class="form-group">
+            <label>Hasło</label>
+            <input type="password" class="form-control" formControlName="password">
+        </div>
+        <div class="buttons">
+            <button type="submit" [disabled]="!userData.valid" class="btn btn-primary">Zaloguj się</button>
+            <a routerLink="/signingup" role="button" routerLinkActive="active">Nie masz konta? Utwórz je!</a>
+        </div>
+    </form>
+</div>

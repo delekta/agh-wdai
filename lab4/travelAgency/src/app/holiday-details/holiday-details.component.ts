@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Holiday } from '../holidays-offer-element/holiday';
@@ -18,7 +18,7 @@ export class HolidayDetailsComponent implements OnInit {
   public placeReserved: number;
   public key: string;
   constructor(private _interactionHolidaysService: HolidaysService, private _interactionTrolleyService: TrolleyInteractionService
-    ,private route: ActivatedRoute) { 
+    ,private route: ActivatedRoute, private router: Router) { 
     this.route.params.subscribe(params => {this.key = params['key']});
       console.log(this.key);
     this.getSpecifiedHoliday(this.key);
@@ -93,5 +93,9 @@ export class HolidayDetailsComponent implements OnInit {
         break;
       }
     }
+  }
+
+  getBack(){
+    this.router.navigate(['holidaysOffer']);
   }
 }

@@ -6,15 +6,21 @@ import {TrolleyComponent} from '../trolley/trolley.component'
 import {HolidaysOfferComponent} from '../holidays-offer/holidays-offer.component'
 import {FormComponent} from '../form/form.component'
 import {HolidayDetailsComponent} from '../holiday-details/holiday-details.component'
+import {LoggingComponent} from '../logging/logging.component'
+import {SigningUpComponent} from '../signing-up/signing-up.component'
+
+import {AuthGuard} from '../guard/auth.guard'
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'holidaysOffer', pathMatch: 'full' },
-  { path: 'holidaysOffer', component: HolidaysOfferComponent },
-  { path: 'trolley', component:  TrolleyComponent},
-  { path: 'form', component:  FormComponent},
-  { path: 'holidaysOffer/details/:key', component:  HolidayDetailsComponent},
-  { path: '**', redirectTo: 'holidaysOffer' },
+  { path: '', redirectTo: 'logging', pathMatch: 'full' },
+  { path: 'holidaysOffer', component: HolidaysOfferComponent , canActivate: [AuthGuard] },
+  { path: 'trolley', component:  TrolleyComponent, canActivate: [AuthGuard] },
+  { path: 'form', component:  FormComponent, canActivate: [AuthGuard] },
+  { path: 'holidaysOffer/details/:key', component:  HolidayDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'logging', component: LoggingComponent},
+  { path: 'signingup', component: SigningUpComponent},
+  { path: '**', redirectTo: 'logging' , canActivate: [AuthGuard] },
 
 ];
 
