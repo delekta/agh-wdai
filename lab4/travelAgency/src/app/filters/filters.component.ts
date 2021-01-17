@@ -12,8 +12,8 @@ export class FiltersComponent implements OnInit {
   @Input() public holidays: Array<Holiday>;
   public stars: number[] = [];
   public locations: string[] = [];
-  public priceRangeMax: number = Number.MAX_VALUE;
-  public priceRangeMin: number = Number.MIN_VALUE;
+  public priceRangeMax: number = 0;
+  public priceRangeMin: number = 0;
   public dateRangeMax: Date = new Date(2030, 0, 1);
   public dateRangeMin: Date = new Date(1970, 0, 1);
 

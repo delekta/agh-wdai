@@ -1,9 +1,12 @@
-<app-filters [holidays]="holidays"></app-filters>
-<div class="holiday-offer">
-    <div class="top">
-        <div class="sum-of-all-holidays" [ngStyle] = "{'border-color': (sumOfAllReserved < 10) ? 'red' : 'green'}">Ilość zarezerwowanych miejsc: {{sumOfAllReserved}}</div>
-    </div>
-    <div class="all-holidays">
-        <app-holidays-offer-element *ngFor="let holiday of (this.holidays | filterLocation: locations  | filterRating: stars | filterPrice: priceRangeMin: priceRangeMax | filterDate: dateRangeMin: dateRangeMax)" [holiday]="holiday" [minPrice]="minPrice" [maxPrice]="maxPrice" (removeCardEmitter)="removeCard($event)" ></app-holidays-offer-element>
+<div class="container">
+    <app-filters [holidays]="holidays"></app-filters>
+    <div class="holiday-offer">
+        <div class="top">
+            <div class="sum-of-all-holidays" [ngStyle] = "{'border-color': (sumOfAllReserved < 10) ? 'red' : 'green'}">Ilość zarezerwowanych miejsc: {{sumOfAllReserved}}</div>
+        </div>
+        <div class="all-holidays">
+            <app-holidays-offer-element *ngFor="let holiday of (this.holidays | filterLocation: locations  | filterRating: stars | filterPrice: priceRangeMin: priceRangeMax | filterDate: dateRangeMin: dateRangeMax)" [holiday]="holiday" [minPrice]="minPrice" [maxPrice]="maxPrice" (removeCardEmitter)="removeCard($event)" ></app-holidays-offer-element>
+        </div>
     </div>
 </div>
+

@@ -8,8 +8,14 @@ import { AuthService } from './services/auth.service';
 })
 
 export class AppComponent {
-  public companyName = "Tu i Tam..."
+  public companyName = "Tu i Tam...";
+  public email: string;
   constructor(private _authenticationService: AuthService){
+    this._authenticationService.email$.subscribe(
+      e => {
+        this.email = e
+      }
+    )
   }
 
   signOut(){

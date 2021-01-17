@@ -33,7 +33,6 @@ export class FormComponent implements OnInit {
 
   onSubmit(){
     // this.addHolidayElement.emit(this.createHolidayElement(this.newHoliday.value))
-    // Problem - znika defaultowy sort przy submicie
     this._interaction.sendElement(this.createHolidayElement(this.newHoliday.value))
     this.sendHolidayToDatabase(this.createHolidayElement(this.newHoliday.value))
     this.newHoliday.reset();

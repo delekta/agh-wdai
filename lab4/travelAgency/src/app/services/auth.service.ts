@@ -3,25 +3,32 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs/Observable';
 import firebase from 'firebase'
 import {User} from '../logging/user'
-import { from } from 'rxjs';
+import { from, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private _userEmail = new Subject<string>()
+  email$ = this._userEmail.asObservable(); 
+
   userData: Observable<firebase.User>
-  // User przeze mnie stworzony missing properties
+  
   readonly authState$: Observable <User | null> = this.angularFirebaseAuth.authState
   
   constructor(private angularFirebaseAuth: AngularFireAuth, private router: Router) {
     angularFirebaseAuth.authState.subscribe(auth => {
+      // console.log(this.getEmail())
       if(auth){
-        alert("Zalogowano" + auth.displayName)
+        this.sendEmail(localStorage.getItem("email"))
+        alert("Jesteś zalogowany")
 
       }
       else{
-        alert("Wylogowano")
+        localStorage.removeItem("email")
+        this.sendEmail(localStorage.getItem("email"))
+        alert("Jesteś wylogowany")
       }
     })
    }
@@ -30,8 +37,10 @@ export class AuthService {
      this.angularFirebaseAuth
           .createUserWithEmailAndPassword(email, password)
           .then(res => {
-            this.router.navigate(['logging']);
-            console.log("udało się zarejestrować", res);
+            this.router.navigate(['holidaysOffer']);
+            var email = res.user.email
+            localStorage.setItem("email", email);
+            console.log("Udało się zarejestrować");
           })
           .catch(error =>{
             alert("Nie udało się zarejestrować")
@@ -42,7 +51,8 @@ export class AuthService {
      this.angularFirebaseAuth.signInWithEmailAndPassword(email, password)
      .then((result) => {
         this.router.navigate(['holidaysOffer']);
-        // this.SetUserData(result.user);
+        var email = result.user.email
+        localStorage.setItem("email", email);
     }).catch((error) => {
       window.alert(error.message)
     })
@@ -54,18 +64,9 @@ export class AuthService {
     })
   }
 
-   getUser(){
-     var user = this.angularFirebaseAuth.currentUser
-     if(user){
-       if(user != null){
-         console.log(user);
-         
-       }else{
-         console.log("user wylogowany");
-         
-       }
-     }
-   }
+  sendEmail(email: string){
+    this._userEmail.next(email)
+  }
 
    testAuth(){
      this.angularFirebaseAuth.onAuthStateChanged((user) =>{

@@ -6,6 +6,16 @@
     
 }
 
+.email{
+    background: #0062CC;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
 .navbar{
     display: flex;
     flex-direction: row;
@@ -65,5 +75,9 @@ app-trolley{
     display: inline-block;
     background-color: rgb(123, 125, 134, 0.5);
     border-radius: 20px;
+}
+
+h1{
+    font-family: 'Potta One', cursive;
 }
 

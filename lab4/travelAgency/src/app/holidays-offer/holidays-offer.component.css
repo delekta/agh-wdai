@@ -5,6 +5,10 @@
     justify-content: space-evenly;
 }
 
+.container{
+    width: 80vw;
+}
+
 .top{
     height: 100px;
     padding: 30px;
