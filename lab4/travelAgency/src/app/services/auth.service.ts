@@ -73,8 +73,22 @@ export class AuthService {
         console.log(user);
         else
           console.log("wylogowany");
-          
-        
      })
+   }
+
+   changePersistence(mode: string){
+     var session:any
+     if(mode === "s"){
+        session = firebase.auth.Auth.Persistence.SESSION; 
+     }
+     else if (mode === "n"){
+      session = firebase.auth.Auth.Persistence.NONE; 
+     }
+     else{
+      session = firebase.auth.Auth.Persistence.LOCAL; 
+     }
+     return this.angularFirebaseAuth.setPersistence(session).then(() => {
+      
+      });
    }
 }

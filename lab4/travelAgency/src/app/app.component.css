@@ -6,6 +6,12 @@
     
 }
 
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 @media screen and (max-width: 1020px){
     .top-row{
         grid-template-areas: 
@@ -46,9 +52,18 @@ app-trolley{
     border-radius: 20px;
 }
 
+.container{
+    width: 100%;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .bottom-row{
-    margin: 20px;
-    background-color: rgb(123, 125, 134);
+    margin: auto;
+    display: inline-block;
+    background-color: rgb(123, 125, 134, 0.5);
     border-radius: 20px;
 }
 

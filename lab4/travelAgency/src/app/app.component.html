@@ -2,14 +2,27 @@
     <h1 class="display-1 text-center p-3 font-weight-bold">{{companyName}}</h1>
 </div>
 
-<nav class="text-center">
+<nav #navbar class="navbar">
     <a routerLink="holidaysOffer" class="btn btn-primary active m-3" role="button" routerLinkActive="active">Lista Wycieczek</a>
     <a routerLink="trolley" class="btn btn-primary active m-3" role="button" routerLinkActive="active">Koszyk</a>
     <a routerLink="form" class="btn btn-primary active m-3" role="button" routerLinkActive="active">Dodaj Wycieczke</a>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Zmien Tryb
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a (click)="changeActive($event, 'l')" class="dropdown-item" href="#">Local</a>
+          <a (click)="changeActive($event, 's')" class="dropdown-item" href="#">Session</a>
+          <a (click)="changeActive($event, 'n')" class="dropdown-item" href="#">None</a>
+        </div>
+    </div>
     <a (click)="signOut()" class="btn btn-primary active m-3" role="button" routerLinkActive="active">Wyloguj się</a>
 </nav>
-<div class="bottom-row">
+<div class="container">
+  <div class="bottom-row">
     <router-outlet></router-outlet>
+  </div>
 </div>
+
 
 
