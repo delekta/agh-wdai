@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
+  flag:boolean = true;
   private _userEmail = new Subject<string>()
   email$ = this._userEmail.asObservable(); 
 
@@ -21,8 +22,13 @@ export class AuthService {
     angularFirebaseAuth.authState.subscribe(auth => {
       // console.log(this.getEmail())
       if(auth){
-        this.sendEmail(localStorage.getItem("email"))
-        alert("Jesteś zalogowany")
+        if(this.flag){
+          this.sendEmail(localStorage.getItem("email"))
+          alert("Jesteś zalogowany")
+        }
+        else{
+          this.flag = true;
+        }
 
       }
       else{
@@ -34,13 +40,15 @@ export class AuthService {
    }
 
    SignUp(email: string, password: string){
+     this.flag = false;
      this.angularFirebaseAuth
           .createUserWithEmailAndPassword(email, password)
           .then(res => {
-            this.router.navigate(['holidaysOffer']);
+            this.router.navigate(['logging']);
             var email = res.user.email
             localStorage.setItem("email", email);
-            console.log("Udało się zarejestrować");
+            alert("Udało się zarejestrować");
+            this.SignOut()
           })
           .catch(error =>{
             alert("Nie udało się zarejestrować")
