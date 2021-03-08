@@ -2,6 +2,10 @@
     <h1>Rejestracja</h1>
     <form [formGroup]="userData" (ngSubmit)="signUp()">
         <div class="form-group">
+            <label>Nazwa uzytkownika</label>
+            <input type="text" class="form-control" formControlName="userName">
+        </div>
+        <div class="form-group">
             <label>E-mail</label>
             <input type="text" class="form-control" formControlName="eMail">
         </div>

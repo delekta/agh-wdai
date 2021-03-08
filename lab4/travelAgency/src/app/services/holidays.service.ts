@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {Holiday} from '../holidays-offer-element/holiday'
 
-@Injectable({
+@Injectable({ 
   providedIn: 'root'
 })
 export class HolidaysService {

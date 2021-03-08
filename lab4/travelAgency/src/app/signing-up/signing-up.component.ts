@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class SigningUpComponent implements OnInit {
   userData = new FormGroup({
+    userName: new FormControl(null, Validators.required),
     eMail: new FormControl(null, Validators.required),
     password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
   })
@@ -21,7 +22,7 @@ export class SigningUpComponent implements OnInit {
 
   signUp(){
     console.log("komponent rejestracja");
-    this._authenticationService.SignUp(this.userData.value.eMail, this.userData.value.password)
+    this._authenticationService.SignUp(this.userData.value.eMail, this.userData.value.password, this.userData.value.userName)
   }
 
 }

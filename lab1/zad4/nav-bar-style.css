@@ -120,3 +120,18 @@ li a {
 }
 
 
+.wrapper {
+    width: 240px;
+    border: 2px solid black;
+    background-color: red;
+    }
+    .box {
+    width: 100px;
+    height:30px;
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid black;
+    float: left;
+    background-color: yellow;
+    }
+    p { clear: both;}

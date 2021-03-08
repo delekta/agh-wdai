@@ -3,8 +3,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs/Observable';
 import firebase from 'firebase'
 import {User} from '../logging/user'
+import {WebsiteUser} from '../user/user'
 import { from, Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,7 @@ export class AuthService {
   
   readonly authState$: Observable <User | null> = this.angularFirebaseAuth.authState
   
-  constructor(private angularFirebaseAuth: AngularFireAuth, private router: Router) {
+  constructor(private angularFirebaseAuth: AngularFireAuth, private router: Router, private userService: UserService) {
     angularFirebaseAuth.authState.subscribe(auth => {
       // console.log(this.getEmail())
       if(auth){
@@ -39,13 +41,20 @@ export class AuthService {
     })
    }
 
-   SignUp(email: string, password: string){
+   SignUp(email: string, password: string, userName: string){
      this.flag = false;
      this.angularFirebaseAuth
           .createUserWithEmailAndPassword(email, password)
           .then(res => {
             this.router.navigate(['logging']);
-            var email = res.user.email
+            // Add User To Firebase
+            var user = <WebsiteUser>{
+              email: email,
+              name: userName
+            }
+            this.userService.createUser(user)
+            console.log("Udało się dodać Usera do Bazy");
+            
             localStorage.setItem("email", email);
             alert("Udało się zarejestrować");
             this.SignOut()
@@ -53,7 +62,7 @@ export class AuthService {
           .catch(error =>{
             alert("Nie udało się zarejestrować")
           })
-   }
+   } 
 
    SignIn(email: string, password: string){
      this.angularFirebaseAuth.signInWithEmailAndPassword(email, password)
