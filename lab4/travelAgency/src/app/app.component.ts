@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { UserInteractionService } from './services/user-interaction.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,13 @@ import { AuthService } from './services/auth.service';
 
 export class AppComponent {
   public companyName = "Tu i Tam...";
-  public email: string;
-  constructor(private _authenticationService: AuthService){
-    this._authenticationService.email$.subscribe(
-      e => {
-        this.email = e
+  public userName: string;
+  constructor(private _currentUser: UserInteractionService, private _authenticationService: AuthService){
+    this._currentUser.user$.subscribe(
+      u => {
+        console.log("aloha" + u.name);
+        
+        this.userName = u.name
       }
     )
   }

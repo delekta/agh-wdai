@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import * as firebase from 'firebase';
+import { UserInteractionService } from '../services/user-interaction.service';
 import {WebsiteUser} from './user'
 
 @Injectable({
@@ -8,12 +10,12 @@ import {WebsiteUser} from './user'
 export class UserService {
   daneRef: AngularFireList<Object>;
 
-  constructor(private db: AngularFireDatabase) { 
+  constructor(private db: AngularFireDatabase, private currentUser: UserInteractionService) { 
     this.daneRef = db.list("users");
   }
 
-  createUser(user: WebsiteUser){
-    this.daneRef.push(user)
+  createUser(key: string, user: WebsiteUser){
+    this.db.object(`/users/${key}`).set(user)
   }
 
   deleteUser(key: string){
@@ -21,6 +23,12 @@ export class UserService {
   }
 
   getUser(key: string){
-    // this.daneRef.child(key)
+    this.daneRef.snapshotChanges().forEach(changes => {
+      changes.forEach(ch => {
+        if(ch.payload.key == key){
+          this.currentUser.sendCurrentUser(<WebsiteUser>ch.payload.val())
+        }
+      } )
+    })
   }
 }

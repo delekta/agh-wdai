@@ -7,6 +7,7 @@ import {WebsiteUser} from '../user/user'
 import { from, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
+import { UserInteractionService } from './user-interaction.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,22 +21,13 @@ export class AuthService {
   
   readonly authState$: Observable <User | null> = this.angularFirebaseAuth.authState
   
-  constructor(private angularFirebaseAuth: AngularFireAuth, private router: Router, private userService: UserService) {
+  constructor(private angularFirebaseAuth: AngularFireAuth, private router: Router, private userService: UserService, private currentUser: UserInteractionService) {
     angularFirebaseAuth.authState.subscribe(auth => {
       // console.log(this.getEmail())
       if(auth){
-        if(this.flag){
-          this.sendEmail(localStorage.getItem("email"))
-          alert("Jesteś zalogowany")
-        }
-        else{
-          this.flag = true;
-        }
-
+        alert("Jesteś zalogowany")
       }
       else{
-        localStorage.removeItem("email")
-        this.sendEmail(localStorage.getItem("email"))
         alert("Jesteś wylogowany")
       }
     })
@@ -48,19 +40,14 @@ export class AuthService {
           .then(res => {
             this.router.navigate(['logging']);
             // Add User To Firebase
-            var user = <WebsiteUser>{
-              email: email,
-              name: userName
-            }
-            this.userService.createUser(user)
-            console.log("Udało się dodać Usera do Bazy");
-            
-            localStorage.setItem("email", email);
+            var user = new WebsiteUser(userName, email)
+            var key = res.user.uid
+            this.userService.createUser(key, user)
             alert("Udało się zarejestrować");
             this.SignOut()
           })
           .catch(error =>{
-            alert("Nie udało się zarejestrować")
+            alert("Nie udało się zarejestrować" + error)
           })
    } 
 
@@ -68,8 +55,8 @@ export class AuthService {
      this.angularFirebaseAuth.signInWithEmailAndPassword(email, password)
      .then((result) => {
         this.router.navigate(['holidaysOffer']);
-        var email = result.user.email
-        localStorage.setItem("email", email);
+        var key = result.user.uid
+        this.userService.getUser(key)
     }).catch((error) => {
       window.alert(error.message)
     })

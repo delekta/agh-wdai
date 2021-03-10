@@ -1,8 +1,9 @@
 export class WebsiteUser{
-    key?: string
-    name: string;
-    role: 1;
-    email: string;
+    constructor(
+        public name: string,
+        public email: string,
+        public role: number = 1,
+        ) {}
 }
 
 // 4 Roles
