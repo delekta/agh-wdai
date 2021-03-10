@@ -23,12 +23,17 @@ export class UserService {
   }
 
   getUser(key: string){
-    this.daneRef.snapshotChanges().forEach(changes => {
-      changes.forEach(ch => {
-        if(ch.payload.key == key){
-          this.currentUser.sendCurrentUser(<WebsiteUser>ch.payload.val())
-        }
-      } )
-    })
+    if(key != null){
+      this.daneRef.snapshotChanges().forEach(changes => {
+        changes.forEach(ch => {
+          if(ch.payload.key == key){
+            this.currentUser.sendCurrentUser(<WebsiteUser>ch.payload.val())
+          }
+        } )
+      })
+    }else{
+      this.currentUser.sendCurrentUser(null)
+    }
+    
   }
 }

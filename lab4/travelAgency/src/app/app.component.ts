@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { UserInteractionService } from './services/user-interaction.service';
+import { WebsiteUser } from './user/user';
+import { UserService } from './user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +13,17 @@ import { UserInteractionService } from './services/user-interaction.service';
 export class AppComponent {
   public companyName = "Tu i Tam...";
   public userName: string;
-  constructor(private _currentUser: UserInteractionService, private _authenticationService: AuthService){
+  public userRole: number = 0;
+  constructor(private _currentUser: UserInteractionService, private _authenticationService: AuthService, private userService: UserService){
     this._currentUser.user$.subscribe(
       u => {
-        console.log("aloha" + u.name);
-        
-        this.userName = u.name
+        if (u != null){
+          this.userName = u.name
+          this.userRole = u.role
+        }else{
+          this.userName = null;
+          this.userRole = 0
+        }
       }
     )
   }

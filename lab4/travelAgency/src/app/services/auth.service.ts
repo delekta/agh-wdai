@@ -8,6 +8,7 @@ import { from, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
 import { UserInteractionService } from './user-interaction.service';
+import { prepareEventListenerParameters } from '@angular/compiler/src/render3/view/template';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,7 @@ export class AuthService {
     angularFirebaseAuth.authState.subscribe(auth => {
       // console.log(this.getEmail())
       if(auth){
+        this.updateCurrentUser()
         alert("Jesteś zalogowany")
       }
       else{
@@ -55,8 +57,7 @@ export class AuthService {
      this.angularFirebaseAuth.signInWithEmailAndPassword(email, password)
      .then((result) => {
         this.router.navigate(['holidaysOffer']);
-        var key = result.user.uid
-        this.userService.getUser(key)
+        this.updateCurrentUser()
     }).catch((error) => {
       window.alert(error.message)
     })
@@ -64,7 +65,8 @@ export class AuthService {
 
    SignOut() {
     return this.angularFirebaseAuth.signOut().then(() => {
-      this.router.navigate(['logging']);
+      this.router.navigate(['logging'])
+      this.updateCurrentUser();
     })
   }
 
@@ -95,5 +97,15 @@ export class AuthService {
      return this.angularFirebaseAuth.setPersistence(session).then(() => {
       
       });
+   }
+
+   updateCurrentUser(){
+     var key;
+    if (firebase.auth().currentUser != null){
+      key = firebase.auth().currentUser.uid
+    }else{
+      key = null;
+    }
+    this.userService.getUser(key)    
    }
 }
