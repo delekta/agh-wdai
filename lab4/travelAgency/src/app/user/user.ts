@@ -3,6 +3,7 @@ export class WebsiteUser{
         public name: string,
         public email: string,
         public role: number = 1,
+        public uid?,
         ) {}
 }
 

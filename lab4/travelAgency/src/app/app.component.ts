@@ -32,22 +32,6 @@ export class AppComponent {
     this._authenticationService.SignOut()
   }
 
-  changeActive(event: Event, mode: string){
-    event.preventDefault();
-    // let list = (<HTMLElement>event.currentTarget).parentNode;
-    // this.resetList(list);
-    // (<HTMLElement>event.currentTarget).classList.add("active")
-    this._authenticationService.changePersistence(mode);
-    if(mode === 's'){
-      alert("Zmieniles tryb na SESSION")
-    }else if(mode === 'n'){
-      alert("Zmieniles tryb na NONE")
-    }
-    else{
-      alert("Zmieniles tryb na LOCAL")
-    }
-  }
-
   // resetList(list){
   //   let aArray: HTMLCollectionOf<HTMLLIElement> = list.getElementsByTagName("a")
   //   for(let i = 0; i < aArray.length; i++){

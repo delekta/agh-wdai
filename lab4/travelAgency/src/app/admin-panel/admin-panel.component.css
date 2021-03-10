@@ -1,0 +1,29 @@
+.container{
+    padding: 30px;
+}
+
+h1{
+    color: white
+}
+
+.text{
+    font-size: 20px;
+    color: white;
+    display: inline-block;
+}
+
+#persistButton{
+    padding-left: 10px;
+    display: inline-block;
+}
+
+section{
+    padding: 20px;
+    border-bottom: 1px solid white ;
+}
+
+table, th, td {
+    color: white;
+    padding: 7px;
+    border: 2px solid white;
+  }

@@ -10,6 +10,7 @@ import {LoggingComponent} from '../logging/logging.component'
 import {SigningUpComponent} from '../signing-up/signing-up.component'
 
 import {AuthGuard} from '../guard/auth.guard'
+import { AdminPanelComponent } from '../admin-panel/admin-panel.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'holidaysOffer/details/:key', component:  HolidayDetailsComponent, canActivate: [AuthGuard] },
   { path: 'logging', component: LoggingComponent},
   { path: 'signingup', component: SigningUpComponent},
+  { path: 'adminPanel', component: AdminPanelComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'logging' , canActivate: [AuthGuard] },
 
 ];

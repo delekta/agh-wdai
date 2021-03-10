@@ -30,6 +30,7 @@ export class AuthService {
         alert("Jesteś zalogowany")
       }
       else{
+        this.updateCurrentUser()
         alert("Jesteś wylogowany")
       }
     })

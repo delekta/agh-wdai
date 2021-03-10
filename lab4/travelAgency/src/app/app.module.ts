@@ -25,7 +25,8 @@ import { HolidayDetailsComponent } from './holiday-details/holiday-details.compo
 import { LoggingComponent } from './logging/logging.component';
 import { SigningUpComponent } from './signing-up/signing-up.component';
 import {AngularFireAuthModule} from '@angular/fire/auth'
-import {AuthService} from './services/auth.service'
+import {AuthService} from './services/auth.service';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component'
 
 
 
@@ -47,6 +48,7 @@ import {AuthService} from './services/auth.service'
     HolidayDetailsComponent,
     LoggingComponent,
     SigningUpComponent,
+    AdminPanelComponent,
 
   ],
   imports: [

@@ -22,6 +22,10 @@ export class UserService {
     this.daneRef.remove(key)
   }
 
+  updateUser(key: string, updatedUser: any){
+    this.daneRef.update(key, updatedUser)
+  }
+
   getUser(key: string){
     if(key != null){
       this.daneRef.snapshotChanges().forEach(changes => {
@@ -34,6 +38,9 @@ export class UserService {
     }else{
       this.currentUser.sendCurrentUser(null)
     }
-    
+  }
+
+  getUsers(){
+    return this.daneRef
   }
 }

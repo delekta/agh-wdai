@@ -1,0 +1,41 @@
+<div class="container">
+    <h1>Panel Administratora</h1>
+    <section>
+        <div class="text">Zmień Tryb Persystencji:</div>
+        <div class="dropdown" id="persistButton">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Zmien Tryb
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a (click)="changeActive($event, 'l')" class="dropdown-item" href="#">Local</a>
+              <a (click)="changeActive($event, 's')" class="dropdown-item" href="#">Session</a>
+              <a (click)="changeActive($event, 'n')" class="dropdown-item" href="#">None</a>
+            </div>
+        </div>
+    </section>
+    <section>
+        <table>
+            <tr>
+                <th>Nazwa Uzytkownika</th>
+                <th>Email</th>
+                <th>Rola</th>
+                <th>Nowa Rola</th>
+            </tr>
+            <tr *ngFor="let user of this.users">
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{this.roles[user.role - 1]}}</td>
+                <td>
+                    <select #selectRole id="roles">
+                        <option value="1">Reader</option>
+                        <option value="2">VIP</option>
+                        <option value="3">Employee</option>
+                        <option value="4">Admin</option>
+                    </select>
+                    <button (click)="update(user, selectRole.value)">Potwierdz</button>
+                </td>
+            </tr>
+        </table>
+    </section>
+</div>
+

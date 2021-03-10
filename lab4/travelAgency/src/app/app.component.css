@@ -71,6 +71,8 @@ app-trolley{
 }
 
 .bottom-row{
+    min-width: 600px;
+    min-height: 300px;
     margin: auto;
     display: inline-block;
     background-color: rgb(123, 125, 134, 0.5);
