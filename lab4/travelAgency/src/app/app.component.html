@@ -8,7 +8,7 @@
 <nav #navbar class="navbar">
     <a *ngIf="this.userName != null" routerLink="holidaysOffer" class="btn btn-primary active m-3" role="button" routerLinkActive="active">Lista Wycieczek</a>
     <a *ngIf="this.userName != null" routerLink="trolley" class="btn btn-primary active m-3" role="button" routerLinkActive="active">Koszyk</a>
-    <a *ngIf="this.userName != null" routerLink="form" class="btn btn-primary active m-3" role="button" routerLinkActive="active">Dodaj Wycieczke</a>
+    <a *ngIf="this.userName != null && this.userRole >= 3" routerLink="form" class="btn btn-primary active m-3" role="button" routerLinkActive="active">Dodaj Wycieczke</a>
     <a *ngIf="this.userRole >= 4" routerLink="adminPanel" class="btn btn-primary active m-3" role="button" routerLinkActive="active">Panel Admina</a>
     <a *ngIf="this.userName != null" (click)="signOut()" class="btn btn-primary active m-3" role="button" routerLinkActive="active">Wyloguj się</a>
 </nav>

@@ -13,10 +13,10 @@ export class AdminPanelComponent implements OnInit {
   public users: Array<WebsiteUser> = [];
   public roles = ["Reader", "VIP", "Employee", "Admin"]
   constructor(private _authenticationService: AuthService, private _userService: UserService) { 
-    this.getAllAccounts()
   }
 
   ngOnInit(): void {
+    this.getAllAccounts()
   }
 
   changeActive(event: Event, mode: string){
@@ -35,32 +35,38 @@ export class AdminPanelComponent implements OnInit {
     }
   }
 
-  // Debugging Nedded 10.03.2021
   getAllAccounts(){
+    this.users = []
     console.log(this.users);
-    
-    this.users = [];
-    var i = 1;
     var fireList = this._userService.getUsers()
     var adminUID = firebase.auth().currentUser.uid
-    fireList.snapshotChanges().forEach(changes => {
-      changes.forEach(c => {
-        if (c.payload.key != adminUID){
-          console.log(i++);
-          
-          var user = <WebsiteUser>c.payload.val();
-          user.uid = c.payload.key;
-          this.users = [...this.users, user]
-        }
-      })
+    firebase.database().ref('users').once('value', (snapshot) => {
+      snapshot.forEach( childSnapshot => {
+        if (childSnapshot.key != adminUID){
+                var user = <WebsiteUser>childSnapshot.val();
+                user.uid = childSnapshot.key;
+                this.users = [...this.users, user]
+      }
     })
+    })
+    // fireList.snapshotChanges().getValue().forEach(changes => {
+    //   changes.forEach(c => {
+    //     if (c.payload.key != adminUID){
+    //       console.log(i++);
+          
+    //       var user = <WebsiteUser>c.payload.val();
+    //       user.uid = c.payload.key;
+    //       this.users = [...this.users, user]
+    //     }
+    //   })
+    // })
   }
 
   update(user: WebsiteUser, val: string){
     var newRole = parseInt(val);
     user.role = newRole;
     this._userService.updateUser(user.uid, user)
-    this.getAllAccounts()    
+    this.getAllAccounts()
   }
 
 }
